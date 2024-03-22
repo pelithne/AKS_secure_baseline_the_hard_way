@@ -1,22 +1,19 @@
 # AKS Secure Baseline - The Hard Way
 
-Welcome to AKS baseline - the hard way. From this blog, you will learn how to deploy a secure and scalable Kubernetes cluster on Azure using Azure Kubernetes Service (AKS). You will also learn how to apply the best practices from the AKS secure baseline reference architecture, which provides a recommended starting point for a general purpose AKS cluster infrastructure. 
+Welcome to "AKS baseline - The Hard Way". From this blog, you will learn how to deploy a secure and scalable Kubernetes cluster on Azure using Azure Kubernetes Service (AKS) and a number of other Azure services. You will also learn how to apply the best practices from the AKS secure baseline reference architecture, which provides a recommended starting point for a general purpose AKS cluster infrastructure. 
 
-
-# Introduction
-
-This target audience of this blog is intermediate to advanced Kubernetes users who want to improve their skills and knowledge about AKS and . You will need to have some familiarity with Kubernetes concepts and tools, such as pods, services, deployments, and kubectl. You will also need to have an Azure subscription and access to a terminal or shell environment.
+The target audience of this blog is intermediate to advanced Kubernetes users who want to improve their skills and knowledge about AKS and azure. You will need to have some familiarity with Kubernetes concepts and tools such as pods, services, deployments, and kubectl. You will also need to have an Azure subscription and access to a terminal or shell environment.
 
 Upon finishing, you will have a deeper understanding of how to use AKS to deploy and manage a secure and scalable Kubernetes cluster on Azure. You will also have a working AKS cluster that follows the AKS secure baseline reference architecture.
 
 ![Screenshot](images/aks-baseline-architecture.jpg)
 
 
-## 1.1 Overview
+## Overview
 
 The AKS baseline is a reference architecture that provides a set of best practices and recommendations for deploying a secure and scalable Azure Kubernetes Service (AKS) cluster. One of the key components of the AKS baseline is the network design, which is divided into several subnets and virtual networks (VNets) to isolate and protect the cluster resources from external and internal threats. In this article, we will describe the purpose and configuration of each subnet and VNet in the AKS baseline, and how they work together to provide a robust network infrastructure for your AKS cluster.
 
-## 1.2 IP Plan
+## IP Plan
 
 IP planning is an important aspect of deploying an AKS cluster and Azure services in general, as it affects the scalability, performance, security, and availability of the cluster and its workloads. IP planning involves choosing the right network topology, IP address ranges, subnet sizes, and network policies for the cluster and its nodes, pods, and services. For more information on IP planning for an AKS cluster, see [Plan IP addressing for your cluster](https://learn.microsoft.com/en-us/azure/architecture/reference-architectures/containers/aks/baseline-aks#plan-the-ip-addresses) and [Best practices for network resources in AKS](https://learn.microsoft.com/en-us/azure/aks/operator-best-practices-network).
 
@@ -30,16 +27,16 @@ This is the proposed IP design that we will adhere to throughout the documentati
 
 Each subnet in AKS baseline has a specific purpose and configuration, further information can be found below.
 
-### 1.2.1 Hub VNET
+### Hub VNET
 
 - **Azure Firewall Subnet**: This subnet is where the Azure Firewall is deployed. The firewall acts as an egress controller for the AKS cluster, filtering and logging the outbound traffic from the cluster to external resources or services. It also provides network address translation (NAT) functionality, which allows the cluster to access resources that are not reachable by private IP addresses. The subnet size can be small for this particular case, as it only needs to accommodate one firewall instance.
 
 - **Azure Bastion Subnet**: This subnet is where the Azure Bastion service is deployed. Azure Bastion is a fully managed service that provides secure and seamless Remote Desktop Protocol (RDP) and Secure Shell (SSH) access to your virtual machines directly through the Azure portal⁴. This subnet is used for management and operations only, and it does not expose any resources to the internet. The subnet name must be **AzureBastionSubnet**, and the subnet size must be **/16** or larger.
 
-- **Jump Box Subnet**: This subnet is where the jump server resides, where operation teams can login and access services in the spoke, to perform operations and maintanance.
+- **Jump Box Subnet**: This subnet is where the jump server resides, where operation teams can login and access services in the spoke, to perform operations and maintenance.
 
 
-### 1.2.2 Spoke VNET
+### Spoke VNET
 
 - **Endpoints Subnet**: This subnet is where the private endpoints for Azure services are deployed. Private endpoints are a network interface that connects you privately and securely to a service powered by Azure Private Link. Private endpoints allow you to access Azure services, such as Azure Container Registry, Azure Key Vault, or Azure Storage, without exposing them to the internet or requiring a public IP address. The subnet name can be any valid name, and the subnet size depends on the number of private endpoints you need to create.
 
@@ -50,7 +47,7 @@ Each subnet in AKS baseline has a specific purpose and configuration, further in
 - **Azure Loadbalancer Subnet**: The load balancer subnet is a part of the network topology that supports the AKS cluster. It is where the internal load balancer (ILB) resides and assigns IP addresses to the services that are exposed within the cluster.
 
 
-### 1.2.3 Prepare Environment Variables for HUB VNET and SPOKE VNET
+### Prepare Environment Variables for HUB VNET and SPOKE VNET
 
 
 1) Let’s use the IP plan to set up some environment variables for the Hub VNet and adjust its configuration accordingly to section 2.2 IP Plan.
@@ -82,22 +79,16 @@ ENDPOINTS_SUBNET_PREFIX= # IP address range of the Endpoints subnet
 
 
 
-______________________
-______________________
-deploy infra
-______________________
-______________________
+## Infrastructure Deployment
 
-The objective of this chapter is to guide you through the process of deploying the AKS baseline infrastructure. This infrastructure consists of the essential components and configurations that are required for running a secure and scalable AKS cluster. By following the steps in this chapter, you will be able to set up the AKS baseline infrastructure.
+The objective of this part is to guide you through the process of deploying the AKS baseline infrastructure. This infrastructure consists of the essential components and configurations that are required for running a secure and scalable AKS cluster. By following the steps in this chapter, you will set up the AKS baseline infrastructure.
 
-## 1.1 Deployment
-
-### 1.1.1 Prepare Environment Variables for infrastructure
+### Prepare Environment Variables for infrastructure
 
 This configuration sets up environment variables for the names and locations of various network and security resources, such as resource group, virtual network, subnets, network security groups, firewall, application gateway, route table, identity, virtual machine, AKS cluster, and ACR registry.
 
 > [!Note]
-> Since the Azure container registry has a globally unique FQDN name, you need to assign a distinct value to the **ACR_NAME** environment variable, else the ACR deployment will fail. 
+> Since the Azure container registry has a globally unique FQDN name, you need to assign a distinct value to the **ACR_NAME** environment variable, else the ACR deployment will fail. The ACR name can only container lowercase letters and numbers.
 
 ````bash
 HUB_RG=rg-hub
@@ -119,19 +110,19 @@ ACR_NAME=<NAME OF THE AZURE CONTAINER REGISTRY>
 STUDENT_NAME=<WRITE YOUR STUDENT NAME HERE>
 ````
 
-### 1.1.2 Create the Resource Groups for the Hub and Spoke.
+### Create the Resource Groups for the Hub and Spoke.
 
 ````bash
 az group create --name $HUB_RG --location $LOCATION
 az group create --name $SPOKE_RG --location $LOCATION
 ````
 
-### 1.1.3 Create Network Security Groups (NSG) and Virtual Network (Vnet) for the Hub.
+### Create Network Security Groups (NSG) and Virtual Network (VNET) for the Hub.
 In this step, we will begin by establishing a Network Security Group (NSG) that will subsequently be associated with their respective subnet. It is crucial to note that there are specific prerequisites concerning security rules for certain subnets that must be met  before a service can be deployed, Azure Bastion is one of them.
 
 For Azure Bastion, we are establishing security rules to permit both the control and data plane access to the AzureBastion. For a more detailed understanding of these rules, please refer to the following resource: [More Information](https://learn.microsoft.com/en-us/azure/bastion/bastion-nsg).
 
-1) Lets Create the NSG for AzureBastionSubnet.
+1) Create the NSG for AzureBastionSubnet.
 ````bash
 az network nsg create \
     --resource-group $HUB_RG \
@@ -264,11 +255,12 @@ Validate your deployment in the Azure portal.
 10) Select your vnet called **HUB_VNET**.
 
 11) In the left-hand side menu, under the **Settings** section, select **Subnets**.
+
 12) Make sure that your subnets have the appropriate IP range and that Network Security Groups (NSGs) are correctly associated with their respective subnets as depicted below.
 
 ![Screenshot](images/hubandspokevnet.jpg)
 
-### 1.1.4 Create Network Security Groups and Virtual Network for the Spoke.
+### Create Network Security Groups and Virtual Network for the Spoke.
 We will now start to setup the spoke vnet, subnets and their respective NSGs,
 
 1) Create the NSG for AKS subnet.
@@ -295,12 +287,14 @@ az network nsg create \
 4) To use an NSG with your application gateway, you need to open these port ranges:
 
 Inbound rules: The **Internet service tag** needs access to port **65200-65535** for the backend health API. Your application traffic needs access to TCP port **80 and/or 443**. for futher information refer to [Required security rules for Application Gateway](https://learn.microsoft.com/en-us/azure/application-gateway/configuration-infrastructure#required-security-rules) for more information.
+
 ````bash
 az network nsg create \
     --resource-group $SPOKE_RG \
     --name $APPGW_NSG \
     --location $LOCATION
 ````
+
 5) Create the NSG rule to allow application traffic, on port 443 and 80.
 
 ````bash
@@ -316,7 +310,9 @@ az network nsg rule create \
     --protocol Tcp \
     --description "Allow inbound traffic to port 80 and 443 to Application Gateway from client requests originating from the Internet"
 ````
+
 6) Create the NSG rule to allow application traffic, on port range 65200-65535.
+
 ````bash
 # Infrastructure ports
 az network nsg rule create \
@@ -330,6 +326,7 @@ az network nsg rule create \
     --protocol Tcp \
     --description "Allow inbound traffic to ports 65200-65535 from GatewayManager service tag"
 ````
+
 7) Create the spoke VNET with one subnet for **AKS Subnet** and associate it to the AKS NSG.
 
 ````bash
@@ -352,6 +349,7 @@ az network vnet subnet create \
     --address-prefixes $ENDPOINTS_SUBNET_PREFIX \
 	--network-security-group $ENDPOINTS_NSG_NAME
 ````
+
 9) Create subnet for the **load balancer** that will be used for ingress traffic and associate it to the loadbalancer NSG.
 
 ````bash
@@ -373,6 +371,7 @@ az network vnet subnet create \
     --address-prefixes $APPGW_SUBNET_PREFIX \
 	--network-security-group $APPGW_NSG
 ````
+
 You have successfully configured the network for your spoke virtual network. You should now have established the following setup in your Azure subscription.
 
 ![Screenshot](/images/hubandspokeonly.jpg)
@@ -386,15 +385,16 @@ Validate your deployment in the Azure portal.
 13) Select your vnet called **Spoke_VNET**.
 
 14) In the left-hand side menu, under the **Settings** section, select **Subnets**.
+
 15) Make sure that your subnets have the appropriate IP range and that Network Security Groups (NSGs) are correctly associated with their respective subnets as depicted below.
 
 ![Screenshot](images/spokevnet.jpg)
 
-### 1.1.5 Create Vnet Peering Between Hub and Spoke
+### Create VNET Peering Between Hub and Spoke
 
 The next step is to create a virtual network peering between the hub and spoke VNets. This will enable the communication between the VNets and allow the AKS cluster to route traffic to the Firewall.
 
-1) Before we can do a Vnet peering we need to obtain the full resource id of the Spoke_VNET and Hub_VNET as they resides in different resource group.
+1) Before we can do a VNET peering we need to obtain the full resource id of the Spoke_VNET and Hub_VNET as they resides in different resource group.
 
 ````bash
 SPOKE_VNET_ID=$(az network vnet show --resource-group $SPOKE_RG --name $SPOKE_VNET_NAME --query id --output tsv)
@@ -444,7 +444,7 @@ Validate your deployment in the Azure portal.
 
 ![Screenshot](/images/vnetpeeringconnected.jpg)
 
-### 1.1.6 Create Azure Bastion and Jumpbox VM
+### Create Azure Bastion and Jumpbox VM
 
 1) Create a public IP address for the bastion host
 
@@ -483,6 +483,7 @@ az vm create \
 
 
 4) Create the bastion host in hub vnet and associate it to the public IP.
+
 > [!Note]
 > Azure Bastion service requires a dedicated subnet named **AzureBastionSubnet** to provide secure and seamless RDP/SSH connectivity to your virtual machines. When you deploy Azure Bastion service, it will automatically create this subnet for you, if it does not exist in the target virtual network. However, if the subnet already exists, it must meet the minimum size of **/26** or larger, otherwise the deployment will fail.
 
@@ -514,7 +515,7 @@ After completing these steps, The high-level targeted architecture now matches t
 
 ![Screenshot](/images/hubandspokewithpeeringBastionJumpbox.jpg)
 
-### 1.1.7 Create an Azure Firewall and Setup a UDR
+### Create an Azure Firewall and Setup a UDR
 
 To secure your AKS outbound traffic, you need to follow these steps for a basic cluster deployment. These steps will help you restrict the outbound access and to certain FQDNs that are needed by the cluster. further information can be found here: [Control egress traffic using Azure Firewall in Azure Kubernetes Service (AKS)](https://learn.microsoft.com/en-us/azure/aks/limit-egress-traffic)
 
@@ -661,7 +662,7 @@ Validate your deployment in the Azure portal.
 
 
 
-### 1.1.8 Deploy Azure Kubernetes Service
+### Deploy Azure Kubernetes Service
 
 This chapter covers deploying AKS with outbound traffic configured to use a user-defined routing table, ensuring traffic passes through the Azure Firewall. A private DNS zone is also created when deploying a private AKS cluster. A user-assigned identity with necessary permissions is assigned to the cluster and load balancer subnet. This identity is a type of managed identity in Azure.
 
@@ -794,6 +795,7 @@ Validate your deployment in the Azure portal.
 13) Verify that a virtual network link exists between the Hub and spoke to enable the jumpbox to resolve the AKS domain name and access the cluster. Select the node group called **MC_rg-spoke_private-aks-xxxxx_eastus**
 
 14) Select the **Private DNS zone**.
+
 15) On your left hand side menu, under **Settings** click on **Virtual network links**.
 
 16) Validate that there is a link name called **hubnetdnsconfig** and the link status is set to **Completed** and the virtual network is set to **Hub_VNET**.
@@ -880,7 +882,7 @@ Congratulations! You have completed the steps to deploy a private AKS cluster an
 ![Screenshot](/images/hubandspokewithpeeringBastionJumpboxFirewallaksvirtualnetlink.jpg)
 ![Screenshot](/images/aksjumpbox.jpg)
 
-### 1.1.9 Deploy Azure Container Registry
+### Deploy Azure Container Registry
 In this chapter, we will learn how to deploy a private Azure container registry that will store our container images. A private container registry is a type of container registry that is not accessible from the public internet. To enable access to the private container registry from the jumpbox, we need to create some network resources that will allow us to resolve the container registry name and connect to it securely. These resources are: a private endpoint, a private link, and a virtual network link. We will see how to create and configure these resources in the following steps. We will also test the connection to the private container registry by pushing some images to it from the jumpbox.
 
 1) Create the Azure Container Registry, and disable public access to the registry.
@@ -1347,7 +1349,7 @@ You have successfully deployed a private Azure Container Registry that is access
 
 ![Screenshot](/images/hubandspokewithpeeringBastionJumpboxFirewallaksvirtualnetlinkandacrandinternalloadbalancer.jpg)
 
-### 1.1.10 Deploy Azure Application Gateway.
+### Deploy Azure Application Gateway.
 
 In this chapter, you will set up an application gateway that can terminate TLS connections at its own level. You will also learn how to perform these tasks: create an application gateway and upload a certificate to it, configure AKS as a backend pool for routing traffic to its internal load balancer, create a health probe to check the health of the AKS backend pool, and set up a WAF (Web Application Firewall) to defend against common web attacks.
 
@@ -1448,13 +1450,13 @@ We have successfully completed the deployment and configuration of our network a
 
 
 
-### 1.1.11 Validate Ingress Connection.
+### Validate Ingress Connection.
 Open your web browser and access your domain: **https://YOUR-STUDENT-NAME.akssecurity.se**
 you should see a similar output as to the one below.
 
 ![Screenshot](/images/splashscreen.jpg)
 
-### 1.1.12 Clean Up Resources in AKS
+### Clean Up Resources in AKS
 Once you have verified that everything works as depicted earlier. from the jumpbox host delete the resources.
 
 ````bash
