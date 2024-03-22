@@ -4,7 +4,7 @@ Welcome to "AKS baseline - The Hard Way". From this blog, you will learn how to 
 
 The target audience of this blog is intermediate to advanced Kubernetes users who want to improve their skills and knowledge about AKS and azure. You will need to have some familiarity with Kubernetes concepts and tools such as pods, services, deployments, and kubectl. You will also need to have an Azure subscription and access to a terminal or shell environment.
 
-Upon finishing, you will have a deeper understanding of how to use AKS to deploy and manage a secure and scalable Kubernetes cluster on Azure. You will also have a working AKS cluster that follows the AKS secure baseline reference architecture.
+Upon finishing, you will have a deeper understanding of how to use AKS to deploy and manage a secure and scalable Kubernetes cluster on Azure. You will also have a working AKS cluster that follows the AKS secure baseline reference architecture. Expect the entire exercise to take up to eight hours.
 
 ![Screenshot](images/aks-baseline-architecture.jpg)
 
@@ -50,7 +50,9 @@ Each subnet in AKS baseline has a specific purpose and configuration, further in
 ### Prepare Environment Variables for HUB VNET and SPOKE VNET
 
 
-1) Let’s use the IP plan to set up some environment variables for the Hub VNet and adjust its configuration accordingly to section 2.2 IP Plan.
+Let’s use the IP plan to set up some environment variables for the Hub VNet and adjust its configuration accordingly to section 2.2 IP Plan. Make sure to also save these to a text file, so that you can restore them later.
+
+Configure the hub according to the IP Plan (see image above)
 
 ````bash
 HUB_VNET_NAME=Hub_VNET
@@ -61,7 +63,7 @@ BASTION_SUBNET_PREFIX= # IP address range of the Bastion subnet
 FW_SUBNET_PREFIX= # IP address range of the Firewall subnet
 JUMPBOX_SUBNET_PREFIX= # IP address range of the Jumpbox subnet
 ````
-2) Configure the spoke according to section 2.2 IP Plan
+Configure the spoke according to the IP Plan (see image above)
 
 ````bash
 SPOKE_VNET_NAME=Spoke_VNET
@@ -81,14 +83,14 @@ ENDPOINTS_SUBNET_PREFIX= # IP address range of the Endpoints subnet
 
 ## Infrastructure Deployment
 
-The objective of this part is to guide you through the process of deploying the AKS baseline infrastructure. This infrastructure consists of the essential components and configurations that are required for running a secure and scalable AKS cluster. By following the steps in this chapter, you will set up the AKS baseline infrastructure.
+The objective of this part is to guide you through the process of deploying the AKS baseline infrastructure. The infrastructure consists of the essential components and configurations that are required for running a secure and scalable AKS cluster.
 
 ### Prepare Environment Variables for infrastructure
 
-This configuration sets up environment variables for the names and locations of various network and security resources, such as resource group, virtual network, subnets, network security groups, firewall, application gateway, route table, identity, virtual machine, AKS cluster, and ACR registry.
+This configuration sets up environment variables for the names and locations of various network and security resources, such as resource groups, virtual networks, subnets, network security groups, firewall, application gateway, route table, identity, virtual machines, AKS cluster, and ACR registry.
 
 > [!Note]
-> Since the Azure container registry has a globally unique FQDN name, you need to assign a distinct value to the **ACR_NAME** environment variable, else the ACR deployment will fail. The ACR name can only container lowercase letters and numbers.
+> Since the Azure container registry has a globally unique FQDN name, you need to assign a distinct value to the **ACR_NAME** environment variable, else the ACR deployment will fail. Also, the ACR name can only container lowercase letters and numbers.
 
 ````bash
 HUB_RG=rg-hub
@@ -106,8 +108,8 @@ ROUTE_TABLE_NAME=spoke-rt
 AKS_IDENTITY_NAME=aks-msi
 JUMPBOX_VM_NAME=Jumpbox-VM
 AKS_CLUSTER_NAME=private-aks
-ACR_NAME=<NAME OF THE AZURE CONTAINER REGISTRY>
-STUDENT_NAME=<WRITE YOUR STUDENT NAME HERE>
+ACR_NAME=<Globally unique name of the azure container registry>
+STUDENT_NAME=<your name>
 ````
 
 ### Create the Resource Groups for the Hub and Spoke.
@@ -118,7 +120,7 @@ az group create --name $SPOKE_RG --location $LOCATION
 ````
 
 ### Create Network Security Groups (NSG) and Virtual Network (VNET) for the Hub.
-In this step, we will begin by establishing a Network Security Group (NSG) that will subsequently be associated with their respective subnet. It is crucial to note that there are specific prerequisites concerning security rules for certain subnets that must be met  before a service can be deployed, Azure Bastion is one of them.
+In this step, we will begin by establishing Network Security Groups (NSGs) that will subsequently be associated with their respective subnet. It is crucial to note that there are specific prerequisites concerning security rules for certain subnets that must be met  before a service can be deployed. Azure Bastion is one of them.
 
 For Azure Bastion, we are establishing security rules to permit both the control and data plane access to the AzureBastion. For a more detailed understanding of these rules, please refer to the following resource: [More Information](https://learn.microsoft.com/en-us/azure/bastion/bastion-nsg).
 
@@ -221,6 +223,7 @@ az network vnet create \
     --subnet-prefixes $BASTION_SUBNET_PREFIX \
     --network-security-group $BASTION_NSG_NAME
 ````
+
 6) Create a subnet for the Azure Firewall.
 
 
@@ -392,9 +395,9 @@ Validate your deployment in the Azure portal.
 
 ### Create VNET Peering Between Hub and Spoke
 
-The next step is to create a virtual network peering between the hub and spoke VNets. This will enable the communication between the VNets and allow the AKS cluster to route traffic to the Firewall.
+The next step is to create a virtual network peering between the hub and spoke VNets. This will enable the communication between the VNETs and allow the AKS cluster to route traffic to the Firewall.
 
-1) Before we can do a VNET peering we need to obtain the full resource id of the Spoke_VNET and Hub_VNET as they resides in different resource group.
+1) Before we can do a VNET peering we need to obtain the full resource id of the Spoke_VNET and Hub_VNET as they resides in different resource groups.
 
 ````bash
 SPOKE_VNET_ID=$(az network vnet show --resource-group $SPOKE_RG --name $SPOKE_VNET_NAME --query id --output tsv)
@@ -404,7 +407,7 @@ SPOKE_VNET_ID=$(az network vnet show --resource-group $SPOKE_RG --name $SPOKE_VN
 HUB_VNET_ID=$(az network vnet show --resource-group $HUB_RG --name $HUB_VNET_NAME --query id --output tsv)
 ````
 
-1) Create a peering connection from the hub to spoke virtual networks.
+1) Now, create a peering connection from the hub to the spoke virtual network.
 
 ````bash
 az network vnet peering create \
@@ -415,7 +418,7 @@ az network vnet peering create \
     --allow-vnet-access
 ````
 
-2) Create a peering connection from  the spoke to hub virtual networks.
+2) Then create a peering connection from the spoke to hub virtual network.
 
 ````bash
 az network vnet peering create \
@@ -425,7 +428,8 @@ az network vnet peering create \
     --remote-vnet $HUB_VNET_ID \
     --allow-vnet-access
 ````
-Peering should be established and the high level design should now look like this.
+
+Peering should be established and the high level design should now look like this:
 
 ![Screenshot](/images/hubandspokewithpeering.jpg)
 
@@ -433,11 +437,12 @@ Validate your deployment in the Azure portal.
 
 3) Navigate to the Azure portal at [https://portal.azure.com](https://portal.azure.com) and enter your login credentials.
 
-4) Once logged in, locate and select your resource group called **rg-spoke** where the spoke vnet is deployed.
+4) Once logged in, locate and select the resource group called **rg-spoke** where the spoke vnet is deployed.
 
-5) Select your vnet called **Spoke_VNET**.
+5) Select the vnet called **Spoke_VNET**.
 
 6) In the left-hand side menu, under the **Settings** section, select **peerings**.
+
 7) Ensure that the peering status is set to **Connected**
 
 8) Repeat step 4 - 7 but for Hub_VNET.
@@ -446,7 +451,7 @@ Validate your deployment in the Azure portal.
 
 ### Create Azure Bastion and Jumpbox VM
 
-1) Create a public IP address for the bastion host
+1) The Bastion Host needs a Public IP. Create the Public IP address.
 
 ````bash
 az network public-ip create \
@@ -455,12 +460,12 @@ az network public-ip create \
     --sku Standard \
     --allocation-method Static
 ````
+
 2) Create JumpBox Virtual Machine.
 
 > [!Note]
 > Ensure you specify a **password** for the admin user called **azureuser**.
-> The password length must be between 12 and 72. Password must have the 3 of the following: 1 lower case character, 1 upper case character, 1 number and 1 special character.
-
+> The password length must be between 12 and 72. Password must have 3 of the following: 1 lower case character, 1 upper case character, 1 number and 1 special character.
 
 
 ````bash
@@ -495,6 +500,7 @@ az network bastion create \
     --vnet-name $HUB_VNET_NAME \
     --location $LOCATION
 ````
+
 5) Connect to VM using the portal:
 
 Upon successful installation of the Jumpbox Virtual Machine (VM), the next step is to validate the connectivity between the Bastion and Jumpbox host. Here are the steps to follow:
@@ -515,11 +521,12 @@ After completing these steps, The high-level targeted architecture now matches t
 
 ![Screenshot](/images/hubandspokewithpeeringBastionJumpbox.jpg)
 
-### Create an Azure Firewall and Setup a UDR
+### Create an Azure Firewall and Setup a User Defined Route (UDR)
 
-To secure your AKS outbound traffic, you need to follow these steps for a basic cluster deployment. These steps will help you restrict the outbound access and to certain FQDNs that are needed by the cluster. further information can be found here: [Control egress traffic using Azure Firewall in Azure Kubernetes Service (AKS)](https://learn.microsoft.com/en-us/azure/aks/limit-egress-traffic)
+To secure your outbound traffic, you can use an Azure Firewall. The following steps will help you restrict the outbound access and to certain FQDNs that are needed by the cluster. further information can be found here: [Control egress traffic using Azure Firewall in Azure Kubernetes Service (AKS)](https://learn.microsoft.com/en-us/azure/aks/limit-egress-traffic)
 
 1) Create Azure Firewall, and deploy it to it to firewall subnet in hub vnet.
+
 ````bash
 az network firewall create \
     --resource-group $HUB_RG \
@@ -529,7 +536,8 @@ az network firewall create \
     --enable-dns-proxy true
 
 ````
-2) Create the Public IP address resource.
+
+2) The firewall needs a Public IP address. Create the Public IP.
 
 ````bash
 az network public-ip create \
@@ -552,6 +560,7 @@ az network firewall ip-config create \
     --vnet-name $HUB_VNET_NAME
 
 ````
+
 4) Update the existing Azure Firewall configuration.
 
 ````bash
@@ -559,28 +568,34 @@ az network firewall update \
     --name $FW_NAME \
     --resource-group $HUB_RG 
 ````
+
 5) Create Network rules in Azure Firewall
  
 The following network rules allows outbound traffic from any source address to certain destinations and ports. If the required destination is not specified the AKS cluster will fail to deploy.
 
 ````bash
 az network firewall network-rule create -g $HUB_RG -f $FW_NAME --collection-name 'aksfwnr' -n 'apiudp' --protocols 'UDP' --source-addresses '*' --destination-addresses "AzureCloud.$LOCATION" --destination-ports 1194 --action allow --priority 100
-````
-````bash
+
+
 az network firewall network-rule create -g $HUB_RG -f $FW_NAME --collection-name 'aksfwnr' -n 'apitcp' --protocols 'TCP' --source-addresses '*' --destination-addresses "AzureCloud.$LOCATION" --destination-ports 9000
-````
-````bash
+
+
 az network firewall network-rule create -g $HUB_RG -f $FW_NAME --collection-name 'aksfwnr' -n 'time' --protocols 'UDP' --source-addresses '*' --destination-fqdns 'ntp.ubuntu.com' --destination-ports 123
 ````
+
 6) Create Azure Firewall application rule
 
-This rules specifies the FQDN's which are required by AKS, **AzureKubernetesService** tag which include all the FQDNs listed in Outbound network and FQDN rules for AKS clusters.
+This rule specifies the FQDN's which are required by AKS, **AzureKubernetesService** tag which include all the FQDNs listed in Outbound network and FQDN rules for AKS clusters.
+
+ For more information about required egress destinations, see [Outbound network and FQDN rules for Azure Kubernetes Service (AKS) clusters](https://learn.microsoft.com/en-us/azure/aks/outbound-rules-control-egress)
+
 
 ````bash
 az network firewall application-rule create -g $HUB_RG -f $FW_NAME --collection-name 'aksfwar' -n 'fqdn' --source-addresses '*' --protocols 'http=80' 'https=443' --fqdn-tags "AzureKubernetesService" --action allow --priority 100
 ````
 
 7) Create a route table in the spoke.
+
 ````bash
 az network route-table create \
     --resource-group $SPOKE_RG  \
@@ -597,6 +612,7 @@ az network firewall show --resource-group $HUB_RG --name $FW_NAME |grep  private
 ````
 
 Then store the output (the ip address) in an environment variable:
+
 ````bash
 FW_PRIVATE_IP=<IP Address from previous command>
 ````
@@ -624,6 +640,7 @@ az network vnet subnet update \
     --name $AKS_SUBNET_NAME \
     --route-table $ROUTE_TABLE_NAME
 ````
+
 You have successfully configured the firewall in the hub VNet, set up network and application rules, and created a route table associated with the AKS subnet to direct all internet-bound traffic through the Azure Firewall.
 
 ![Screenshot](/images/hubandspokewithpeeringBastionJumpboxFirewall.jpg)
@@ -652,6 +669,7 @@ Validate your deployment in the Azure portal.
 ![Screenshot](/images/azfwar.jpg)
 
 18) Lets validate the routing between AKS subnet and Azure Firewall, in the Azure portal, in the top menu select **Resource Groups**. 
+
 19) Select resource group **rg-spoke**.
 
 20) Select routing table called **spoke-rt**.
@@ -664,7 +682,7 @@ Validate your deployment in the Azure portal.
 
 ### Deploy Azure Kubernetes Service
 
-This chapter covers deploying AKS with outbound traffic configured to use a user-defined routing table, ensuring traffic passes through the Azure Firewall. A private DNS zone is also created when deploying a private AKS cluster. A user-assigned identity with necessary permissions is assigned to the cluster and load balancer subnet. This identity is a type of managed identity in Azure.
+This part covers deploying AKS with outbound traffic configured to use a user-defined routing table, ensuring traffic passes through the Azure Firewall. A private DNS zone is also created when deploying a private AKS cluster. A user-assigned identity with necessary permissions is assigned to the cluster and load balancer subnet. This identity is a type of managed identity in Azure.
 
 1) Create a user-assigned managed identity.
 
@@ -673,6 +691,7 @@ az identity create \
     --resource-group $SPOKE_RG \
     --name $AKS_IDENTITY_NAME-${STUDENT_NAME}
 ````
+
 2) Get the id of the user managed identity.
 
 ````bash
@@ -682,6 +701,7 @@ az identity create \
     --query id \
     --output tsv)
 ````
+
 3) Get the principal id of the user managed identity.
 
 ````bash
@@ -701,6 +721,7 @@ RT_SCOPE=$(az network route-table show \
     --query id \
     --output tsv)
 ````
+
 5) Assign permissions for the AKS user defined managed identity to the routing table.
 
 ````bash
@@ -739,18 +760,21 @@ AKS_SUBNET_SCOPE=$(az network vnet subnet list \
     --query "[?name=='$AKS_SUBNET_NAME'].id" \
     --output tsv)
 ````
+
 8) Deploy a Highly Available Private AKS Cluster
 
 To deploy a highly available private AKS cluster, you can use the following command:
 
-This command creates an AKS cluster with two system nodes, using the specified VNet subnet ID and cluster name. It is configured as a private cluster with user-defined routing and OIDC issuer and workload identity enabled. The network plugin and policy are set to Azure, and the public FQDN is disabled. The cluster is deployed across availability zones 1, 2, and 3
+This command creates an AKS cluster with two system nodes, using the specified VNet subnet ID and cluster name. It is configured as a private cluster with user-defined routing and OIDC issuer and workload identity enabled. The network plugin and policy are set to Azure, and the public FQDN is disabled. The cluster is deployed across availability zones 1, 2, and 3.
+
+For more information about OIDC and Workload Identity refer to [Use Microsoft Entra Workload ID with Azure Kubernetes Service (AKS)](https://learn.microsoft.com/en-us/azure/aks/workload-identity-overview)
 
 ````bash
 az aks create --resource-group $SPOKE_RG --node-count 2 --vnet-subnet-id $AKS_SUBNET_SCOPE --name $AKS_CLUSTER_NAME-${STUDENT_NAME} --enable-private-cluster --outbound-type userDefinedRouting --enable-oidc-issuer --enable-workload-identity --generate-ssh-keys --assign-identity $IDENTITY_ID --network-plugin azure --network-policy azure --disable-public-fqdn --zones 1 2 3
 ````
 
 > [!Note]
-> A private AKS cluster has its Kubernetes API endpoint isolated from public access, allowing access only within the same virtual network. To communicate with the private AKS cluster from a jumpbox in a different virtual network, a virtual network link must be created between the two networks for DNS resolution. This will be covered in the next section.
+> A private AKS cluster has its Kubernetes API endpoint isolated from public access, allowing access only within the same virtual network. To communicate with the private AKS cluster from a jumpbox in a different virtual network, a virtual network link must be created between the two networks for DNS resolution. This will be covered in a later section.
 
 9) An additional nodepool will be created to host user workloads. Auto-scaling is enabled to allow for automatic scaling out and scaling in based on demand. The worker nodes will be distributed across three different zones to ensure higher availability
 
@@ -761,9 +785,11 @@ az aks nodepool add --resource-group $SPOKE_RG --cluster-name $AKS_CLUSTER_NAME-
 10) Create a virtual network link to resolve AKS private endpoint from HUB vnet.
 
 Fetch the node group of the AKS cluster, and save it in an environment variable.
+
 ````bash
 NODE_GROUP=$(az aks show --resource-group $SPOKE_RG --name $AKS_CLUSTER_NAME-${STUDENT_NAME} --query nodeResourceGroup -o tsv)
 ````
+
 Fetch the AKS DNS zone name.
 
 ````bash
@@ -775,6 +801,7 @@ Fetch the ID of the HUB virtual network.
 ````bash
 HUB_VNET_ID=$(az network vnet show -g $HUB_RG -n $HUB_VNET_NAME --query id --output tsv)
 ````
+
 Create a virtual network link between the hub virtual network and the AKS private DNS zone, that was created for the AKS cluster.
 
 ````bash
@@ -860,6 +887,7 @@ STUDENT_NAME=<WRITE YOUR STUDENT NAME HERE>
 ````bash
 az aks get-credentials --resource-group $SPOKE_RG --name $AKS_CLUSTER_NAME-${STUDENT_NAME}
 ````
+
 9) Ensure you can list resources in AKS.
 
 ````bash
@@ -883,7 +911,8 @@ Congratulations! You have completed the steps to deploy a private AKS cluster an
 ![Screenshot](/images/aksjumpbox.jpg)
 
 ### Deploy Azure Container Registry
-In this chapter, we will learn how to deploy a private Azure container registry that will store our container images. A private container registry is a type of container registry that is not accessible from the public internet. To enable access to the private container registry from the jumpbox, we need to create some network resources that will allow us to resolve the container registry name and connect to it securely. These resources are: a private endpoint, a private link, and a virtual network link. We will see how to create and configure these resources in the following steps. We will also test the connection to the private container registry by pushing some images to it from the jumpbox.
+
+In this section, we will learn how to deploy a private Azure Container Registry that will store our container images. A private container registry is a type of container registry that is not accessible from the public internet. To enable access to the private container registry from the jumpbox, we need to create some networking resources that will allow us to resolve the container registry name and connect to it securely. These resources are: a private endpoint, a private link, and a virtual network link. We will see how to create and configure these resources in the following steps. We will also test the connection to the private container registry by pushing some images to it from the jumpbox.
 
 1) Create the Azure Container Registry, and disable public access to the registry.
 
@@ -897,8 +926,9 @@ az acr create \
     --allow-trusted-services false \
     --public-network-enabled false
 ````
+
 > [!IMPORTANT]
-> Ensure you have a global unique name for your ACR, else the deployment will fail.
+> Ensure you have a global unique name for your ACR, or else the deployment will fail.
 
 
 2) Disable endpoint network policies.
@@ -921,6 +951,7 @@ az network private-dns zone create \
 
  
 4) Create a virtual network link to the spoke network.
+
 ````bash
 az network private-dns link vnet create \
   --resource-group $SPOKE_RG \
@@ -929,7 +960,8 @@ az network private-dns link vnet create \
   --virtual-network $SPOKE_VNET_NAME \
   --registration-enabled false
 ````
-5) Creates a virtual network link to the hub network.
+
+5) Create a virtual network link to the hub network.
 
 > [!Note]
 > The $HUB_VNET_ID variable specifies the full path to the virtual network in another resource group, allowing the command to correctly link to it.
@@ -963,11 +995,12 @@ az network private-endpoint create \
     --group-ids registry \
     --connection-name PrivateACRConnection
 ````
+
 7) Configure DNS record for ACR
 
 In this section we will configure DNS records for an Azure Container Registry (ACR) using Azure Private Link.This is to ensure that the ACR can be accessed over a private network connection, enhancing security by eliminating exposure to the public internet.
 
-Before we can configure the DNS record we need to obtain the private IP address  of the ACR, both the control and dataplane.
+Before we can configure the DNS record we need to obtain the private IP address of the ACR, both the control and data plane.
 
 Get endpoint IP configuration:
 
@@ -979,11 +1012,12 @@ NETWORK_INTERFACE_ID=$(az network private-endpoint show \
   --output tsv)
  ```` 
 
-Fetch the private IP address associated with the ACR, these IP addresses are used for data and control of the container registry.
+Fetch the private IP address associated with the ACR. These IP addresses are used for data and control of the container registry.
 
 ````bash
 az network nic show --ids $NETWORK_INTERFACE_ID |grep azurecr.io -B 7
 ````
+
 In the output you should see two IP addresses, and their associated FQDNS. It should look similar to this:
 
 ````
@@ -1005,6 +1039,7 @@ In the output you should see two IP addresses, and their associated FQDNS. It sh
         "fqdns": [
           "acrforakssecurity.azurecr.io"
 ````
+
 Note down the **privateIPAddress** and **fqdns** as it will be used in a later step (when creating DNS zones).
 
 
@@ -1025,6 +1060,7 @@ az network private-dns record-set a create \
   --zone-name privatelink.azurecr.io \
   --resource-group $SPOKE_RG
 ````
+
 10) Update the 'A' record to contain the control IP address of the ACR.
 
 ````bash
@@ -1033,7 +1069,6 @@ az network private-dns record-set a add-record \
   --zone-name privatelink.azurecr.io \
   --resource-group $SPOKE_RG \
   --ipv4-address <IP address associated with FQDN "$ACR_NAME.azurecr.io">
-
 ````
 
 11) Update the 'A' record to contain the data IP address of the ACR.
@@ -1080,21 +1115,27 @@ In this section, you will learn how to check if you can access your private Azur
 ````bash
 az login
 ````
+
 Identify your subscription id from the list, if you have several subscriptions.
 
 ````bash
 az account list -o table
 ````
+
 Set your subscription id to be the default subscription.
+
 ````bash
 az account set --subscription <SUBSCRIPTION ID>
 ````
+
 22) Validate private link connection 
 
 List your ACR in your subscription and note down the ACR name.
+
 ````bash
 az acr list -o table
 ````
+
 example output:
 
 ````bash
@@ -1107,7 +1148,9 @@ alibaksacr  rg-spoke          eastus      Premium  alibaksacr.azurecr.io  2024-0
 ````bash
 dig <REGISTRY NAME>.azurecr.io
 ````
+
 Example output shows the registry's private IP address in the address space of the subnet:
+
 ````dns
 
 azureuser@Jumpbox-VM:~$ dig alibaksacr.azurecr.io
@@ -1132,23 +1175,28 @@ alibaksacr.privatelink.azurecr.io. 1800 IN A    10.1.1.21
 ;; WHEN: Sun Mar 03 09:04:31 UTC 2024
 ;; MSG SIZE  rcvd: 103
 ````
-8. Create a Dockerfile, build the docker image, authenticate towards ACR and push the image to the container registry.
+
+8. The test the connection to the container regitry, you will push a container to it. You will need to create a Dockerfile, build the docker image, authenticate towards ACR and push the image to the container registry.
 
 ````bash
 vim Dockerfile
 ````
+
 Add the following content to the Dockerfile
 
 ````bash
 FROM nginx
 EXPOSE 80
 ````
+
 Build the Docker image
 
 ````bash
 docker build --tag nginx .
 ````
+
 Example out:
+
 ````bash
 azureuser@Jumpbox-VM:~$  docker build --tag nginx .
 
@@ -1176,19 +1224,25 @@ Removing intermediate container c02c94dc283c
 Successfully built 49a47448ba86
 Successfully tagged nginx:latest
 ````
+
 Create an alias of the image
+
 ````bash
 docker tag nginx <CONTAINER REGISTRY NAME>.azurecr.io/nginx
 ````
+
 Authenticate to ACR with your AD user.
 
 ````bash
 az acr login --name <CONTAINER REGISTRY NAME> 
 ````
+
 Upload the docker image to the ACR repository.
+
 ````bash
 docker push <CONTAINER REGISTRY NAME>.azurecr.io/nginx
 ````
+
 Example output:
 
 ````bash
@@ -1205,7 +1259,7 @@ d310e774110a: Pushed
 latest: digest: sha256:3dc6726adf74039f21eccf8f3b5de773080f8183545de5a235726132f70aba63 size: 1778
 ````
 
-9) Attach AKS to the ACR, this command updates our existing AKS cluster and attaches it to the ACR, this allows the cluster to pull images from the ACR.
+9) To enable AKS to pull images from ACR, you can attach AKS to the ACR. This command updates the existing AKS cluster and attaches it to the ACR.
 
 ````bash
 az aks update \
@@ -1213,19 +1267,21 @@ az aks update \
     --name $AKS_CLUSTER_NAME-${STUDENT_NAME} \
     --attach-acr $ACR_NAME
 ````
-10) Validate AKS is able to pull images from ACR.
+
+10) Validate AKS is able to pull images from ACR, by deploying a simple application to the AKS cluster. During deployment, the AKS cluster will pull the container image of the application from ACR.
 
 On the Jumpbox VM create a yaml file.
 
 ````bash
-touch test-pod.yaml
 vim test-pod.yaml
 ````
-when you copy to vim, prevent Vim from auto-indenting the text you paste.
+
+Pro-tip: when you copy to vim, prevent Vim from auto-indenting the text you paste.
 
 ````bash
 :set paste
 ````
+
 Press enter.
 
 Paste in the following manifest file which creates a Pod named **internal-test-app** which fetches the docker images from our internal container registry, created in previous step. 
@@ -1244,10 +1300,11 @@ spec:
     ports:
     - containerPort: 80
 ````
+
 Create the pod.
 
 ````yaml
-kubectl create -f test-pod.yaml
+kubectl apply -f test-pod.yaml
 ````
 
 Verify that the Pod is in running state.
@@ -1255,6 +1312,7 @@ Verify that the Pod is in running state.
 ````bash
 kubectl get po --show-labels
 ````
+
 Example output
 
 ````bash
@@ -1262,16 +1320,18 @@ azureuser@Jumpbox-VM:~$ kubectl get po
 NAME                READY   STATUS    RESTARTS   AGE
 internal-test-app   1/1     Running   0          8s
 ````
-Our next step is to set up an internal load balancer that will direct the traffic to our internal Pod. The internal load balancer will be deployed in the load balancer subnet of the spoke-vnet.
+
+The next step is to set up an internal load balancer that will direct the traffic to our internal Pod. The internal load balancer will be deployed in the load balancer subnet of the spoke-vnet.
 
 
 ````yaml
-touch internal-app-service.yaml
 vim internal-app-service.yaml
 ````
+
 ````bash
 :set paste
 ````
+
 Press enter.
 
 Copy the following manifest to expose the pod to the internet. Replace **<LOADBALANCER SUBNET>** with your subnet name stored in your local shell environment variable **$LOADBALANCER_SUBNET_NAME**
@@ -1291,16 +1351,20 @@ spec:
   selector:
     app: internal-test-app
 ````
+
 Deploy the service object in AKS.
 
 ````bash
 kubectl create -f internal-app-service.yaml
 ````
+
 Verify that your service object is created and associated with the Pod that you have created, also ensure that you have recieved an external IP, which should be a private IP address range from the load balancer subnet.
+
 
 ````bash
 sudo kubectl get svc -o wide
 ````
+
 Example output:
 
 ````bash
@@ -1314,9 +1378,11 @@ kubernetes                  ClusterIP      10.0.0.1     <none>        443/TCP   
 > Note down the EXTERNAL-IP (Private IP of the load balancer), as this will be used for creating the application gateway. 
 
 Verify that you are able to access the exposed Nginx pod from your jumpbox VM.
+
 ````bash
 azureuser@Jumpbox-VM:~$ curl <EXTERNAL-IP>
 ````
+
 example output:
 
 ````bash
@@ -1345,13 +1411,14 @@ Commercial support is available at
 </body>
 </html>
 ````
+
 You have successfully deployed a private Azure Container Registry that is accessible from the jumpbox host. You also built and deployed the nginx image, which is only exposed over the private network.
 
 ![Screenshot](/images/hubandspokewithpeeringBastionJumpboxFirewallaksvirtualnetlinkandacrandinternalloadbalancer.jpg)
 
 ### Deploy Azure Application Gateway.
 
-In this chapter, you will set up an application gateway that can terminate TLS connections at its own level. You will also learn how to perform these tasks: create an application gateway and upload a certificate to it, configure AKS as a backend pool for routing traffic to its internal load balancer, create a health probe to check the health of the AKS backend pool, and set up a WAF (Web Application Firewall) to defend against common web attacks.
+In this section, you will set up an application gateway that will terminate TLS connections at its ingress. You will also learn how to perform these tasks: upload a certificate to Application Gateway, configure AKS as a backend pool by routing traffic to its internal load balancer, create a health probe to check the health of the AKS backend pool, and set up a WAF (Web Application Firewall) to defend against common web attacks.
 
 1) Create public IP address with a domain name associated to the PIP resource
 
@@ -1362,12 +1429,14 @@ In this chapter, you will set up an application gateway that can terminate TLS c
 ````bash
 az network public-ip create -g $SPOKE_RG -n AGPublicIPAddress --dns-name $STUDENT_NAME --allocation-method Static --sku Standard --location $LOCATION
 ````
+
 2) Create WAF policy 
 
 
 ````bash
 az network application-gateway waf-policy create --name ApplicationGatewayWAFPolicy --resource-group $SPOKE_RG
 ````
+
 3) Create Application Gateway.
 
 > [!Note]
@@ -1393,6 +1462,7 @@ az network application-gateway create \
   --waf-policy ApplicationGatewayWAFPolicy \
   --servers <LOAD BALANCER PRIVATE IP>
 ```` 
+
 4) Create a custom probe for the application gateway that will monitor the health of the AKS backend pool.
 
 ````bash
@@ -1407,7 +1477,9 @@ az network application-gateway create \
     --threshold 3 \
     --host 127.0.0.1
 ````
+
 5) Associate the health probe to the backend pool.
+
 ````bash
 az network application-gateway http-settings update -g $SPOKE_RG --gateway-name $APPGW_NAME -n appGatewayBackendHttpSettings --probe health-probe
 ````
@@ -1443,7 +1515,7 @@ Validate your deployment in the Azure portal.
 
 ![Screenshot](images/managedruleswaf.jpg)
 
-We have successfully completed the deployment and configuration of our network and cluster resources. The following diagram shows the high-level architecture of our solution. As you can see, we have a test pod running in AKS that can receive traffic from the internet through the Azure Application Gateway and the Azure Internal Load Balancer. We can also access the private API server of the AKS cluster and the private container registry from the jumpbox using the private endpoints and links. We have also enabled outbound traffic from the AKS subnet to go through the Azure Firewall for inspection and filtering. In the next chapter, we will validate if we can access our test Pod securely from the Internet.
+We have successfully completed the deployment and configuration of the network and cluster resources. The following diagram shows the high-level architecture of the solution. As you can see, there is a test pod running in AKS that can receive traffic from the internet through the Azure Application Gateway and the Azure Internal Load Balancer. We can also access the private API server of the AKS cluster and the private container registry from the jumpbox using the private endpoints and links. We have also enabled outbound traffic from the AKS subnet to go through the Azure Firewall for inspection and filtering. In the next section, we will validate if we can access our test pod securely from the Internet.
 
 ![Screenshot](/images/hubandspokewithpeeringBastionJumpboxFirewallaksvirtualnetlinkandacrandinternalloadbalancerandapplicationgw.jpg)
 
@@ -1451,13 +1523,14 @@ We have successfully completed the deployment and configuration of our network a
 
 
 ### Validate Ingress Connection.
-Open your web browser and access your domain: **https://YOUR-STUDENT-NAME.akssecurity.se**
-you should see a similar output as to the one below.
+Open your web browser and access the domain created above, along with thepublic IP of the Aplication Gateway: **https://<application gateway public IP FQDN>**
+
+You should see a similar output as to the one below.
 
 ![Screenshot](/images/splashscreen.jpg)
 
 ### Clean Up Resources in AKS
-Once you have verified that everything works as depicted earlier. from the jumpbox host delete the resources.
+Once you have verified that everything works as depicted earlier you can issue the following commands from the jumpbox to delete the resources.
 
 ````bash
 kubectl delete -f test-pod.yaml
