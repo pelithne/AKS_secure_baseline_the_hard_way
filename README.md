@@ -1,13 +1,13 @@
 # AKS Secure Baseline - The Hard Way
 
-Welcome to "AKS baseline - The Hard Way". From this blog, you will learn how to deploy a secure and scalable Kubernetes cluster on Azure using Azure Kubernetes Service (AKS) and a number of other Azure services. You will also learn how to apply the best practices from the AKS secure baseline reference architecture, which provides a recommended starting point for a general purpose AKS cluster infrastructure. 
+Welcome to "AKS baseline - The Hard Way". From this text, you will learn how to deploy a secure and scalable Kubernetes cluster on Azure using Azure Kubernetes Service (AKS) and a number of other Azure services. You will also learn how to apply the best practices from the AKS secure baseline reference architecture, which provides a recommended starting point for a general purpose AKS cluster infrastructure. 
 
-The target audience of this blog is intermediate to advanced Kubernetes users who want to improve their skills and knowledge about AKS and Azure. You will need to have some familiarity with Kubernetes concepts and tools such as pods, services, deployments, and kubectl. You will also need to have an Azure subscription and access to a terminal or shell environment.
+The target audience of these instructions is intermediate to advanced Kubernetes users who want to improve their skills and knowledge about AKS and Azure. You will need to have some familiarity with Kubernetes concepts and tools such as pods, services, deployments, and kubectl. You will also need to have an Azure subscription and access to a terminal or shell environment.
 
 Upon finishing, you will have a deeper understanding of how to use AKS to deploy and manage a secure and scalable Kubernetes cluster on Azure. You will also have a working AKS cluster that follows the AKS secure baseline reference architecture. Expect the entire exercise to take up to eight hours.
 
-![Screenshot](images/aks-baseline-architecture.jpg)
 
+<img src="images/aks-baseline-architecture.jpg" width="600">
 
 ## Overview
 
@@ -20,7 +20,7 @@ IP planning is an important aspect of deploying an AKS cluster and Azure service
 
 This is the proposed IP design that we will adhere to throughout the documentation.
 
-![Screenshot](images/aks-baseline_network_ip_planning.jpg)
+<img src="images/aks-baseline_network_ip_planning.jpg" width="600">
 
 > [!Note]
 > IP planning is a crucial step that requires careful consideration of the number and size of subnets for your current solution, as well as the potential for future expansion. You should avoid using excessively large IP ranges, and instead be economical with IP and allocate only what you need for the present and the future.
@@ -247,7 +247,9 @@ az network vnet subnet create \
 ````
 You have successfully configured the network for your hub virtual network.You have established three subnets and two NSGs, as depicted on the image:
 
-![Screenshot](images/HubVnetandNsgOnly.jpg)
+<img src="images/HubVnetandNsgOnly.jpg" width="400">
+<br>
+<br>
 
 Validate your deployment in the Azure portal.
 
@@ -261,7 +263,8 @@ Validate your deployment in the Azure portal.
 
 12) Make sure that your subnets have the appropriate IP range and that Network Security Groups (NSGs) are correctly associated with their respective subnets as depicted below.
 
-![Screenshot](images/hubandspokevnet.jpg)
+
+<img src="images/hubandspokevnet.jpg" width="600">
 
 ### Create Network Security Groups and Virtual Network for the Spoke.
 We will now start to setup the spoke vnet, subnets and their respective NSGs,
@@ -377,7 +380,8 @@ az network vnet subnet create \
 
 You have successfully configured the network for your spoke virtual network. You should now have established the following setup in your Azure subscription.
 
-![Screenshot](/images/hubandspokeonly.jpg)
+
+<img src="images/hubandspokeonly.jpg" width="400">
 
 Validate your deployment in the Azure portal.
 
@@ -391,7 +395,7 @@ Validate your deployment in the Azure portal.
 
 15) Make sure that your subnets have the appropriate IP range and that Network Security Groups (NSGs) are correctly associated with their respective subnets as depicted below.
 
-![Screenshot](images/spokevnet.jpg)
+<img src="images/spokevnet.jpg" width="600">
 
 ### Create VNET Peering Between Hub and Spoke
 
@@ -431,7 +435,7 @@ az network vnet peering create \
 
 Peering should be established and the high level design should now look like this:
 
-![Screenshot](/images/hubandspokewithpeering.jpg)
+<img src="images/hubandspokewithpeering.jpg" width="400">
 
 Validate your deployment in the Azure portal.
 
@@ -447,7 +451,8 @@ Validate your deployment in the Azure portal.
 
 8) Repeat step 4 - 7 but for Hub_VNET.
 
-![Screenshot](/images/vnetpeeringconnected.jpg)
+<img src="images/vnetpeeringconnected.jpg" width="600">
+
 
 ### Create Azure Bastion and Jumpbox VM
 
@@ -519,7 +524,7 @@ For additional information on accessing VMs through Bastion, please refer to thi
 
 After completing these steps, The high-level targeted architecture now matches the following diagram:
 
-![Screenshot](/images/hubandspokewithpeeringBastionJumpbox.jpg)
+<img src="images/hubandspokewithpeeringBastionJumpbox.jpg" width="400">
 
 ### Create an Azure Firewall and Setup a User Defined Route (UDR)
 
@@ -643,8 +648,11 @@ az network vnet subnet update \
 
 You have successfully configured the firewall in the hub VNet, set up network and application rules, and created a route table associated with the AKS subnet to direct all internet-bound traffic through the Azure Firewall.
 
-![Screenshot](/images/hubandspokewithpeeringBastionJumpboxFirewall.jpg)
-![Screenshot](/images/OutboundTraffic.jpg)
+
+<img src="images/hubandspokewithpeeringBastionJumpboxFirewall.jpg" width="400">
+
+
+<img src="images/OutboundTraffic.jpg" width="600">
 
 Validate your deployment in the Azure portal.
 
@@ -660,13 +668,13 @@ Validate your deployment in the Azure portal.
 
 15) Verify that you have a network rule collection called **aksfwnr** which should contain 3 rules. Inspect the rules.
 
-![Screenshot](/images/azfwnr.jpg)
+<img src="images/azfwnr.jpg" width="600">
 
 16) Click on **Application rule collection**.
 
 17) Verify that you have an application rule collection called **aksfwar** which should contain 1 rule. Inspect the rule.
 
-![Screenshot](/images/azfwar.jpg)
+<img src="images/azfwar.jpg" width="600">
 
 18) Lets validate the routing between AKS subnet and Azure Firewall, in the Azure portal, in the top menu select **Resource Groups**. 
 
@@ -676,8 +684,7 @@ Validate your deployment in the Azure portal.
 
 21) Ensure that the default route has a prefix of **0.0.0.0/0** and the next hop is set to the **virtual appliance** with the **IP** address of the Azure Firewall. Also, make sure that the routing table is associated with the AKS subnet called **aks-subnet**.
 
-![Screenshot](/images/spokert.jpg)
-
+<img src="images/spokert.jpg" width="600">
 
 
 ### Deploy Azure Kubernetes Service
@@ -817,7 +824,9 @@ Validate your deployment in the Azure portal.
 > [!Note]
 > MC_rg-spoke_private-aks-xxxx_eastus is a resource group automatically created when deploying an AKS cluster. It is used by Azure to manage resources for the cluster, this particular resource group is also known as Node group.
 
-![Screenshot](images/resourcegroups.jpg)
+
+<img src="images/resourcegroups.jpg" width="600">
+
 
 13) Verify that a virtual network link exists between the Hub and spoke to enable the jumpbox to resolve the AKS domain name and access the cluster. Select the node group called **MC_rg-spoke_private-aks-xxxxx_eastus**
 
@@ -827,13 +836,14 @@ Validate your deployment in the Azure portal.
 
 16) Validate that there is a link name called **hubnetdnsconfig** and the link status is set to **Completed** and the virtual network is set to **Hub_VNET**.
 
-![Screenshot](images/virtualnetworklinks.jpg)
+<img src="images/virtualnetworklinks.jpg" width="600">
 
 17) On the top menu click **Resource groups** and choose **rg-spoke** from the resource group list.
 
 18) Click on the AKS resource called private-aks-<YOUR STUDENT NAME>. Verify that the Private cluster is set to Enabled. 
 
-![Screenshot](images/aksoverviewprivatecluster.jpg)
+
+<img src="images/aksoverviewprivatecluster.jpg" width="600">
 
 19) Verify AKS control plane connectivity.
 
@@ -907,8 +917,10 @@ aks-userpool-16991029-vmss000000    Ready    agent   78m   v1.27.9
 
 Congratulations! You have completed the steps to deploy a private AKS cluster and configure its network settings. You have assigned a user assigned identity to the cluster that has the required permissions to modify the user-defined routing table and load balancer subnet. You have also created a virtual network link between the hub virtual network and the private DNS zone of the cluster. This enables the jumpbox to resolve the private API server of the cluster and access it for management and maintenance purposes.
 
-![Screenshot](/images/hubandspokewithpeeringBastionJumpboxFirewallaksvirtualnetlink.jpg)
-![Screenshot](/images/aksjumpbox.jpg)
+
+<img src="images/hubandspokewithpeeringBastionJumpboxFirewallaksvirtualnetlink.jpg" width="400">
+
+<img src="images/aksjumpbox.jpg" width="600">
 
 ### Deploy Azure Container Registry
 
@@ -1087,15 +1099,15 @@ Validate your deployment in the Azure portal.
 
 13) log in and select the **rg-spoke** resource group. Verify that you have a **container registry** and a private endpoint named **ACRPrivateEndpoint** deployed in your resource group, as well as a network card named **ACRPrivateEndpoint.nic.xxxxx**
 
-![Screenshot](images/acrresourcegroup.jpg)
+<img src="images/acrresourcegroup.jpg" width="600">
 
 14) Select the private DNS zone named **privatelink.azurecr.io**. Ensure that you have two ‘A’ records, one for control and one for data, and that the correct IP addresses are configured.
 
-![Screenshot](images/acrprivatednszonearecord.jpg)
+<img src="images/acrprivatednszonearecord.jpg" width="600">
 
 15) In the left-hand side menu, under **Settings** section, select **Virtual Network links**. Ensure you have the link status set to completed for both hub and spoke.
 
-![Screenshot](images/virtualnetworklinksacr.jpg)
+<img src="images/virtualnetworklinksacr.jpg" width="600">
 
 
 16) Test the connection to ACR from the Jumpbox
@@ -1414,7 +1426,7 @@ Commercial support is available at
 
 You have successfully deployed a private Azure Container Registry that is accessible from the jumpbox host. You also built and deployed the nginx image, which is only exposed over the private network.
 
-![Screenshot](/images/hubandspokewithpeeringBastionJumpboxFirewallaksvirtualnetlinkandacrandinternalloadbalancer.jpg)
+<img src="images/hubandspokewithpeeringBastionJumpboxFirewallaksvirtualnetlinkandacrandinternalloadbalancer.jpg" width="400">
 
 ### Deploy Azure Application Gateway.
 
@@ -1490,13 +1502,16 @@ Validate your deployment in the Azure portal.
 
 10) Select your Azure Application Gateway called **AppGateway**. Ensure you have a **Public IP address** and Tier set to **WAF v2**.
 
-![Screenshot](images/appgwoverview.jpg)
+
+
+<img src="images/appgwoverview.jpg" width="600">
 
 11) In the left-hand side menu, under the **Settings** section, select **Backend pools** and choose from the list  **appGatewayBackendPool**.
 
 12) Ensure the target type is set to **IP address or FQDN** and target is set to the IP address of your **internal load balancer**.
 
-![Screenshot](images/appGatewayBackendPool.jpg)
+
+<img src="images/appGatewayBackendPool.jpg" width="600">
 
 13) On the top menu click on **AppGateway | Backend pools**.
 
@@ -1504,7 +1519,7 @@ Validate your deployment in the Azure portal.
 
 15) From the list click on **appGatewayBackendHttpSettings** validate that the backend port is configured for port 80, and that health probe called **health-probe** is associated to the backend.
 
-![Screenshot](images/backendsettings.jpg)
+<img src="images/backendsettings.jpg" width="600">
 
 
 16) Press **Cancel** 
@@ -1513,13 +1528,13 @@ Validate your deployment in the Azure portal.
 
 18) Click on **ApplicationGatewayWAFPolicy** In the left-hand side menu choose ***Managed rules**.
 
-![Screenshot](images/managedruleswaf.jpg)
+
+<img src="images/managedruleswaf.jpg" width="600">
 
 We have successfully completed the deployment and configuration of the network and cluster resources. The following diagram shows the high-level architecture of the solution. As you can see, there is a test pod running in AKS that can receive traffic from the internet through the Azure Application Gateway and the Azure Internal Load Balancer. We can also access the private API server of the AKS cluster and the private container registry from the jumpbox using the private endpoints and links. We have also enabled outbound traffic from the AKS subnet to go through the Azure Firewall for inspection and filtering. In the next section, we will validate if we can access our test pod securely from the Internet.
 
-![Screenshot](/images/hubandspokewithpeeringBastionJumpboxFirewallaksvirtualnetlinkandacrandinternalloadbalancerandapplicationgw.jpg)
 
-
+<img src="images/hubandspokewithpeeringBastionJumpboxFirewallaksvirtualnetlinkandacrandinternalloadbalancerandapplicationgw.jpg" width="400">
 
 
 ### Validate Ingress Connection.
@@ -1527,7 +1542,7 @@ Open your web browser and access the domain created above, along with thepublic 
 
 You should see a similar output as to the one below.
 
-![Screenshot](/images/splashscreen.jpg)
+<img src="images/splashscreen.jpg" width="600">
 
 ### Clean Up Resources in AKS
 Once you have verified that everything works as depicted earlier you can issue the following commands from the jumpbox to delete the resources.
