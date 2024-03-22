@@ -264,7 +264,7 @@ Validate your deployment in the Azure portal.
 12) Make sure that your subnets have the appropriate IP range and that Network Security Groups (NSGs) are correctly associated with their respective subnets as depicted below.
 
 
-<img src="images/hubandspokevnet.jpg" width="800">
+<img src="images/hubandspokevnet.jpg" width="1000">
 
 ### Create Network Security Groups and Virtual Network for the Spoke.
 We will now start to setup the spoke vnet, subnets and their respective NSGs,
@@ -395,7 +395,7 @@ Validate your deployment in the Azure portal.
 
 15) Make sure that your subnets have the appropriate IP range and that Network Security Groups (NSGs) are correctly associated with their respective subnets.
 
-<img src="images/spokevnet.jpg" width="800">
+<img src="images/spokevnet.jpg" width="1000">
 
 ### Create VNET Peering Between Hub and Spoke
 
@@ -451,7 +451,7 @@ Validate your deployment in the Azure portal.
 
 8) Repeat step 4 - 7 but for Hub_VNET.
 
-<img src="images/vnetpeeringconnected.jpg" width="800">
+<img src="images/vnetpeeringconnected.jpg" width="1000">
 
 
 ### Create Azure Bastion and Jumpbox VM
@@ -668,13 +668,13 @@ Validate your deployment in the Azure portal.
 
 15) Verify that you have a network rule collection called **aksfwnr** which should contain 3 rules. Inspect the rules.
 
-<img src="images/azfwnr.jpg" width="800">
+<img src="images/azfwnr.jpg" width="1000">
 
 16) Click on **Application rule collection**.
 
 17) Verify that you have an application rule collection called **aksfwar** which should contain 1 rule. Inspect the rule.
 
-<img src="images/azfwar.jpg" width="800">
+<img src="images/azfwar.jpg" width="1000">
 
 18) Lets validate the routing between AKS subnet and Azure Firewall, in the Azure portal, in the top menu select **Resource Groups**. 
 
@@ -684,7 +684,7 @@ Validate your deployment in the Azure portal.
 
 21) Ensure that the default route has a prefix of **0.0.0.0/0** and the next hop is set to the **virtual appliance** with the **IP** address of the Azure Firewall. Also, make sure that the routing table is associated with the AKS subnet called **aks-subnet**.
 
-<img src="images/spokert.jpg" width="800">
+<img src="images/spokert.jpg" width="1000">
 
 
 ### Deploy Azure Kubernetes Service
@@ -825,7 +825,7 @@ Validate your deployment in the Azure portal.
 > MC_rg-spoke_private-aks-xxxx_eastus is a resource group automatically created when deploying an AKS cluster. It is used by Azure to manage resources for the cluster, this particular resource group is also known as Node group.
 
 
-<img src="images/resourcegroups.jpg" width="800">
+<img src="images/resourcegroups.jpg" width="1000">
 
 
 13) Verify that a virtual network link exists between the Hub and spoke to enable the jumpbox to resolve the AKS domain name and access the cluster. Select the node group called **MC_rg-spoke_private-aks-xxxxx_eastus**
@@ -836,14 +836,14 @@ Validate your deployment in the Azure portal.
 
 16) Validate that there is a link name called **hubnetdnsconfig** and the link status is set to **Completed** and the virtual network is set to **Hub_VNET**.
 
-<img src="images/virtualnetworklinks.jpg" width="800">
+<img src="images/virtualnetworklinks.jpg" width="1000">
 
 17) On the top menu click **Resource groups** and choose **rg-spoke** from the resource group list.
 
 18) Click on the AKS resource called private-aks-<YOUR STUDENT NAME>. Verify that the Private cluster is set to Enabled. 
 
 
-<img src="images/aksoverviewprivatecluster.jpg" width="800">
+<img src="images/aksoverviewprivatecluster.jpg" width="1000">
 
 19) Verify AKS control plane connectivity.
 
@@ -1099,15 +1099,15 @@ Validate your deployment in the Azure portal.
 
 13) log in and select the **rg-spoke** resource group. Verify that you have a **container registry** and a private endpoint named **ACRPrivateEndpoint** deployed in your resource group, as well as a network card named **ACRPrivateEndpoint.nic.xxxxx**
 
-<img src="images/acrresourcegroup.jpg" width="800">
+<img src="images/acrresourcegroup.jpg" width="1000">
 
 14) Select the private DNS zone named **privatelink.azurecr.io**. Ensure that you have two ‘A’ records, one for control and one for data, and that the correct IP addresses are configured.
 
-<img src="images/acrprivatednszonearecord.jpg" width="800">
+<img src="images/acrprivatednszonearecord.jpg" width="1000">
 
 15) In the left-hand side menu, under **Settings** section, select **Virtual Network links**. Ensure you have the link status set to completed for both hub and spoke.
 
-<img src="images/virtualnetworklinksacr.jpg" width="800">
+<img src="images/virtualnetworklinksacr.jpg" width="1000">
 
 
 16) Test the connection to ACR from the Jumpbox
@@ -1504,14 +1504,14 @@ Validate your deployment in the Azure portal.
 
 
 
-<img src="images/appgwoverview.jpg" width="800">
+<img src="images/appgwoverview.jpg" width="1000">
 
 11) In the left-hand side menu, under the **Settings** section, select **Backend pools** and choose from the list  **appGatewayBackendPool**.
 
 12) Ensure the target type is set to **IP address or FQDN** and target is set to the IP address of your **internal load balancer**.
 
 
-<img src="images/appGatewayBackendPool.jpg" width="800">
+<img src="images/appGatewayBackendPool.jpg" width="1000">
 
 13) On the top menu click on **AppGateway | Backend pools**.
 
@@ -1519,7 +1519,7 @@ Validate your deployment in the Azure portal.
 
 15) From the list click on **appGatewayBackendHttpSettings** validate that the backend port is configured for port 80, and that health probe called **health-probe** is associated to the backend.
 
-<img src="images/backendsettings.jpg" width="800">
+<img src="images/backendsettings.jpg" width="1000">
 
 
 16) Press **Cancel** 
