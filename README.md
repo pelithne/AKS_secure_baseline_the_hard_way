@@ -1,4 +1,4 @@
-their# AKS Secure Baseline - The Hard Way
+# AKS Secure Baseline - The Hard Way
 
 Welcome to "AKS baseline - The Hard Way". From this text, you will learn how to deploy a secure and scalable Kubernetes cluster on Azure using Azure Kubernetes Service (AKS) and a number of other Azure services. You will also learn how to apply the best practices from the AKS secure baseline reference architecture, which provides a recommended starting point for a general purpose AKS cluster infrastructure. 
 
