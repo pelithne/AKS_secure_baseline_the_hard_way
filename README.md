@@ -1472,10 +1472,12 @@ To get the FQDN you can run the following command:
 az network public-ip show -g $SPOKE_RG -n AGPublicIPAddress --query dnsSettings.fqdn
 ````
 
+After this, use the following commands to create a key and a certificate signing request.
 ````
 openssl ecparam -out my.key -name prime256v1 -genkey
 openssl req -new -sha256 -key my.key -out my.csr
 ````
+
 When prompted, type the password for the root key (and note it down), and the organizational information for the custom CA such as Country/Region, State, Org, OU, and the fully qualified domain name (this is the domain of the issuer).
 
 Use the following command to generate the Root Certificate:
@@ -1516,7 +1518,7 @@ az network application-gateway create \
   --http-settings-protocol Http \
   --priority "1" \
   --public-ip-address AGPublicIPAddress \
-  --cert-file certificate.pfx \
+  --cert-file my.cer \
   --cert-password "<CERTIFICATE PASSWORD>" \
   --waf-policy ApplicationGatewayWAFPolicy \
   --servers <LOAD BALANCER PRIVATE IP>
