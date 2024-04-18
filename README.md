@@ -1458,10 +1458,48 @@ az network public-ip create -g $SPOKE_RG -n AGPublicIPAddress --dns-name $DNS_NA
 az network application-gateway waf-policy create --name ApplicationGatewayWAFPolicy --resource-group $SPOKE_RG
 ````
 
-3) Create Application Gateway.
+3) Create self signed certificate
+
+In order to expose your services to internet using HTTPs, you need to add a certificate to Application Gateway. In a production setting, this would be a trusted certificate from a certificate authority such as **letsencrypt**. In the interest of simplicity, you will instead create a self signed certificate, and upload to Application Gateway.
+
+Following are short instructions on how to create the self signed certificate. If you want to understand the details, or need more information, please review this page: https://learn.microsoft.com/en-us/azure/application-gateway/self-signed-certificates
+
+Step one is to create a Root CA Certificate. During the creation, you will need to provide an FQDN. This FQDN will be the one associated with the Public IP address created above. 
+
+To get the FQDN you can run the following command:
+
+````
+az network public-ip show -g $SPOKE_RG -n AGPublicIPAddress --query dnsSettings.fqdn
+````
+
+````
+openssl ecparam -out my.key -name prime256v1 -genkey
+openssl req -new -sha256 -key my.key -out my.csr
+````
+When prompted, type the password for the root key (and note it down), and the organizational information for the custom CA such as Country/Region, State, Org, OU, and the fully qualified domain name (this is the domain of the issuer).
+
+Use the following command to generate the Root Certificate:
+
+````
+openssl x509 -req -sha256 -days 365 -in my.csr -signkey my.key -out my.crt
+````
+
+The root certificate is using .crt format, which is the same as .cer. Application gateway requires it to be on .cer, so just rename the file like this
+
+````
+mv my.crt my.cer
+````
+
+
+
+
+
+
+
+4) Create Application Gateway
 
 > [!Note]
-> Your workshop instructor will provide you with a **password** for the certificate and instructions on how to retrieve it. Before executing the command, make sure the certificate is located in **your working directory**. Replace **<CERTIFICATE PASSWORD>** with the password provided by the instructor and **<LOAD BALANCER PRIVATE IP>** with the private IP of the load balancer.
+> Before executing the command below, make sure the certificate is located in **your working directory**. Replace **<CERTIFICATE PASSWORD>** with the password you used when creating the certificate and **<LOAD BALANCER PRIVATE IP>** with the private IP of the load balancer.
 
 ````bash
 az network application-gateway create \
@@ -1484,7 +1522,7 @@ az network application-gateway create \
   --servers <LOAD BALANCER PRIVATE IP>
 ```` 
 
-4) Create a custom probe for the application gateway that will monitor the health of the AKS backend pool.
+5) Create a custom probe for the application gateway that will monitor the health of the AKS backend pool.
 
 ````bash
  az network application-gateway probe create \
@@ -1499,7 +1537,7 @@ az network application-gateway create \
     --host 127.0.0.1
 ````
 
-5) Associate the health probe to the backend pool.
+6) Associate the health probe to the backend pool.
 
 ````bash
 az network application-gateway http-settings update -g $SPOKE_RG --gateway-name $APPGW_NAME -n appGatewayBackendHttpSettings --probe health-probe
@@ -1507,35 +1545,35 @@ az network application-gateway http-settings update -g $SPOKE_RG --gateway-name 
 
 Validate your deployment in the Azure portal.
 
-6) select your resource group called **rg-spoke** where the application gateway is deployed.
+7) select your resource group called **rg-spoke** where the application gateway is deployed.
 
-10) Select your Azure Application Gateway called **AppGateway**. Ensure you have a **Public IP address** and Tier set to **WAF v2**.
+8) Select your Azure Application Gateway called **AppGateway**. Ensure you have a **Public IP address** and Tier set to **WAF v2**.
 
 
 
 <img src="images/appgwoverview.jpg" width="1000">
 
-11) In the left-hand side menu, under the **Settings** section, select **Backend pools** and choose from the list  **appGatewayBackendPool**.
+9) In the left-hand side menu, under the **Settings** section, select **Backend pools** and choose from the list  **appGatewayBackendPool**.
 
-12) Ensure the target type is set to **IP address or FQDN** and target is set to the IP address of your **internal load balancer**.
+10) Ensure the target type is set to **IP address or FQDN** and target is set to the IP address of your **internal load balancer**.
 
 
 <img src="images/appGatewayBackendPool.jpg" width="1000">
 
-13) On the top menu click on **AppGateway | Backend pools**.
+11) On the top menu click on **AppGateway | Backend pools**.
 
-14) Lets verify the backend settings of Application Gateway, in the left-hand side menu choose ***Backend settings**.
+12) Lets verify the backend settings of Application Gateway, in the left-hand side menu choose ***Backend settings**.
 
-15) From the list click on **appGatewayBackendHttpSettings** validate that the backend port is configured for port 80, and that health probe called **health-probe** is associated to the backend.
+13) From the list click on **appGatewayBackendHttpSettings** validate that the backend port is configured for port 80, and that health probe called **health-probe** is associated to the backend.
 
 <img src="images/backendsettings.jpg" width="1000">
 
 
-16) Press **Cancel** 
+14) Press **Cancel** 
 
-17) Verify that we have Web application rules configured. In the left-hand side menu choose ***Web Application Firewall**.
+15) Verify that we have Web application rules configured. In the left-hand side menu choose ***Web Application Firewall**.
 
-18) Click on **ApplicationGatewayWAFPolicy** In the left-hand side menu choose ***Managed rules**.
+16) Click on **ApplicationGatewayWAFPolicy** In the left-hand side menu choose ***Managed rules**.
 
 
 <img src="images/managedruleswaf.jpg" width="600">
