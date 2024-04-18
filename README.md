@@ -1538,7 +1538,7 @@ We have successfully completed the deployment and configuration of the network a
 
 
 ### Validate Ingress Connection.
-Open your web browser and access the domain created above, along with thepublic IP of the Aplication Gateway: **https://<application gateway public IP FQDN>**
+Open your web browser and access the domain created above, along with the public IP of the Application Gateway: ````https://<application gateway public IP FQDN>````
 
 You should see a similar output as to the one below.
 
