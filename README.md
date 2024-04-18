@@ -1432,14 +1432,23 @@ You have successfully deployed a private Azure Container Registry that is access
 
 In this section, you will set up an application gateway that will terminate TLS connections at its ingress. You will also learn how to perform these tasks: upload a certificate to Application Gateway, configure AKS as a backend pool by routing traffic to its internal load balancer, create a health probe to check the health of the AKS backend pool, and set up a WAF (Web Application Firewall) to defend against common web attacks.
 
-1) Create public IP address with a domain name associated to the PIP resource
+1) Create public IP address with a domain name associated to the public IP resource
 
-> [!Note]
-> Your workshop instructor will provide you a student name for your domain name.  
+The public IP address will be associated with a fully qualified domain name (FQDN) based on the location of your IP address and a unique name that you provide. For example, if you create an IP address in westeurope, the FQDN would look similar to this:
+
+````
+myveryuniquename.westeurope.cloudapp.azure.com
+````
+
+Lets make an environment variable of the uniqe name, and call it $DNS_NAME
+
+````
+DNS_NAME=<your unique name>
+````
 
 
 ````bash
-az network public-ip create -g $SPOKE_RG -n AGPublicIPAddress --dns-name $STUDENT_NAME --allocation-method Static --sku Standard --location $LOCATION
+az network public-ip create -g $SPOKE_RG -n AGPublicIPAddress --dns-name $DNS_NAME --allocation-method Static --sku Standard --location $LOCATION
 ````
 
 2) Create WAF policy 
