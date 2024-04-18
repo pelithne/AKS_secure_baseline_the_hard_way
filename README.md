@@ -7,7 +7,7 @@ The target audience of these instructions is intermediate to advanced Kubernetes
 Upon finishing, you will have a deeper understanding of how to use AKS to deploy and manage a secure and scalable Kubernetes cluster on Azure. You will also have a working AKS cluster that follows the AKS secure baseline reference architecture. Expect the entire exercise to take up to eight hours.
 
 
-<img src="images/aks-baseline-architecture.jpg" width="600">
+<img src="images/aks-baseline-architecture-workshop.jpg" width="600">
 
 ## Overview
 
