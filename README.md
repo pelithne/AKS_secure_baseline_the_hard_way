@@ -59,10 +59,10 @@ Configure the hub according to the IP Plan (see image above)
 HUB_VNET_NAME=Hub_VNET
 FW_SUBNET_NAME=AzureFirewallSubnet
 BASTION_SUBNET_NAME=AzureBastionSubnet
-HUB_VNET_PREFIX= # IP address range of the Virtual network (VNet).
-BASTION_SUBNET_PREFIX= # IP address range of the Bastion subnet 
-FW_SUBNET_PREFIX= # IP address range of the Firewall subnet
-JUMPBOX_SUBNET_PREFIX= # IP address range of the Jumpbox subnet
+HUB_VNET_PREFIX=10.0.0.0/22 # IP address range of the Virtual network (VNet).
+BASTION_SUBNET_PREFIX=10.0.0.128/26 # IP address range of the Bastion subnet 
+FW_SUBNET_PREFIX=10.0.0.0/26 # IP address range of the Firewall subnet
+JUMPBOX_SUBNET_PREFIX=10.0.0.64/26 # IP address range of the Jumpbox subnet
 ````
 Configure the spoke according to the IP Plan (see image above)
 
@@ -73,11 +73,11 @@ ENDPOINTS_SUBNET_NAME=endpoints-subnet
 APPGW_SUBNET_NAME=app-gw-subnet
 AKS_SUBNET_NAME=aks-subnet
 LOADBALANCER_SUBNET_NAME=loadbalancer-subnet
-SPOKE_VNET_PREFIX= # IP address range of the Virtual network (VNet).
-AKS_SUBNET_PREFIX= # IP address range of the AKS subnet
-LOADBALANCER_SUBNET_PREFIX= # IP address range of the Loadbalancer subnet
-APPGW_SUBNET_PREFIX= # IP address range of the Application Gateway subnet
-ENDPOINTS_SUBNET_PREFIX= # IP address range of the Endpoints subnet
+SPOKE_VNET_PREFIX=10.1.0.0/22 # IP address range of the Virtual network (VNet).
+AKS_SUBNET_PREFIX=10.1.0.0/24 # IP address range of the AKS subnet
+LOADBALANCER_SUBNET_PREFIX=10.1.1.0/28 # IP address range of the Loadbalancer subnet
+APPGW_SUBNET_PREFIX=10.1.2.0/24 # IP address range of the Application Gateway subnet
+ENDPOINTS_SUBNET_PREFIX=10.1.1.16/28 # IP address range of the Endpoints subnet
 ````
 
 
