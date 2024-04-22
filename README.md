@@ -579,6 +579,8 @@ az network firewall update \
  
 The following network rules allows outbound traffic from any source address to certain destinations and ports. If the required destination is not specified the AKS cluster will fail to deploy.
 
+Please note that these transactions are slow. Expect each rule to require around 5 minutes to complete.
+
 ````bash
 az network firewall network-rule create -g $HUB_RG -f $FW_NAME --collection-name 'aksfwnr' -n 'apiudp' --protocols 'UDP' --source-addresses '*' --destination-addresses "AzureCloud.$LOCATION" --destination-ports 1194 --action allow --priority 100
 
