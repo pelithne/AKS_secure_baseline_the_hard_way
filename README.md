@@ -3,7 +3,9 @@
 Welcome to "AKS baseline - The Hard Way". From this text, you will learn how to deploy a secure and scalable Kubernetes cluster on Azure using Azure Kubernetes Service (AKS) and a number of other Azure services. You will also learn how to apply the best practices from the AKS secure baseline reference architecture, which provides a recommended starting point for a general purpose AKS cluster infrastructure. 
 
 The target audience of these instructions is intermediate to advanced Kubernetes users who want to improve their skills and knowledge about AKS and Azure. You will need to have some familiarity with Kubernetes concepts and tools such as pods, services, deploy
-ments, and kubectl. You will also need to have an Azure subscription and access to a terminal or shell environment.
+ments, and kubectl. You will also need to have an Azure subscription and access to a bash shell. We recommend using Azure Cloud Shell for this, as it has all the necessary tools. 
+
+To access the could shell, you can type ````shell.azure.com```` in your web browser.
 
 Upon finishing, you will have a deeper understanding of how to use AKS to deploy and manage a secure and scalable Kubernetes cluster on Azure. You will also have a working AKS cluster that follows the AKS secure baseline reference architecture. Expect the entire exercise to take up to eight hours.
 
