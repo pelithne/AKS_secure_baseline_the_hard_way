@@ -110,7 +110,7 @@ AKS_IDENTITY_NAME=aks-msi
 JUMPBOX_VM_NAME=Jumpbox-VM
 AKS_CLUSTER_NAME=private-aks
 ACR_NAME=<Globally unique name of the azure container registry>
-STUDENT_NAME=<your name>
+STUDENT_NAME=<e.g. your first name> # don't use spaces
 ````
 
 ### Create the Resource Groups for the Hub and Spoke.
