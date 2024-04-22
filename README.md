@@ -51,7 +51,7 @@ Each subnet in AKS baseline has a specific purpose and configuration, further in
 
 ### Prepare Environment Variables for HUB VNET and SPOKE VNET
 
-Let’s use the IP plan to set up some environment variables for the Hub VNet and adjust its configuration accordingly to the IP Plan. Make sure to also save your environment variables to a text file, so that you can restore them later.
+Let’s use the IP plan to set up some environment variables for the Hub VNet and adjust its configuration accordingly to the IP Plan above. Make sure to also save your environment variables to a text file, so that you can restore them later.
 
 Configure the hub according to the IP Plan (see image above)
 
