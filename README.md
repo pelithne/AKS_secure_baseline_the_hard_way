@@ -412,7 +412,7 @@ SPOKE_VNET_ID=$(az network vnet show --resource-group $SPOKE_RG --name $SPOKE_VN
 HUB_VNET_ID=$(az network vnet show --resource-group $HUB_RG --name $HUB_VNET_NAME --query id --output tsv)
 ````
 
-1) Now, create a peering connection from the hub to the spoke virtual network.
+2) Now, create a peering connection from the hub to the spoke virtual network.
 
 ````bash
 az network vnet peering create \
@@ -423,7 +423,7 @@ az network vnet peering create \
     --allow-vnet-access
 ````
 
-2) Then create a peering connection from the spoke to hub virtual network.
+3) Then create a peering connection from the spoke to hub virtual network.
 
 ````bash
 az network vnet peering create \
@@ -440,17 +440,17 @@ Peering should be established and the high level design should now look like thi
 
 Validate your deployment in the Azure portal.
 
-3) Navigate to the Azure portal at [https://portal.azure.com](https://portal.azure.com) and enter your login credentials.
+4) Navigate to the Azure portal at [https://portal.azure.com](https://portal.azure.com) and enter your login credentials.
 
-4) Once logged in, locate and select the resource group called **rg-spoke** where the spoke vnet is deployed.
+5) Once logged in, locate and select the resource group called **rg-spoke** where the spoke vnet is deployed.
 
-5) Select the vnet called **Spoke_VNET**.
+6) Select the vnet called **Spoke_VNET**.
 
-6) In the left-hand side menu, under the **Settings** section, select **peerings**.
+7) In the left-hand side menu, under the **Settings** section, select **peerings**.
 
-7) Ensure that the peering status is set to **Connected**
+8) Ensure that the peering status is set to **Connected**
 
-8) Repeat step 4 - 7 but for Hub_VNET.
+9) Repeat step 4 - 7 but for Hub_VNET.
 
 <img src="https://github.com/pelithne/AKS_secure_baseline_the_hard_way/blob/main/images/vnetpeeringconnected.jpg" width="1000">
 
