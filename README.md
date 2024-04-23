@@ -1478,7 +1478,7 @@ openssl req -new -x509 -sha256 -key my.key -out my.crt -days 365
 When prompted, type the password for the root key (and note it down), and the organizational information for the custom CA such as Country/Region, State, Org, OU, and the fully qualified domain name from the step above. Here is an example of how it might look:
 
 ````
-peter [ ~ ]$ openssl req -new -x509 -sha256 -key server.key -out server.crt -days 365
+peter [ ~ ]$ openssl req -new -x509 -sha256 -key my.key -out my.crt -days 365
 You are about to be asked to enter information that will be incorporated
 into your certificate request.
 What you are about to enter is what is called a Distinguished Name or a DN.
