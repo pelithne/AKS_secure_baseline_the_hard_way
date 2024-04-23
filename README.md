@@ -53,7 +53,7 @@ Each subnet in AKS baseline has a specific purpose and configuration, further in
 
 Let’s use the IP plan to set up some environment variables for the Hub VNet and adjust its configuration accordingly to the IP Plan above. Make sure to also save your environment variables to a text file, so that you can restore them later.
 
-Configure the hub according to the IP Plan (see image above)
+Configure the hub according to the IP Plan (see image above).
 
 ````bash
 HUB_VNET_NAME=Hub_VNET
@@ -64,7 +64,7 @@ BASTION_SUBNET_PREFIX=10.0.0.128/26 # IP address range of the Bastion subnet
 FW_SUBNET_PREFIX=10.0.0.0/26 # IP address range of the Firewall subnet
 JUMPBOX_SUBNET_PREFIX=10.0.0.64/26 # IP address range of the Jumpbox subnet
 ````
-Configure the spoke according to the IP Plan (see image above)
+Configure the spoke according to the IP Plan (see image above).
 
 ````bash
 SPOKE_VNET_NAME=Spoke_VNET
@@ -268,7 +268,7 @@ Validate your deployment in the Azure portal.
 <img src="https://github.com/pelithne/AKS_secure_baseline_the_hard_way/blob/main/images/hubandspokevnet.jpg" width="1000">
 
 ### Create Network Security Groups and Virtual Network for the Spoke.
-We will now start to setup the spoke vnet, subnets and their respective NSGs,
+We will now start to setup the spoke vnet, subnets and their respective NSGs.
 
 1) Create the NSG for AKS subnet.
 ````bash
@@ -448,7 +448,7 @@ Validate your deployment in the Azure portal.
 
 7) In the left-hand side menu, under the **Settings** section, select **peerings**.
 
-8) Ensure that the peering status is set to **Connected**
+8) Ensure that the peering status is set to **Connected**.
 
 9) Repeat step 4 - 7 but for Hub_VNET.
 
@@ -575,7 +575,7 @@ az network firewall update \
     --resource-group $HUB_RG 
 ````
 
-5) Create Network rules in Azure Firewall
+5) Create Network rules in Azure Firewall.
  
 The following network rules allows outbound traffic from any source address to certain destinations and ports. If the required destination is not specified the AKS cluster will fail to deploy.
 
@@ -591,7 +591,7 @@ az network firewall network-rule create -g $HUB_RG -f $FW_NAME --collection-name
 az network firewall network-rule create -g $HUB_RG -f $FW_NAME --collection-name 'aksfwnr' -n 'time' --protocols 'UDP' --source-addresses '*' --destination-fqdns 'ntp.ubuntu.com' --destination-ports 123
 ````
 
-6) Create Azure Firewall application rule
+6) Create Azure Firewall application rule.
 
 This rule specifies the FQDN's which are required by AKS, **AzureKubernetesService** tag which include all the FQDNs listed in Outbound network and FQDN rules for AKS clusters.
 
@@ -611,7 +611,7 @@ az network route-table create \
 
 ````
 
-8) Create a route to the internet via the Azure Firewall
+8) Create a route to the internet via the Azure Firewall.
 
 In order to create the route we need to obtain the private IP address of the Firewall.To get the private IP address of the Firewall, you need to run the following command:
 
