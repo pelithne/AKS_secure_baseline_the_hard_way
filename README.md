@@ -1190,14 +1190,14 @@ alibaksacr.privatelink.azurecr.io. 1800 IN A    10.1.1.21
 vim Dockerfile
 ````
 
-Add the following content to the Dockerfile
+Add the following content to the Dockerfile.
 
 ````bash
 FROM nginx
 EXPOSE 80
 ````
 
-Build the Docker image
+Build the Docker image.
 
 ````bash
 docker build --tag nginx .
@@ -1501,7 +1501,7 @@ Now, combine the private key and the certificate into a single .pfx file. Choose
 openssl pkcs12 -export -out my.pfx -inkey my.key -in my.crt -password pass:<CERTIFICATE PASSWORD>
 ````
 
-4) Create Application Gateway
+4) Create Application Gateway.
 
 > [!Note]
 > Before executing the command below, make sure the certificate is located in **your working directory**. Replace **<CERTIFICATE PASSWORD>** with the password you used when creating the certificate and **<LOAD BALANCER PRIVATE IP>** with the private IP of the load balancer.
