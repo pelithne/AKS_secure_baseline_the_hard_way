@@ -9,7 +9,7 @@ To access the could shell, you can type ````shell.azure.com```` in your web brow
 Upon finishing, you will have a deeper understanding of how to use AKS to deploy and manage a secure and scalable Kubernetes cluster on Azure. You will also have a working AKS cluster that follows the AKS secure baseline reference architecture. Expect the entire exercise to take up to eight hours.
 
 
-<img src="https://github.com/pelithne/AKS_secure_baseline_the_hard_way/blob/main/images/aks-baseline-architecture-workshop.jpg" width="600">
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/aks-baseline-architecture-workshop.jpg" width="600">
 
 ## Overview
 
@@ -22,7 +22,7 @@ IP planning is an important aspect of deploying an AKS cluster and Azure service
 
 This is the proposed IP design that we will adhere to throughout the documentation.
 
-<img src="https://github.com/pelithne/AKS_secure_baseline_the_hard_way/blob/main/images/aks-baseline_network_ip_planning.jpg" width="600">
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/aks-baseline_network_ip_planning.jpg" width="600">
 
 > [!Note]
 > IP planning is a crucial step that requires careful consideration of the number and size of subnets for your current solution, as well as the potential for future expansion. You should avoid using excessively large IP ranges, and instead be economical with IP and allocate only what you need for the present and the future.
@@ -248,7 +248,7 @@ az network vnet subnet create \
 ````
 You have successfully configured the network for your hub virtual network.You have established three subnets and two NSGs, as depicted on the image:
 
-<img src="https://github.com/pelithne/AKS_secure_baseline_the_hard_way/blob/main/images/HubVnetandNsgOnly.jpg" width="400">
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/HubVnetandNsgOnly.jpg" width="400">
 <br>
 <br>
 
@@ -265,7 +265,7 @@ Validate your deployment in the Azure portal.
 12) Make sure that your subnets have the appropriate IP range and that Network Security Groups (NSGs) are correctly associated with their respective subnets as depicted below.
 
 
-<img src="https://github.com/pelithne/AKS_secure_baseline_the_hard_way/blob/main/images/hubandspokevnet.jpg" width="1000">
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/hubandspokevnet.jpg" width="1000">
 
 ### Create Network Security Groups and Virtual Network for the Spoke.
 We will now start to setup the spoke vnet, subnets and their respective NSGs.
@@ -382,7 +382,7 @@ az network vnet subnet create \
 You have successfully configured the network for your spoke virtual network. You should now have established the following setup in your Azure subscription.
 
 
-<img src="https://github.com/pelithne/AKS_secure_baseline_the_hard_way/blob/main/images/hubandspokeonly.jpg" width="400">
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/hubandspokeonly.jpg" width="400">
 
 Validate your deployment in the Azure portal.
 
@@ -396,7 +396,7 @@ Validate your deployment in the Azure portal.
 
 15) Make sure that your subnets have the appropriate IP range and that Network Security Groups (NSGs) are correctly associated with their respective subnets.
 
-<img src="https://github.com/pelithne/AKS_secure_baseline_the_hard_way/blob/main/images/spokevnet.jpg" width="1000">
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/spokevnet.jpg" width="1000">
 
 ### Create VNET Peering Between Hub and Spoke
 
@@ -436,7 +436,7 @@ az network vnet peering create \
 
 Peering should be established and the high level design should now look like this:
 
-<img src="https://github.com/pelithne/AKS_secure_baseline_the_hard_way/blob/main/images/hubandspokewithpeering.jpg" width="400">
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/hubandspokewithpeering.jpg" width="400">
 
 Validate your deployment in the Azure portal.
 
@@ -452,7 +452,7 @@ Validate your deployment in the Azure portal.
 
 9) Repeat step 4 - 7 but for Hub_VNET.
 
-<img src="https://github.com/pelithne/AKS_secure_baseline_the_hard_way/blob/main/images/vnetpeeringconnected.jpg" width="1000">
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/vnetpeeringconnected.jpg" width="1000">
 
 
 ### Create Azure Bastion and Jumpbox VM
@@ -525,7 +525,7 @@ For additional information on accessing VMs through Bastion, please refer to thi
 
 After completing these steps, The high-level targeted architecture now matches the following diagram:
 
-<img src="https://github.com/pelithne/AKS_secure_baseline_the_hard_way/blob/main/images/hubandspokewithpeeringBastionJumpbox.jpg" width="400">
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/hubandspokewithpeeringBastionJumpbox.jpg" width="400">
 
 ### Create an Azure Firewall and Setup a User Defined Route (UDR)
 
@@ -652,10 +652,10 @@ az network vnet subnet update \
 You have successfully configured the firewall in the hub VNet, set up network and application rules, and created a route table associated with the AKS subnet to direct all internet-bound traffic through the Azure Firewall.
 
 
-<img src="https://github.com/pelithne/AKS_secure_baseline_the_hard_way/blob/main/images/hubandspokewithpeeringBastionJumpboxFirewall.jpg" width="400">
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/hubandspokewithpeeringBastionJumpboxFirewall.jpg" width="400">
 
 
-<img src="https://github.com/pelithne/AKS_secure_baseline_the_hard_way/blob/main/images/OutboundTraffic.jpg" width="600">
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/OutboundTraffic.jpg" width="600">
 
 Validate your deployment in the Azure portal.
 
@@ -671,13 +671,13 @@ Validate your deployment in the Azure portal.
 
 15) Verify that you have a network rule collection called **aksfwnr** which should contain 3 rules. Inspect the rules.
 
-<img src="https://github.com/pelithne/AKS_secure_baseline_the_hard_way/blob/main/images/azfwnr.jpg" width="1000">
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/azfwnr.jpg" width="1000">
 
 16) Click on **Application rule collection**.
 
 17) Verify that you have an application rule collection called **aksfwar** which should contain 1 rule. Inspect the rule.
 
-<img src="https://github.com/pelithne/AKS_secure_baseline_the_hard_way/blob/main/images/azfwar.jpg" width="1000">
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/azfwar.jpg" width="1000">
 
 18) Lets validate the routing between AKS subnet and Azure Firewall, in the Azure portal, in the top menu select **Resource Groups**. 
 
@@ -687,7 +687,7 @@ Validate your deployment in the Azure portal.
 
 21) Ensure that the default route has a prefix of **0.0.0.0/0** and the next hop is set to the **virtual appliance** with the **IP** address of the Azure Firewall. Also, make sure that the routing table is associated with the AKS subnet called **aks-subnet**.
 
-<img src="https://github.com/pelithne/AKS_secure_baseline_the_hard_way/blob/main/images/spokert.jpg" width="1000">
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/spokert.jpg" width="1000">
 
 
 ### Deploy Azure Kubernetes Service
@@ -828,7 +828,7 @@ Validate your deployment in the Azure portal.
 > MC_rg-spoke_private-aks-xxxx_eastus is a resource group automatically created when deploying an AKS cluster. It is used by Azure to manage resources for the cluster, this particular resource group is also known as Node group.
 
 
-<img src="https://github.com/pelithne/AKS_secure_baseline_the_hard_way/blob/main/images/resourcegroups.jpg" width="1000">
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/resourcegroups.jpg" width="1000">
 
 
 13) Verify that a virtual network link exists between the Hub and spoke to enable the jumpbox to resolve the AKS domain name and access the cluster. Select the node group called **MC_rg-spoke_private-aks-xxxxx_eastus**.
@@ -839,14 +839,14 @@ Validate your deployment in the Azure portal.
 
 16) Validate that there is a link name called **hubnetdnsconfig** and the link status is set to **Completed** and the virtual network is set to **Hub_VNET**.
 
-<img src="https://github.com/pelithne/AKS_secure_baseline_the_hard_way/blob/main/images/virtualnetworklinks.jpg" width="1000">
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/virtualnetworklinks.jpg" width="1000">
 
 17) On the top menu click **Resource groups** and choose **rg-spoke** from the resource group list.
 
 18) Click on the AKS resource called private-aks-<YOUR STUDENT NAME>. Verify that the Private cluster is set to Enabled. 
 
 
-<img src="https://github.com/pelithne/AKS_secure_baseline_the_hard_way/blob/main/images/aksoverviewprivatecluster.jpg" width="1000">
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/aksoverviewprivatecluster.jpg" width="1000">
 
 19) Verify AKS control plane connectivity.
 
@@ -920,9 +920,9 @@ aks-userpool-16991029-vmss000000    Ready    agent   78m   v1.27.9
 Congratulations! You have completed the steps to deploy a private AKS cluster and configure its network settings. You have assigned a user assigned identity to the cluster that has the required permissions to modify the user-defined routing table and load balancer subnet. You have also created a virtual network link between the hub virtual network and the private DNS zone of the cluster. This enables the jumpbox to resolve the private API server of the cluster and access it for management and maintenance purposes.
 
 
-<img src="https://github.com/pelithne/AKS_secure_baseline_the_hard_way/blob/main/images/hubandspokewithpeeringBastionJumpboxFirewallaksvirtualnetlink.jpg" width="400">
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/hubandspokewithpeeringBastionJumpboxFirewallaksvirtualnetlink.jpg" width="400">
 
-<img src="https://github.com/pelithne/AKS_secure_baseline_the_hard_way/blob/main/images/aksjumpbox.jpg" width="600">
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/aksjumpbox.jpg" width="600">
 
 ### Deploy Azure Container Registry
 
@@ -1095,15 +1095,15 @@ Validate your deployment in the Azure portal.
 
 12) log in and select the **rg-spoke** resource group. Verify that you have a **container registry** and a private endpoint named **ACRPrivateEndpoint** deployed in your resource group, as well as a network card named **ACRPrivateEndpoint.nic.xxxxx**.
 
-<img src="https://github.com/pelithne/AKS_secure_baseline_the_hard_way/blob/main/images/acrresourcegroup.jpg" width="1000">
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/acrresourcegroup.jpg" width="1000">
 
 13) Select the private DNS zone named **privatelink.azurecr.io**. Ensure that you have two ‘A’ records, one for control and one for data, and that the correct IP addresses are configured.
 
-<img src="https://github.com/pelithne/AKS_secure_baseline_the_hard_way/blob/main/images/acrprivatednszonearecord.jpg" width="1000">
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/acrprivatednszonearecord.jpg" width="1000">
 
 14) In the left-hand side menu, under **Settings** section, select **Virtual Network links**. Ensure you have the link status set to completed for both hub and spoke.
 
-<img src="https://github.com/pelithne/AKS_secure_baseline_the_hard_way/blob/main/images/virtualnetworklinksacr.jpg" width="1000">
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/virtualnetworklinksacr.jpg" width="1000">
 
 
 15) Test the connection to ACR from the Jumpbox.
@@ -1422,7 +1422,7 @@ Commercial support is available at
 
 You have successfully deployed a private Azure Container Registry that is accessible from the jumpbox host. You also built and deployed the nginx image, which is only exposed over the private network.
 
-<img src="https://github.com/pelithne/AKS_secure_baseline_the_hard_way/blob/main/images/hubandspokewithpeeringBastionJumpboxFirewallaksvirtualnetlinkandacrandinternalloadbalancer.jpg" width="400">
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/hubandspokewithpeeringBastionJumpboxFirewallaksvirtualnetlinkandacrandinternalloadbalancer.jpg" width="400">
 
 ### Deploy Azure Application Gateway.
 
@@ -1556,14 +1556,14 @@ Validate your deployment in the Azure portal.
 
 
 
-<img src="https://github.com/pelithne/AKS_secure_baseline_the_hard_way/blob/main/images/appgwoverview.jpg" width="1000">
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/appgwoverview.jpg" width="1000">
 
 9) In the left-hand side menu, under the **Settings** section, select **Backend pools** and choose from the list  **appGatewayBackendPool**.
 
 10) Ensure the target type is set to **IP address or FQDN** and target is set to the IP address of your **internal load balancer**.
 
 
-<img src="https://github.com/pelithne/AKS_secure_baseline_the_hard_way/blob/main/images/appGatewayBackendPool.jpg" width="1000">
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/appGatewayBackendPool.jpg" width="1000">
 
 11) On the top menu click on **AppGateway | Backend pools**.
 
@@ -1571,7 +1571,7 @@ Validate your deployment in the Azure portal.
 
 13) From the list click on **appGatewayBackendHttpSettings** validate that the backend port is configured for port 80, and that health probe called **health-probe** is associated to the backend.
 
-<img src="https://github.com/pelithne/AKS_secure_baseline_the_hard_way/blob/main/images/backendsettings.jpg" width="1000">
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/backendsettings.jpg" width="1000">
 
 
 14) Press **Cancel** 
@@ -1581,12 +1581,12 @@ Validate your deployment in the Azure portal.
 16) Click on **ApplicationGatewayWAFPolicy** In the left-hand side menu choose ***Managed rules**.
 
 
-<img src="https://github.com/pelithne/AKS_secure_baseline_the_hard_way/blob/main/images/managedruleswaf.jpg" width="600">
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/managedruleswaf.jpg" width="600">
 
 We have successfully completed the deployment and configuration of the network and cluster resources. The following diagram shows the high-level architecture of the solution. As you can see, there is a test pod running in AKS that can receive traffic from the internet through the Azure Application Gateway and the Azure Internal Load Balancer. We can also access the private API server of the AKS cluster and the private container registry from the jumpbox using the private endpoints and links. We have also enabled outbound traffic from the AKS subnet to go through the Azure Firewall for inspection and filtering. In the next section, we will validate if we can access our test pod securely from the Internet.
 
 
-<img src="https://github.com/pelithne/AKS_secure_baseline_the_hard_way/blob/main/images/hubandspokewithpeeringBastionJumpboxFirewallaksvirtualnetlinkandacrandinternalloadbalancerandapplicationgw.jpg" width="400">
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/hubandspokewithpeeringBastionJumpboxFirewallaksvirtualnetlinkandacrandinternalloadbalancerandapplicationgw.jpg" width="400">
 
 
 ### Validate Ingress Connection.
@@ -1599,7 +1599,7 @@ Open your web browser and access the domain created above: ````https://<applicat
 
 If you discard the warning, you should see a similar output as to the one below. 
 
-<img src="https://github.com/pelithne/AKS_secure_baseline_the_hard_way/blob/main/images/nginx-warning.png" width="600">
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/nginx-warning.png" width="600">
 
 
 You have now verified connectivity from the public IP address, through the Application Gateway to the nginx pod running in your private AKS cluster. Well done!
