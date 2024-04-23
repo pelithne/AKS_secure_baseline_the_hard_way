@@ -1184,7 +1184,7 @@ alibaksacr.privatelink.azurecr.io. 1800 IN A    10.1.1.21
 ;; MSG SIZE  rcvd: 103
 ````
 
-22) Test the connection to the container regitry, you will push a container to it. You will need to create a Dockerfile, build the docker image, authenticate towards ACR and push the image to the container registry.
+22) Test the connection to the container registry, you will push a container to it. You will need to create a Dockerfile, build the docker image, authenticate towards ACR and push the image to the container registry.
 
 ````bash
 vim Dockerfile
