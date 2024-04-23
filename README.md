@@ -1550,7 +1550,7 @@ az network application-gateway http-settings update -g $SPOKE_RG --gateway-name 
 
 Validate your deployment in the Azure portal.
 
-7) select your resource group called **rg-spoke** where the application gateway is deployed.
+7) Select the resource group called **rg-spoke** where the application gateway is deployed.
 
 8) Select your Azure Application Gateway called **AppGateway**. Ensure you have a **Public IP address** and Tier set to **WAF v2**.
 
