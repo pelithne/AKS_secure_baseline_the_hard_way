@@ -741,7 +741,7 @@ az role assignment create \
     --role "Network Contributor"
 ````
 
-6) Assign permission for the AKS user defined managed identity to the load balancer subnet
+6) Assign permission for the AKS user defined managed identity to the load balancer subnet.
 
 ````bash
 LB_SUBNET_SCOPE=$(az network vnet subnet list \
@@ -759,7 +759,7 @@ az role assignment create \
 
 ````
 > [!Note]
-> Granting the Network Contributor role to the load balancer subnet in AKS could result in over-privileged access. To minimize security risks, it is recommended to only provide AKS with the necessary permissions to function effectively, adhering to the principle of least privilege access. For more information refer to [Creating Azure custom role](./docs/customrole.md)
+> Granting the Network Contributor role to the load balancer subnet in AKS could result in over-privileged access. To minimize security risks, it is recommended to only provide AKS with the necessary permissions to function effectively, adhering to the principle of least privilege access. For more information refer to [Creating Azure custom role](./docs/customrole.md).
 
 7) Retrieve the scope of AKS subnet, were AKS shall be deployed.
 
@@ -771,7 +771,7 @@ AKS_SUBNET_SCOPE=$(az network vnet subnet list \
     --output tsv)
 ````
 
-8) Deploy a Highly Available Private AKS Cluster
+8) Deploy a Highly Available Private AKS Cluster.
 
 To deploy a highly available private AKS cluster, you can use the following command:
 
@@ -786,7 +786,7 @@ az aks create --resource-group $SPOKE_RG --node-count 2 --vnet-subnet-id $AKS_SU
 > [!Note]
 > A private AKS cluster has its Kubernetes API endpoint isolated from public access, allowing access only within the same virtual network. To communicate with the private AKS cluster from a jumpbox in a different virtual network, a virtual network link must be created between the two networks for DNS resolution. This will be covered in a later section.
 
-9) An additional nodepool will be created to host user workloads. Auto-scaling is enabled to allow for automatic scaling out and scaling in based on demand. The worker nodes will be distributed across three different zones to ensure higher availability
+9) An additional nodepool will be created to host user workloads. Auto-scaling is enabled to allow for automatic scaling out and scaling in based on demand. The worker nodes will be distributed across three different zones to ensure higher availability.
 
 ````bash
 az aks nodepool add --resource-group $SPOKE_RG --cluster-name $AKS_CLUSTER_NAME-${STUDENT_NAME} --name userpool --node-count 3 --mode user --zones 1 2 3 --enable-cluster-autoscaler --min-count 1 --max-count 5
@@ -831,7 +831,7 @@ Validate your deployment in the Azure portal.
 <img src="https://github.com/pelithne/AKS_secure_baseline_the_hard_way/blob/main/images/resourcegroups.jpg" width="1000">
 
 
-13) Verify that a virtual network link exists between the Hub and spoke to enable the jumpbox to resolve the AKS domain name and access the cluster. Select the node group called **MC_rg-spoke_private-aks-xxxxx_eastus**
+13) Verify that a virtual network link exists between the Hub and spoke to enable the jumpbox to resolve the AKS domain name and access the cluster. Select the node group called **MC_rg-spoke_private-aks-xxxxx_eastus**.
 
 14) Select the **Private DNS zone**.
 
@@ -915,7 +915,7 @@ aks-nodepool1-12240482-vmss000000   Ready    agent   89m   v1.27.9
 aks-nodepool1-12240482-vmss000001   Ready    agent   89m   v1.27.9
 aks-userpool-16991029-vmss000000    Ready    agent   78m   v1.27.9
 ````
-10) log out from the Jumpbox host.
+10) Log out from the Jumpbox host.
 
 Congratulations! You have completed the steps to deploy a private AKS cluster and configure its network settings. You have assigned a user assigned identity to the cluster that has the required permissions to modify the user-defined routing table and load balancer subnet. You have also created a virtual network link between the hub virtual network and the private DNS zone of the cluster. This enables the jumpbox to resolve the private API server of the cluster and access it for management and maintenance purposes.
 
@@ -981,7 +981,7 @@ az network private-dns link vnet create \
   --registration-enabled false
 ````
 
-5) Create ACR private endpoint 
+5) Create ACR private endpoint. 
 
 To create a private endpoint for an Azure Container Registry (ACR), you need to obtain the resource ID of the container registry. This resource ID is used to specify the target resource when creating the private endpoint.
 
@@ -1002,7 +1002,7 @@ az network private-endpoint create \
     --connection-name PrivateACRConnection
 ````
 
-6) Configure DNS record for ACR
+6) Configure DNS record for ACR.
 
 In this section we will configure DNS records for an Azure Container Registry (ACR) using Azure Private Link.This is to ensure that the ACR can be accessed over a private network connection, enhancing security by eliminating exposure to the public internet.
 
@@ -1093,7 +1093,7 @@ Validate your deployment in the Azure portal.
 
 11) Navigate to the Azure portal at [https://portal.azure.com](https://portal.azure.com) and enter your login credentials.
 
-12) log in and select the **rg-spoke** resource group. Verify that you have a **container registry** and a private endpoint named **ACRPrivateEndpoint** deployed in your resource group, as well as a network card named **ACRPrivateEndpoint.nic.xxxxx**
+12) log in and select the **rg-spoke** resource group. Verify that you have a **container registry** and a private endpoint named **ACRPrivateEndpoint** deployed in your resource group, as well as a network card named **ACRPrivateEndpoint.nic.xxxxx**.
 
 <img src="https://github.com/pelithne/AKS_secure_baseline_the_hard_way/blob/main/images/acrresourcegroup.jpg" width="1000">
 
@@ -1106,7 +1106,7 @@ Validate your deployment in the Azure portal.
 <img src="https://github.com/pelithne/AKS_secure_baseline_the_hard_way/blob/main/images/virtualnetworklinksacr.jpg" width="1000">
 
 
-15) Test the connection to ACR from the Jumpbox
+15) Test the connection to ACR from the Jumpbox.
 
 In this section, you will learn how to check if you can access your private Azure Container Registry (ACR) and push Docker images to it. You will need to have the Azure CLI installed and logged in to your Azure account. You will also need to have Docker installed and running on your Jumpbox. Here are the steps to follow:
 
@@ -1136,7 +1136,7 @@ Set your subscription id to be the default subscription.
 az account set --subscription <SUBSCRIPTION ID>
 ````
 
-21) Validate private link connection 
+21) Validate private link connection. 
 
 List your ACR in your subscription and note down the ACR name.
 
