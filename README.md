@@ -1144,7 +1144,7 @@ List your ACR in your subscription and note down the ACR name.
 az acr list -o table
 ````
 
-example output:
+Example output:
 
 ````bash
 azureuser@Jumpbox-VM:~$ az acr list -o table
@@ -1203,7 +1203,7 @@ Build the Docker image
 docker build --tag nginx .
 ````
 
-Example out:
+Example output:
 
 ````bash
 azureuser@Jumpbox-VM:~$  docker build --tag nginx .
@@ -1233,7 +1233,7 @@ Successfully built 49a47448ba86
 Successfully tagged nginx:latest
 ````
 
-Create an alias of the image
+Create an alias of the image.
 
 ````bash
 docker tag nginx <CONTAINER REGISTRY NAME>.azurecr.io/nginx
@@ -1284,7 +1284,7 @@ On the Jumpbox VM create a yaml file.
 vim test-pod.yaml
 ````
 
-Pro-tip: when you copy to vim, prevent Vim from auto-indenting the text you paste.
+Pro-tip: when you copy to vim, prevent vim from auto-indenting the text you paste.
 
 ````bash
 :set paste
@@ -1292,7 +1292,7 @@ Pro-tip: when you copy to vim, prevent Vim from auto-indenting the text you past
 
 Press enter.
 
-Paste in the following manifest file which creates a Pod named **internal-test-app** which fetches the docker images from our internal container registry, created in previous step. 
+Paste in the following manifest file which creates a pod named **internal-test-app** which fetches the docker images from our internal container registry, created in previous step. 
 
 ````yaml
 apiVersion: v1
@@ -1315,13 +1315,13 @@ Create the pod.
 kubectl apply -f test-pod.yaml
 ````
 
-Verify that the Pod is in running state.
+Verify that the pod is in running state.
 
 ````bash
 kubectl get po --show-labels
 ````
 
-Example output
+Example output:
 
 ````bash
 azureuser@Jumpbox-VM:~$ kubectl get po 
@@ -1329,7 +1329,7 @@ NAME                READY   STATUS    RESTARTS   AGE
 internal-test-app   1/1     Running   0          8s
 ````
 
-The next step is to set up an internal load balancer that will direct the traffic to our internal Pod. The internal load balancer will be deployed in the load balancer subnet of the spoke-vnet.
+The next step is to set up an internal load balancer that will direct the traffic to our internal pod. The internal load balancer will be deployed in the load balancer subnet of the spoke-vnet.
 
 
 ````yaml
@@ -1342,7 +1342,7 @@ vim internal-app-service.yaml
 
 Press enter.
 
-Copy the following manifest to expose the pod to the internet. Replace **<LOADBALANCER SUBNET>** with your subnet name stored in your local shell environment variable **$LOADBALANCER_SUBNET_NAME**
+Copy the following manifest to expose the pod to the internet. Replace **<LOADBALANCER SUBNET>** with your subnet name stored in your local shell environment variable **$LOADBALANCER_SUBNET_NAME**.
 
 ````yaml
 apiVersion: v1
@@ -1366,7 +1366,7 @@ Deploy the service object in AKS.
 kubectl create -f internal-app-service.yaml
 ````
 
-Verify that your service object is created and associated with the Pod that you have created, also ensure that you have recieved an external IP, which should be a private IP address range from the load balancer subnet.
+Verify that your service object is created and associated with the pod that you have created, also ensure that you have recieved an external IP, which should be a private IP address range from the load balancer subnet.
 
 
 ````bash
@@ -1391,7 +1391,7 @@ Verify that you are able to access the exposed Nginx pod from your jumpbox VM.
 azureuser@Jumpbox-VM:~$ curl <EXTERNAL-IP>
 ````
 
-example output:
+Example output:
 
 ````bash
 azureuser@Jumpbox-VM:~$ curl 10.1.1.4
@@ -1428,7 +1428,7 @@ You have successfully deployed a private Azure Container Registry that is access
 
 In this section, you will set up an application gateway that will terminate TLS connections at its ingress. You will also learn how to perform these tasks: upload a certificate to Application Gateway, configure AKS as a backend pool by routing traffic to its internal load balancer, create a health probe to check the health of the AKS backend pool, and set up a WAF (Web Application Firewall) to defend against common web attacks.
 
-1) Create public IP address with a domain name associated to the public IP resource
+1) Create public IP address with a domain name associated to the public IP resource.
 
 The public IP address will be associated with a fully qualified domain name (FQDN) based on the location of your IP address and a unique name that you provide. For example, if you create an IP address in westeurope, the FQDN would look similar to this:
 
@@ -1436,7 +1436,7 @@ The public IP address will be associated with a fully qualified domain name (FQD
 myveryuniquename.westeurope.cloudapp.azure.com
 ````
 
-Lets make an environment variable of the uniqe name, and call it $DNS_NAME
+Lets make an environment variable of the uniqe name, and call it $DNS_NAME.
 
 ````
 DNS_NAME=<your unique name>
@@ -1447,14 +1447,14 @@ DNS_NAME=<your unique name>
 az network public-ip create -g $SPOKE_RG -n AGPublicIPAddress --dns-name $DNS_NAME --allocation-method Static --sku Standard --location $LOCATION
 ````
 
-2) Create WAF policy 
+2) Create WAF policy. 
 
 
 ````bash
 az network application-gateway waf-policy create --name ApplicationGatewayWAFPolicy --resource-group $SPOKE_RG
 ````
 
-3) Create self signed certificate
+3) Create self signed certificate.
 
 In order to expose your services to internet using HTTPs, you need to add a certificate to Application Gateway. In a production setting, this would be a trusted certificate from a certificate authority such as **letsencrypt**. In the interest of simplicity, you will instead create a self signed certificate, and upload to Application Gateway.
 
