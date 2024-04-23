@@ -1468,31 +1468,38 @@ To get the FQDN you can run the following command:
 az network public-ip show -g $SPOKE_RG -n AGPublicIPAddress --query dnsSettings.fqdn
 ````
 
-After this, use the following commands to create a key and a certificate signing request.
-````
-openssl ecparam -out my.key -name prime256v1 -genkey
-openssl req -new -sha256 -key my.key -out my.csr
-````
-
-When prompted, type the password for the root key (and note it down), and the organizational information for the custom CA such as Country/Region, State, Org, OU, and the fully qualified domain name (this is the domain of the issuer).
-
-Use the following command to generate the Root Certificate:
+After this, use the following commands to create a key and sign the key (self signed).
 
 ````
-openssl x509 -req -sha256 -days 365 -in my.csr -signkey my.key -out my.crt
+openssl genrsa -out my.key 2048
+openssl req -new -x509 -sha256 -key my.key -out my.crt -days 365
 ````
 
-The root certificate is using .crt format, which is the same as .cer. Application gateway requires it to be on .cer, so just rename the file like this
+When prompted, type the password for the root key (and note it down), and the organizational information for the custom CA such as Country/Region, State, Org, OU, and the fully qualified domain name from the step above. Here is an example of how it might look:
 
 ````
-mv my.crt my.cer
+peter [ ~ ]$ openssl req -new -x509 -sha256 -key server.key -out server.crt -days 365
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) [AU]:SE
+State or Province Name (full name) [Some-State]:
+Locality Name (eg, city) []:
+Organization Name (eg, company) [Internet Widgits Pty Ltd]:
+Organizational Unit Name (eg, section) []:
+Common Name (e.g. server FQDN or YOUR name) []:uniqueappgwname.eastus.cloudapp.azure.com
+Email Address []:johndoe@contoso.com
 ````
 
+Now, combine the private key and the certificate into a single .pfx file. Choose a good certificate password and make a note of it, as it will be used when creating the Application Gateway.
 
-
-
-
-
+````
+openssl pkcs12 -export -out my.pfx -inkey my.key -in my.crt -password pass:<CERTIFICATE PASSWORD>
+````
 
 4) Create Application Gateway
 
@@ -1514,7 +1521,7 @@ az network application-gateway create \
   --http-settings-protocol Http \
   --priority "1" \
   --public-ip-address AGPublicIPAddress \
-  --cert-file my.cer \
+  --cert-file my.pfx \
   --cert-password "<CERTIFICATE PASSWORD>" \
   --waf-policy ApplicationGatewayWAFPolicy \
   --servers <LOAD BALANCER PRIVATE IP>
