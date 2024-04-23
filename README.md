@@ -1200,7 +1200,7 @@ EXPOSE 80
 Build the Docker image
 
 ````bash
-sudo docker build --tag nginx .
+docker build --tag nginx .
 ````
 
 Example out:
@@ -1236,7 +1236,7 @@ Successfully tagged nginx:latest
 Create an alias of the image
 
 ````bash
-sudo docker tag nginx <CONTAINER REGISTRY NAME>.azurecr.io/nginx
+docker tag nginx <CONTAINER REGISTRY NAME>.azurecr.io/nginx
 ````
 
 Authenticate to ACR with your AD user.
