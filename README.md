@@ -860,10 +860,9 @@ In this section we will verify that we are able to connect to the AKS cluster fr
 
 23) Enter the **credentials** for the Jumpbox VM and verify that you can log in successfully.
 
-24) Once successfully logged in to the jumbox you need to install a few tools
+24) Once successfully logged in to the jumpbox you need to install a few tools. Run the commands one by one, or create a bash script.
 
 ````bash
-#!/bin/bash
 # Update apt repo
 sudo apt update 
 # Install Docker
