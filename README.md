@@ -1592,9 +1592,17 @@ We have successfully completed the deployment and configuration of the network a
 ### Validate Ingress Connection.
 Open your web browser and access the domain created above: ````https://<application gateway FQDN>````
 
-You should see a similar output as to the one below.
+> [!Note]
+> The certificate used was self-signed, so the browser will issue a warning that the content is potentially unsafe. 
+> In a production setting, a certificate from a well known certificate authority should be used, but this is
+> beyond the scope of this tutorial.
 
-<img src="https://github.com/pelithne/AKS_secure_baseline_the_hard_way/blob/main/images/splashscreen.jpg" width="600">
+If you discard the warning, you should see a similar output as to the one below. 
+
+<img src="https://github.com/pelithne/AKS_secure_baseline_the_hard_way/blob/main/images/nginx-warning.png" width="600">
+
+
+You have now verified connectivity from the public IP address, through the Application Gateway to the nginx pod running in your private AKS cluster. Well done!
 
 ### Clean Up Resources in AKS
 Once you have verified that everything works as depicted earlier you can issue the following commands from the jumpbox to delete the resources.
