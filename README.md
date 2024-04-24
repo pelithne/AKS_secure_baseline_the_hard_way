@@ -1370,7 +1370,7 @@ Verify that your service object is created and associated with the pod that you 
 
 
 ````bash
-sudo kubectl get svc -o wide
+kubectl get svc -o wide
 ````
 
 Example output:
