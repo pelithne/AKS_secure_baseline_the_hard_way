@@ -1026,6 +1026,7 @@ Visual Studio-like style based on original C# coloring by Jason Diamond <jason@d
 <p data-line="26" class="code-line" dir="auto">Note: 
 IP planning is a crucial step that requires careful consideration of the number and size of subnets for your current solution, as well as the potential for future expansion. You should avoid using excessively large IP ranges, and instead be economical with IP and allocate only what you need for the present and the future.</p>
 </blockquote>
+<br>
 <p data-line="29" class="code-line" dir="auto">Each subnet in AKS baseline has a specific purpose and configuration, further information can be found below.</p>
 <h3 data-line="31" class="code-line" dir="auto" id="hub-vnet" tabindex="-1">Hub VNET</h3>
 <ul data-line="33" class="code-line" dir="auto">
@@ -1086,6 +1087,7 @@ ENDPOINTS_SUBNET_PREFIX=10.1.1.16/28 <span class="hljs-comment"># IP address ran
 <p data-line="92" class="code-line" dir="auto">Note:
 Since the Azure container registry has a globally unique FQDN name, you need to assign a distinct value to the <strong>ACR_NAME</strong> environment variable, else the ACR deployment will fail. Also, the ACR name can only container lowercase letters and numbers.</p>
 </blockquote>
+<br>
 <pre><code data-line="95" class="code-line language-bash" dir="auto">HUB_RG=rg-hub
 SPOKE_RG=rg-spoke
 LOCATION=eastus 
@@ -1452,6 +1454,7 @@ az network nsg rule create \
 Ensure you specify a <strong>password</strong> for the admin user called <strong>azureuser</strong>.
 The password length must be between 12 and 72. Password must have 3 of the following: 1 lower case character, 1 upper case character, 1 number and 1 special character.</p>
 </blockquote>
+<br>
 <pre><code data-line="476" class="code-line language-bash" dir="auto">az vm create \
     --resource-group <span class="hljs-variable">$HUB_RG</span> \
     --name <span class="hljs-variable">$JUMPBOX_VM_NAME</span> \
@@ -1474,6 +1477,7 @@ The password length must be between 12 and 72. Password must have 3 of the follo
 <p data-line="497" class="code-line" dir="auto">Note:
 Azure Bastion service requires a dedicated subnet named <strong>AzureBastionSubnet</strong> to provide secure and seamless RDP/SSH connectivity to your virtual machines. When you deploy Azure Bastion service, it will automatically create this subnet for you, if it does not exist in the target virtual network. However, if the subnet already exists, it must meet the minimum size of <strong>/26</strong> or larger, otherwise the deployment will fail.</p>
 </blockquote>
+<br>
 <pre><code data-line="500" class="code-line language-bash" dir="auto">az network bastion create \
     --resource-group <span class="hljs-variable">$HUB_RG</span> \
     --name bastionhost \
@@ -1595,6 +1599,7 @@ az network firewall network-rule create -g <span class="hljs-variable">$HUB_RG</
 <p data-line="636" class="code-line" dir="auto">Note:
 The route will direct all traffic (0.0.0.0/0) to the next hop type of VirtualAppliance, which is the firewall instance. The next hop IP address is the private IP address of the firewall, which is stored in the environment variable $FW_PRIVATE_IP. This way, the traffic from the AKS subnet will be routed to the firewall instance on its private endpoint. This will allow you to perform inspection on outbound traffic.</p>
 </blockquote>
+<br>
 <ol start="9" data-line="639" class="code-line" dir="auto">
 <li data-line="639" class="code-line" dir="auto">Associate the route table with the AKS subnet.</li>
 </ol>
@@ -1720,6 +1725,7 @@ The route will direct all traffic (0.0.0.0/0) to the next hop type of VirtualApp
 <p data-line="760" class="code-line" dir="auto">Note:
 Granting the Network Contributor role to the load balancer subnet in AKS could result in over-privileged access. To minimize security risks, it is recommended to only provide AKS with the necessary permissions to function effectively, adhering to the principle of least privilege access. For more information refer to <a href="./docs/customrole.md" data-href="./docs/customrole.md">Creating Azure custom role</a>.</p>
 </blockquote>
+<br>
 <ol start="7" data-line="763" class="code-line" dir="auto">
 <li data-line="763" class="code-line" dir="auto">Retrieve the scope of AKS subnet, were AKS shall be deployed.</li>
 </ol>
@@ -1741,6 +1747,7 @@ Granting the Network Contributor role to the load balancer subnet in AKS could r
 <p data-line="785" class="code-line" dir="auto">Note:
 A private AKS cluster has its Kubernetes API endpoint isolated from public access, allowing access only within the same virtual network. To communicate with the private AKS cluster from a jumpbox in a different virtual network, a virtual network link must be created between the two networks for DNS resolution. This will be covered in a later section.</p>
 </blockquote>
+<br>
 <ol start="9" data-line="788" class="code-line" dir="auto">
 <li data-line="788" class="code-line" dir="auto">An additional nodepool will be created to host user workloads. Auto-scaling is enabled to allow for automatic scaling out and scaling in based on demand. The worker nodes will be distributed across three different zones to ensure higher availability.</li>
 </ol>
@@ -1775,6 +1782,7 @@ A private AKS cluster has its Kubernetes API endpoint isolated from public acces
 <p data-line="826" class="code-line" dir="auto">Note:
 MC_rg-spoke_private-aks-xxxx_eastus is a resource group automatically created when deploying an AKS cluster. It is used by Azure to manage resources for the cluster, this particular resource group is also known as Node group.</p>
 </blockquote>
+<br>
 <div data-line="830" class="code-line" dir="auto"></div>
 <img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/resourcegroups.jpg" width="1000">
 <ol start="13" data-line="834" class="code-line" dir="auto">
@@ -1846,6 +1854,7 @@ az account <span class="hljs-built_in">set</span> --subscription &lt;SUBSCRIPTIO
 To check the current subscription, run the command: <strong>az account show</strong>
 To change the subscription, run the command: <strong>az account set --subscription <subscription id="">, where <subscription id=""></subscription></subscription></strong> the ID of the desired subscription. You can find the subscription ID by running the command: <strong>az account list --output table</strong></p>
 </blockquote>
+<br>
 <ol start="8" data-line="891" class="code-line" dir="auto">
 <li data-line="891" class="code-line" dir="auto">Add your Environment variables to the jumpbox bash shell.</li>
 </ol>
@@ -1921,6 +1930,7 @@ Ensure you have a globally unique name for your ACR, or else the deployment will
 The $HUB_VNET_ID variable specifies the full path to the virtual network in another resource group, allowing the command to correctly link to it.
 Make sure the environment variable $HUB_VNET_ID is populated before running the command below. If it is empty, just rerun the command:</p>
 </blockquote>
+<br>
 <p data-line="975" class="code-line" dir="auto"><code>HUB_VNET_ID=$(az network vnet show -g $HUB_RG -n $HUB_VNET_NAME --query id --output tsv)</code></p>
 <pre><code data-line="977" class="code-line language-bash" dir="auto">az network private-dns <span class="hljs-built_in">link</span> vnet create \
   --resource-group <span class="hljs-variable">$SPOKE_RG</span> \
@@ -2244,6 +2254,7 @@ kubernetes                  ClusterIP      10.0.0.1     &lt;none&gt;        443/
 <p data-line="1388" class="code-line" dir="auto">Note:
 Note down the EXTERNAL-IP (Private IP of the load balancer), as this will be used for creating the application gateway.</p>
 </blockquote>
+<br>
 <p data-line="1391" class="code-line" dir="auto">Verify that you are able to access the exposed Nginx pod from your jumpbox VM.</p>
 <pre><code data-line="1393" class="code-line language-bash" dir="auto">azureuser@Jumpbox-VM:~$ curl &lt;EXTERNAL-IP&gt;
 </code></pre>
@@ -2334,6 +2345,7 @@ Email Address []:johndoe@contoso.com
 <p data-line="1509" class="code-line" dir="auto">Note:
 Before executing the command below, make sure the certificate is located in <strong>your working directory</strong>. Replace <strong><certificate password=""></certificate></strong> with the password you used when creating the certificate and <strong><load balancer="" private="" ip=""></load></strong> with the private IP of the load balancer.</p>
 </blockquote>
+<br>
 <pre><code data-line="1512" class="code-line language-bash" dir="auto">az network application-gateway create \
   --name AppGateway \
   --location <span class="hljs-variable">$LOCATION</span> \
@@ -2430,6 +2442,7 @@ The certificate used was self-signed, so the browser will issue a warning that t
 In a production setting, a certificate from a well known certificate authority should be used, but this is
 beyond the scope of this tutorial.</p>
 </blockquote>
+<br>
 <p data-line="1605" class="code-line" dir="auto">If you discard the warning, you should see a similar output as to the one below.</p>
 <div data-line="1607" class="code-line" dir="auto"></div>
 <img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/nginx-warning.png" width="600">
