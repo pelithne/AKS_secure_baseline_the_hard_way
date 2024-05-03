@@ -1,0 +1,2447 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <title>README</title>
+        <style>:root
+{
+    --markdown-font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", system-ui, "Ubuntu", "Droid Sans", sans-serif;
+    --markdown-font-size: 14px;
+    --markdown-line-height: 1.6;
+    --vscode-font-family:"Segoe WPC", "Segoe UI", sans-serif;
+    --vscode-font-weight:normal;
+    --vscode-font-size:13px;
+    --vscode-editor-font-family:Consolas, "Courier New", monospace;
+    --vscode-editor-font-weight:normal;
+    --vscode-editor-font-size:14px;
+    --vscode-foreground:#616161;
+    --vscode-errorForeground:#a1260d;
+    --vscode-descriptionForeground:#717171;
+    --vscode-icon-foreground:#424242;
+    --vscode-focusBorder:#0090f1;
+    --vscode-textSeparator-foreground:rgba(0, 0, 0, 0.18);
+    --vscode-textLink-foreground:#006ab1;
+    --vscode-textLink-activeForeground:#006ab1;
+    --vscode-textPreformat-foreground:#a31515;
+    --vscode-textBlockQuote-background:rgba(127, 127, 127, 0.1);
+    --vscode-textBlockQuote-border:rgba(0, 122, 204, 0.5);
+    --vscode-textCodeBlock-background:rgba(220, 220, 220, 0.4);
+    --vscode-widget-shadow:#a8a8a8;
+    --vscode-input-background:#ffffff;
+    --vscode-input-foreground:#616161;
+    --vscode-inputOption-activeBorder:rgba(0, 122, 204, 0);
+    --vscode-inputOption-activeBackground:rgba(0, 144, 241, 0.2);
+    --vscode-inputOption-activeForeground:#000000;
+    --vscode-input-placeholderForeground:#767676;
+    --vscode-inputValidation-infoBackground:#d6ecf2;
+    --vscode-inputValidation-infoBorder:#007acc;
+    --vscode-inputValidation-warningBackground:#f6f5d2;
+    --vscode-inputValidation-warningBorder:#b89500;
+    --vscode-inputValidation-errorBackground:#f2dede;
+    --vscode-inputValidation-errorBorder:#be1100;
+    --vscode-dropdown-background:#ffffff;
+    --vscode-dropdown-border:#cecece;
+    --vscode-checkbox-background:#ffffff;
+    --vscode-checkbox-border:#cecece;
+    --vscode-button-foreground:#ffffff;
+    --vscode-button-background:#007acc;
+    --vscode-button-hoverBackground:#0062a3;
+    --vscode-button-secondaryForeground:#ffffff;
+    --vscode-button-secondaryBackground:#5f6a79;
+    --vscode-button-secondaryHoverBackground:#4c5561;
+    --vscode-badge-background:#c4c4c4;
+    --vscode-badge-foreground:#333333;
+    --vscode-scrollbar-shadow:#dddddd;
+    --vscode-scrollbarSlider-background:rgba(100, 100, 100, 0.4);
+    --vscode-scrollbarSlider-hoverBackground:rgba(100, 100, 100, 0.7);
+    --vscode-scrollbarSlider-activeBackground:rgba(0, 0, 0, 0.6);
+    --vscode-progressBar-background:#0e70c0;
+    --vscode-editorError-foreground:#e51400;
+    --vscode-editorWarning-foreground:#e9a700;
+    --vscode-editorInfo-foreground:#75beff;
+    --vscode-editorHint-foreground:#6c6c6c;
+    --vscode-editor-background:#ffffff;
+    --vscode-editor-foreground:#000000;
+    --vscode-editorWidget-background:#f3f3f3;
+    --vscode-editorWidget-foreground:#616161;
+    --vscode-editorWidget-border:#c8c8c8;
+    --vscode-quickInput-background:#f3f3f3;
+    --vscode-quickInput-foreground:#616161;
+    --vscode-quickInputTitle-background:rgba(0, 0, 0, 0.06);
+    --vscode-pickerGroup-foreground:#0066bf;
+    --vscode-pickerGroup-border:#cccedb;
+    --vscode-editor-selectionBackground:#add6ff;
+    --vscode-editor-inactiveSelectionBackground:#e5ebf1;
+    --vscode-editor-selectionHighlightBackground:rgba(173, 214, 255, 0.5);
+    --vscode-editor-findMatchBackground:#a8ac94;
+    --vscode-editor-findMatchHighlightBackground:rgba(234, 92, 0, 0.33);
+    --vscode-editor-findRangeHighlightBackground:rgba(180, 180, 180, 0.3);
+    --vscode-searchEditor-findMatchBackground:rgba(234, 92, 0, 0.22);
+    --vscode-editor-hoverHighlightBackground:rgba(173, 214, 255, 0.15);
+    --vscode-editorHoverWidget-background:#f3f3f3;
+    --vscode-editorHoverWidget-foreground:#616161;
+    --vscode-editorHoverWidget-border:#c8c8c8;
+    --vscode-editorHoverWidget-statusBarBackground:#e7e7e7;
+    --vscode-editorLink-activeForeground:#0000ff;
+    --vscode-editorLightBulb-foreground:#ddb100;
+    --vscode-editorLightBulbAutoFix-foreground:#007acc;
+    --vscode-diffEditor-insertedTextBackground:rgba(155, 185, 85, 0.2);
+    --vscode-diffEditor-removedTextBackground:rgba(255, 0, 0, 0.2);
+    --vscode-diffEditor-diagonalFill:rgba(34, 34, 34, 0.2);
+    --vscode-list-focusBackground:#d6ebff;
+    --vscode-list-activeSelectionBackground:#0074e8;
+    --vscode-list-activeSelectionForeground:#ffffff;
+    --vscode-list-inactiveSelectionBackground:#e4e6f1;
+    --vscode-list-hoverBackground:#e8e8e8;
+    --vscode-list-dropBackground:#d6ebff;
+    --vscode-list-highlightForeground:#0066bf;
+    --vscode-list-invalidItemForeground:#b89500;
+    --vscode-list-errorForeground:#b01011;
+    --vscode-list-warningForeground:#855f00;
+    --vscode-listFilterWidget-background:#efc1ad;
+    --vscode-listFilterWidget-outline:rgba(0, 0, 0, 0);
+    --vscode-listFilterWidget-noMatchesOutline:#be1100;
+    --vscode-list-filterMatchBackground:rgba(234, 92, 0, 0.33);
+    --vscode-tree-indentGuidesStroke:#a9a9a9;
+    --vscode-list-deemphasizedForeground:#8e8e90;
+    --vscode-menu-foreground:#616161;
+    --vscode-menu-background:#ffffff;
+    --vscode-menu-selectionForeground:#ffffff;
+    --vscode-menu-selectionBackground:#0074e8;
+    --vscode-menu-separatorBackground:#888888;
+    --vscode-editor-snippetTabstopHighlightBackground:rgba(10, 50, 100, 0.2);
+    --vscode-editor-snippetFinalTabstopHighlightBorder:rgba(10, 50, 100, 0.5);
+    --vscode-breadcrumb-foreground:rgba(97, 97, 97, 0.8);
+    --vscode-breadcrumb-background:#ffffff;
+    --vscode-breadcrumb-focusForeground:#4e4e4e;
+    --vscode-breadcrumb-activeSelectionForeground:#4e4e4e;
+    --vscode-breadcrumbPicker-background:#f3f3f3;
+    --vscode-merge-currentHeaderBackground:rgba(64, 200, 174, 0.5);
+    --vscode-merge-currentContentBackground:rgba(64, 200, 174, 0.2);
+    --vscode-merge-incomingHeaderBackground:rgba(64, 166, 255, 0.5);
+    --vscode-merge-incomingContentBackground:rgba(64, 166, 255, 0.2);
+    --vscode-merge-commonHeaderBackground:rgba(96, 96, 96, 0.4);
+    --vscode-merge-commonContentBackground:rgba(96, 96, 96, 0.16);
+    --vscode-editorOverviewRuler-currentContentForeground:rgba(64, 200, 174, 0.5);
+    --vscode-editorOverviewRuler-incomingContentForeground:rgba(64, 166, 255, 0.5);
+    --vscode-editorOverviewRuler-commonContentForeground:rgba(96, 96, 96, 0.4);
+    --vscode-editorOverviewRuler-findMatchForeground:rgba(209, 134, 22, 0.49);
+    --vscode-editorOverviewRuler-selectionHighlightForeground:rgba(160, 160, 160, 0.8);
+    --vscode-minimap-findMatchHighlight:#d18616;
+    --vscode-minimap-selectionHighlight:#add6ff;
+    --vscode-minimap-errorHighlight:rgba(255, 18, 18, 0.7);
+    --vscode-minimap-warningHighlight:#e9a700;
+    --vscode-minimapSlider-background:rgba(100, 100, 100, 0.2);
+    --vscode-minimapSlider-hoverBackground:rgba(100, 100, 100, 0.35);
+    --vscode-minimapSlider-activeBackground:rgba(0, 0, 0, 0.3);
+    --vscode-problemsErrorIcon-foreground:#e51400;
+    --vscode-problemsWarningIcon-foreground:#e9a700;
+    --vscode-problemsInfoIcon-foreground:#75beff;
+    --vscode-editor-lineHighlightBorder:#eeeeee;
+    --vscode-editor-rangeHighlightBackground:rgba(253, 255, 0, 0.2);
+    --vscode-editor-symbolHighlightBackground:rgba(234, 92, 0, 0.33);
+    --vscode-editorCursor-foreground:#000000;
+    --vscode-editorWhitespace-foreground:rgba(51, 51, 51, 0.2);
+    --vscode-editorIndentGuide-background:#d3d3d3;
+    --vscode-editorIndentGuide-activeBackground:#939393;
+    --vscode-editorLineNumber-foreground:#237893;
+    --vscode-editorActiveLineNumber-foreground:#0b216f;
+    --vscode-editorLineNumber-activeForeground:#0b216f;
+    --vscode-editorRuler-foreground:#d3d3d3;
+    --vscode-editorCodeLens-foreground:#999999;
+    --vscode-editorBracketMatch-background:rgba(0, 100, 0, 0.1);
+    --vscode-editorBracketMatch-border:#b9b9b9;
+    --vscode-editorOverviewRuler-border:rgba(127, 127, 127, 0.3);
+    --vscode-editorGutter-background:#ffffff;
+    --vscode-editorUnnecessaryCode-opacity:rgba(0, 0, 0, 0.47);
+    --vscode-editorOverviewRuler-rangeHighlightForeground:rgba(0, 122, 204, 0.6);
+    --vscode-editorOverviewRuler-errorForeground:rgba(255, 18, 18, 0.7);
+    --vscode-editorOverviewRuler-warningForeground:#e9a700;
+    --vscode-editorOverviewRuler-infoForeground:#75beff;
+    --vscode-editorOverviewRuler-bracketMatchForeground:#a0a0a0;
+    --vscode-symbolIcon-arrayForeground:#616161;
+    --vscode-symbolIcon-booleanForeground:#616161;
+    --vscode-symbolIcon-classForeground:#d67e00;
+    --vscode-symbolIcon-colorForeground:#616161;
+    --vscode-symbolIcon-constantForeground:#616161;
+    --vscode-symbolIcon-constructorForeground:#652d90;
+    --vscode-symbolIcon-enumeratorForeground:#d67e00;
+    --vscode-symbolIcon-enumeratorMemberForeground:#007acc;
+    --vscode-symbolIcon-eventForeground:#d67e00;
+    --vscode-symbolIcon-fieldForeground:#007acc;
+    --vscode-symbolIcon-fileForeground:#616161;
+    --vscode-symbolIcon-folderForeground:#616161;
+    --vscode-symbolIcon-functionForeground:#652d90;
+    --vscode-symbolIcon-interfaceForeground:#007acc;
+    --vscode-symbolIcon-keyForeground:#616161;
+    --vscode-symbolIcon-keywordForeground:#616161;
+    --vscode-symbolIcon-methodForeground:#652d90;
+    --vscode-symbolIcon-moduleForeground:#616161;
+    --vscode-symbolIcon-namespaceForeground:#616161;
+    --vscode-symbolIcon-nullForeground:#616161;
+    --vscode-symbolIcon-numberForeground:#616161;
+    --vscode-symbolIcon-objectForeground:#616161;
+    --vscode-symbolIcon-operatorForeground:#616161;
+    --vscode-symbolIcon-packageForeground:#616161;
+    --vscode-symbolIcon-propertyForeground:#616161;
+    --vscode-symbolIcon-referenceForeground:#616161;
+    --vscode-symbolIcon-snippetForeground:#616161;
+    --vscode-symbolIcon-stringForeground:#616161;
+    --vscode-symbolIcon-structForeground:#616161;
+    --vscode-symbolIcon-textForeground:#616161;
+    --vscode-symbolIcon-typeParameterForeground:#616161;
+    --vscode-symbolIcon-unitForeground:#616161;
+    --vscode-symbolIcon-variableForeground:#007acc;
+    --vscode-editor-foldBackground:rgba(173, 214, 255, 0.3);
+    --vscode-editorGutter-foldingControlForeground:#424242;
+    --vscode-editor-onTypeRenameBackground:rgba(255, 0, 0, 0.3);
+    --vscode-editorSuggestWidget-background:#f3f3f3;
+    --vscode-editorSuggestWidget-border:#c8c8c8;
+    --vscode-editorSuggestWidget-foreground:#000000;
+    --vscode-editorSuggestWidget-selectedBackground:#d6ebff;
+    --vscode-editorSuggestWidget-highlightForeground:#0066bf;
+    --vscode-editor-wordHighlightBackground:rgba(87, 87, 87, 0.25);
+    --vscode-editor-wordHighlightStrongBackground:rgba(14, 99, 156, 0.25);
+    --vscode-editorOverviewRuler-wordHighlightForeground:rgba(160, 160, 160, 0.8);
+    --vscode-editorOverviewRuler-wordHighlightStrongForeground:rgba(192, 160, 192, 0.8);
+    --vscode-peekViewTitle-background:#ffffff;
+    --vscode-peekViewTitleLabel-foreground:#333333;
+    --vscode-peekViewTitleDescription-foreground:rgba(97, 97, 97, 0.9);
+    --vscode-peekView-border:#007acc;
+    --vscode-peekViewResult-background:#f3f3f3;
+    --vscode-peekViewResult-lineForeground:#646465;
+    --vscode-peekViewResult-fileForeground:#1e1e1e;
+    --vscode-peekViewResult-selectionBackground:rgba(51, 153, 255, 0.2);
+    --vscode-peekViewResult-selectionForeground:#6c6c6c;
+    --vscode-peekViewEditor-background:#f2f8fc;
+    --vscode-peekViewEditorGutter-background:#f2f8fc;
+    --vscode-peekViewResult-matchHighlightBackground:rgba(234, 92, 0, 0.3);
+    --vscode-peekViewEditor-matchHighlightBackground:rgba(245, 216, 2, 0.87);
+    --vscode-editorMarkerNavigationError-background:#e51400;
+    --vscode-editorMarkerNavigationWarning-background:#e9a700;
+    --vscode-editorMarkerNavigationInfo-background:#75beff;
+    --vscode-editorMarkerNavigation-background:#ffffff;
+    --vscode-tab-activeBackground:#ffffff;
+    --vscode-tab-unfocusedActiveBackground:#ffffff;
+    --vscode-tab-inactiveBackground:#ececec;
+    --vscode-tab-unfocusedInactiveBackground:#ececec;
+    --vscode-tab-activeForeground:#333333;
+    --vscode-tab-inactiveForeground:rgba(51, 51, 51, 0.7);
+    --vscode-tab-unfocusedActiveForeground:rgba(51, 51, 51, 0.7);
+    --vscode-tab-unfocusedInactiveForeground:rgba(51, 51, 51, 0.35);
+    --vscode-tab-activeModifiedBorder:#33aaee;
+    --vscode-tab-inactiveModifiedBorder:rgba(51, 170, 238, 0.5);
+    --vscode-tab-unfocusedActiveModifiedBorder:rgba(51, 170, 238, 0.7);
+    --vscode-tab-unfocusedInactiveModifiedBorder:rgba(51, 170, 238, 0.25);
+    --vscode-tab-border:#f3f3f3;
+    --vscode-editorPane-background:#ffffff;
+    --vscode-editorGroupHeader-tabsBackground:#f3f3f3;
+    --vscode-editorGroupHeader-noTabsBackground:#ffffff;
+    --vscode-editorGroup-border:#e7e7e7;
+    --vscode-editorGroup-dropBackground:rgba(38, 119, 203, 0.18);
+    --vscode-imagePreview-border:rgba(128, 128, 128, 0.35);
+    --vscode-panel-background:#ffffff;
+    --vscode-panel-border:rgba(128, 128, 128, 0.35);
+    --vscode-panelTitle-activeForeground:#424242;
+    --vscode-panelTitle-inactiveForeground:rgba(66, 66, 66, 0.75);
+    --vscode-panelTitle-activeBorder:#424242;
+    --vscode-panelInput-border:#dddddd;
+    --vscode-panel-dropBorder:#424242;
+    --vscode-panelSection-dropBackground:rgba(38, 119, 203, 0.18);
+    --vscode-panelSectionHeader-background:rgba(128, 128, 128, 0.2);
+    --vscode-panelSection-border:rgba(128, 128, 128, 0.35);
+    --vscode-statusBar-foreground:#ffffff;
+    --vscode-statusBar-noFolderForeground:#ffffff;
+    --vscode-statusBar-background:#007acc;
+    --vscode-statusBar-noFolderBackground:#68217a;
+    --vscode-statusBarItem-activeBackground:rgba(255, 255, 255, 0.18);
+    --vscode-statusBarItem-hoverBackground:rgba(255, 255, 255, 0.12);
+    --vscode-statusBarItem-prominentForeground:#ffffff;
+    --vscode-statusBarItem-prominentBackground:rgba(0, 0, 0, 0.5);
+    --vscode-statusBarItem-prominentHoverBackground:rgba(0, 0, 0, 0.3);
+    --vscode-activityBar-background:#2c2c2c;
+    --vscode-activityBar-foreground:#ffffff;
+    --vscode-activityBar-inactiveForeground:rgba(255, 255, 255, 0.4);
+    --vscode-activityBar-activeBorder:#ffffff;
+    --vscode-activityBar-dropBorder:#ffffff;
+    --vscode-activityBarBadge-background:#007acc;
+    --vscode-activityBarBadge-foreground:#ffffff;
+    --vscode-statusBarItem-remoteBackground:#16825d;
+    --vscode-statusBarItem-remoteForeground:#ffffff;
+    --vscode-extensionBadge-remoteBackground:#007acc;
+    --vscode-extensionBadge-remoteForeground:#ffffff;
+    --vscode-sideBar-background:#f3f3f3;
+    --vscode-sideBarTitle-foreground:#6f6f6f;
+    --vscode-sideBar-dropBackground:rgba(38, 119, 203, 0.18);
+    --vscode-sideBarSectionHeader-background:rgba(0, 0, 0, 0);
+    --vscode-sideBarSectionHeader-border:rgba(97, 97, 97, 0.19);
+    --vscode-titleBar-activeForeground:#333333;
+    --vscode-titleBar-inactiveForeground:rgba(51, 51, 51, 0.6);
+    --vscode-titleBar-activeBackground:#dddddd;
+    --vscode-titleBar-inactiveBackground:rgba(221, 221, 221, 0.6);
+    --vscode-menubar-selectionForeground:#333333;
+    --vscode-menubar-selectionBackground:rgba(0, 0, 0, 0.1);
+    --vscode-notifications-foreground:#616161;
+    --vscode-notifications-background:#f3f3f3;
+    --vscode-notificationLink-foreground:#006ab1;
+    --vscode-notificationCenterHeader-background:#e7e7e7;
+    --vscode-notifications-border:#e7e7e7;
+    --vscode-notificationsErrorIcon-foreground:#e51400;
+    --vscode-notificationsWarningIcon-foreground:#e9a700;
+    --vscode-notificationsInfoIcon-foreground:#75beff;
+    --vscode-editorGutter-commentRangeForeground:#c5c5c5;
+    --vscode-editor-stackFrameHighlightBackground:rgba(255, 255, 102, 0.45);
+    --vscode-editor-focusedStackFrameHighlightBackground:rgba(206, 231, 206, 0.45);
+    --vscode-terminal-foreground:#333333;
+    --vscode-terminal-selectionBackground:rgba(0, 0, 0, 0.25);
+    --vscode-terminal-border:rgba(128, 128, 128, 0.35);
+    --vscode-statusBar-debuggingBackground:#cc6633;
+    --vscode-statusBar-debuggingForeground:#ffffff;
+    --vscode-settings-headerForeground:#444444;
+    --vscode-settings-modifiedItemIndicator:#66afe0;
+    --vscode-settings-dropdownBackground:#ffffff;
+    --vscode-settings-dropdownBorder:#cecece;
+    --vscode-settings-dropdownListBorder:#c8c8c8;
+    --vscode-settings-checkboxBackground:#ffffff;
+    --vscode-settings-checkboxBorder:#cecece;
+    --vscode-settings-textInputBackground:#ffffff;
+    --vscode-settings-textInputForeground:#616161;
+    --vscode-settings-textInputBorder:#cecece;
+    --vscode-settings-numberInputBackground:#ffffff;
+    --vscode-settings-numberInputForeground:#616161;
+    --vscode-settings-numberInputBorder:#cecece;
+    --vscode-debugExceptionWidget-border:#a31515;
+    --vscode-debugExceptionWidget-background:#f1dfde;
+    --vscode-editorGutter-modifiedBackground:#66afe0;
+    --vscode-editorGutter-addedBackground:#81b88b;
+    --vscode-editorGutter-deletedBackground:#ca4b51;
+    --vscode-minimapGutter-modifiedBackground:#66afe0;
+    --vscode-minimapGutter-addedBackground:#81b88b;
+    --vscode-minimapGutter-deletedBackground:#ca4b51;
+    --vscode-editorOverviewRuler-modifiedForeground:rgba(102, 175, 224, 0.6);
+    --vscode-editorOverviewRuler-addedForeground:rgba(129, 184, 139, 0.6);
+    --vscode-editorOverviewRuler-deletedForeground:rgba(202, 75, 81, 0.6);
+    --vscode-searchEditor-textInputBorder:#cecece;
+    --vscode-debugIcon-breakpointForeground:#e51400;
+    --vscode-debugIcon-breakpointDisabledForeground:#848484;
+    --vscode-debugIcon-breakpointUnverifiedForeground:#848484;
+    --vscode-debugIcon-breakpointCurrentStackframeForeground:#ffcc00;
+    --vscode-debugIcon-breakpointStackframeForeground:#89d185;
+    --vscode-debugToolBar-background:#f3f3f3;
+    --vscode-debugIcon-startForeground:#388a34;
+    --vscode-debugIcon-pauseForeground:#007acc;
+    --vscode-debugIcon-stopForeground:#a1260d;
+    --vscode-debugIcon-disconnectForeground:#a1260d;
+    --vscode-debugIcon-restartForeground:#388a34;
+    --vscode-debugIcon-stepOverForeground:#007acc;
+    --vscode-debugIcon-stepIntoForeground:#007acc;
+    --vscode-debugIcon-stepOutForeground:#007acc;
+    --vscode-debugIcon-continueForeground:#007acc;
+    --vscode-debugIcon-stepBackForeground:#007acc;
+    --vscode-debugTokenExpression-name:#9b46b0;
+    --vscode-debugTokenExpression-value:rgba(108, 108, 108, 0.8);
+    --vscode-debugTokenExpression-string:#a31515;
+    --vscode-debugTokenExpression-boolean:#0000ff;
+    --vscode-debugTokenExpression-number:#098658;
+    --vscode-debugTokenExpression-error:#e51400;
+    --vscode-debugView-exceptionLabelForeground:#ffffff;
+    --vscode-debugView-exceptionLabelBackground:#a31515;
+    --vscode-debugView-stateLabelForeground:#616161;
+    --vscode-debugView-stateLabelBackground:rgba(136, 136, 136, 0.27);
+    --vscode-debugView-valueChangedHighlight:#569cd6;
+    --vscode-debugConsole-infoForeground:#75beff;
+    --vscode-debugConsole-warningForeground:#e9a700;
+    --vscode-debugConsole-errorForeground:#a1260d;
+    --vscode-debugConsole-sourceForeground:#616161;
+    --vscode-debugConsoleInputIcon-foreground:#616161;
+    --vscode-extensionButton-prominentBackground:#327e36;
+    --vscode-extensionButton-prominentForeground:#ffffff;
+    --vscode-extensionButton-prominentHoverBackground:#28632b;
+    --vscode-notebook-cellBorderColor:#dae3e9;
+    --vscode-notebook-focusedEditorBorder:#0090f1;
+    --vscode-notebookStatusSuccessIcon-foreground:#388a34;
+    --vscode-notebookStatusErrorIcon-foreground:#a1260d;
+    --vscode-notebookStatusRunningIcon-foreground:#616161;
+    --vscode-notebook-outputContainerBackgroundColor:rgba(200, 221, 241, 0.31);
+    --vscode-notebook-cellToolbarSeparator:rgba(128, 128, 128, 0.35);
+    --vscode-notebook-focusedCellBackground:rgba(200, 221, 241, 0.31);
+    --vscode-notebook-cellHoverBackground:rgba(200, 221, 241, 0.22);
+    --vscode-notebook-focusedCellBorder:rgba(0, 0, 0, 0.12);
+    --vscode-notebook-cellStatusBarItemHoverBackground:rgba(0, 0, 0, 0.08);
+    --vscode-notebook-cellInsertionIndicator:#0090f1;
+    --vscode-notebookScrollbarSlider-background:rgba(100, 100, 100, 0.4);
+    --vscode-notebookScrollbarSlider-hoverBackground:rgba(100, 100, 100, 0.7);
+    --vscode-notebookScrollbarSlider-activeBackground:rgba(0, 0, 0, 0.6);
+    --vscode-notebook-symbolHighlightBackground:rgba(253, 255, 0, 0.2);
+    --vscode-scm-providerBorder:#c8c8c8;
+    --vscode-terminal-ansiBlack:#000000;
+    --vscode-terminal-ansiRed:#cd3131;
+    --vscode-terminal-ansiGreen:#00bc00;
+    --vscode-terminal-ansiYellow:#949800;
+    --vscode-terminal-ansiBlue:#0451a5;
+    --vscode-terminal-ansiMagenta:#bc05bc;
+    --vscode-terminal-ansiCyan:#0598bc;
+    --vscode-terminal-ansiWhite:#555555;
+    --vscode-terminal-ansiBrightBlack:#666666;
+    --vscode-terminal-ansiBrightRed:#cd3131;
+    --vscode-terminal-ansiBrightGreen:#14ce14;
+    --vscode-terminal-ansiBrightYellow:#b5ba00;
+    --vscode-terminal-ansiBrightBlue:#0451a5;
+    --vscode-terminal-ansiBrightMagenta:#bc05bc;
+    --vscode-terminal-ansiBrightCyan:#0598bc;
+    --vscode-terminal-ansiBrightWhite:#a5a5a5;
+    --vscode-gitDecoration-addedResourceForeground:#587c0c;
+    --vscode-gitDecoration-modifiedResourceForeground:#895503;
+    --vscode-gitDecoration-deletedResourceForeground:#ad0707;
+    --vscode-gitDecoration-untrackedResourceForeground:#007100;
+    --vscode-gitDecoration-ignoredResourceForeground:#8e8e90;
+    --vscode-gitDecoration-conflictingResourceForeground:#6c6cc4;
+    --vscode-gitDecoration-submoduleResourceForeground:#1258a7;
+    --vscode-gitlens-gutterBackgroundColor:rgba(0, 0, 0, 0.05);
+    --vscode-gitlens-gutterForegroundColor:#747474;
+    --vscode-gitlens-gutterUncommittedForegroundColor:rgba(0, 188, 242, 0.6);
+    --vscode-gitlens-trailingLineBackgroundColor:rgba(0, 0, 0, 0);
+    --vscode-gitlens-trailingLineForegroundColor:rgba(153, 153, 153, 0.35);
+    --vscode-gitlens-lineHighlightBackgroundColor:rgba(0, 188, 242, 0.2);
+    --vscode-gitlens-lineHighlightOverviewRulerColor:rgba(0, 188, 242, 0.6);
+    --vscode-issues-newIssueDecoration:rgba(0, 0, 0, 0.28);
+}
+
+body
+{
+    background-color: var(--vscode-editor-background);
+    color: var(--vscode-editor-foreground);
+    font-family: var(--vscode-font-family);
+    font-weight: var(--vscode-font-weight);
+    font-size: var(--vscode-font-size);
+    margin: 0;
+    padding: 0 20px;
+}
+
+img
+{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+a
+{
+    color: var(--vscode-textLink-foreground);
+}
+
+a:hover
+{
+    color: var(--vscode-textLink-activeForeground);
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus
+{
+    outline: 1px solid -webkit-focus-ring-color;
+    outline-offset: -1px;
+}
+
+code
+{
+    color: var(--vscode-textPreformat-foreground);
+}
+
+blockquote
+{
+    background: var(--vscode-textBlockQuote-background);
+    border-color: var(--vscode-textBlockQuote-border);
+}
+
+kbd
+{
+    color: var(--vscode-editor-foreground);
+    border-radius: 3px;
+    vertical-align: middle;
+    padding: 1px 3px;
+
+    background-color: hsla(0,0%,50%,.17);
+    border: 1px solid rgba(71,71,71,.4);
+    border-bottom-color: rgba(88,88,88,.4);
+    box-shadow: inset 0 -1px 0 rgba(88,88,88,.4);
+}
+
+.vscode-light kbd
+{
+    background-color: hsla(0,0%,87%,.5);
+    border: 1px solid hsla(0,0%,80%,.7);
+    border-bottom-color: hsla(0,0%,73%,.7);
+    box-shadow: inset 0 -1px 0 hsla(0,0%,73%,.7);
+}
+
+::-webkit-scrollbar
+{
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-corner
+{
+    background-color: var(--vscode-editor-background);
+}
+
+::-webkit-scrollbar-thumb
+{
+    background-color: var(--vscode-scrollbarSlider-background);
+}
+::-webkit-scrollbar-thumb:hover
+{
+    background-color: var(--vscode-scrollbarSlider-hoverBackground);
+}
+::-webkit-scrollbar-thumb:active
+{
+    background-color: var(--vscode-scrollbarSlider-activeBackground);
+}
+
+.emoji
+{
+    height: 20px;
+}
+
+pre
+{
+    white-space: pre-wrap;
+}
+
+.page-break
+{
+    display: block;
+    page-break-after: always;
+}
+
+.no-page-break
+{
+    page-break-inside: avoid;
+}
+</style>
+<style>/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+</style>
+<style>/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+html, body {
+	font-family: var(--markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", system-ui, "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+body {
+	padding-top: 1em;
+}
+
+/* Reset margin top for elements */
+h1, h2, h3, h4, h5, h6,
+p, ol, ul, pre {
+	margin-top: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 600;
+	margin-top: 24px;
+	margin-bottom: 16px;
+	line-height: 1.25;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection :not(tr,ul,ol).code-active-line:before,
+body.showEditorSelection :not(tr,ul,ol).code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+.vscode-high-contrast.showEditorSelection  :not(tr,ul,ol).code-line .code-line:hover:before {
+	border-left: none;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+/* Prevent `sub` and `sup` elements from affecting line height */
+sub,
+sup {
+	line-height: 0;
+}
+
+ul ul:first-child,
+ul ol:first-child,
+ol ul:first-child,
+ol ol:first-child {
+	margin-bottom: 0;
+}
+
+img, video {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+p {
+	margin-bottom: 16px;
+}
+
+li p {
+	margin-bottom: 0.7em;
+}
+
+ul,
+ol {
+	margin-bottom: 0.7em;
+}
+
+hr {
+	border: 0;
+	height: 1px;
+	border-bottom: 1px solid;
+}
+
+h1 {
+	font-size: 2em;
+	margin-top: 0;
+	padding-bottom: 0.3em;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h2 {
+	font-size: 1.5em;
+	padding-bottom: 0.3em;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h3 {
+	font-size: 1.25em;
+}
+
+h4 {
+	font-size: 1em;
+}
+
+h5 {
+	font-size: 0.875em;
+}
+
+h6 {
+	font-size: 0.85em;
+}
+
+table {
+	border-collapse: collapse;
+	margin-bottom: 0.7em;
+}
+
+th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+th,
+td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0;
+	padding: 2px 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+	border-radius: 2px;
+}
+
+code {
+	font-family: var(--vscode-editor-font-family, "SF Mono", Monaco, Menlo, Consolas, "Ubuntu Mono", "Liberation Mono", "DejaVu Sans Mono", "Courier New", monospace);
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	display: inline-block;
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+	background: none;
+}
+
+/** Theming */
+
+pre {
+	background-color: var(--vscode-textCodeBlock-background);
+	border: 1px solid var(--vscode-widget-border);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light h2,
+.vscode-light hr,
+.vscode-light td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark h2,
+.vscode-dark hr,
+.vscode-dark td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+</style>
+<style>/*
+https://raw.githubusercontent.com/isagalaev/highlight.js/master/src/styles/vs2015.css
+*/
+/*
+ * Visual Studio 2015 dark style
+ * Author: Nicolas LLOBERA <nllobera@gmail.com>
+ */
+
+
+.hljs-keyword,
+.hljs-literal,
+.hljs-symbol,
+.hljs-name {
+	color: #569CD6;
+}
+.hljs-link {
+	color: #569CD6;
+	text-decoration: underline;
+}
+
+.hljs-built_in,
+.hljs-type {
+	color: #4EC9B0;
+}
+
+.hljs-number,
+.hljs-class {
+	color: #B8D7A3;
+}
+
+.hljs-string,
+.hljs-meta-string {
+	color: #D69D85;
+}
+
+.hljs-regexp,
+.hljs-template-tag {
+	color: #9A5334;
+}
+
+.hljs-subst,
+.hljs-function,
+.hljs-title,
+.hljs-params,
+.hljs-formula {
+	color: #DCDCDC;
+}
+
+.hljs-comment,
+.hljs-quote {
+	color: #57A64A;
+	font-style: italic;
+}
+
+.hljs-doctag {
+	color: #608B4E;
+}
+
+.hljs-meta,
+.hljs-meta-keyword,
+.hljs-tag {
+	color: #9B9B9B;
+}
+
+.hljs-variable,
+.hljs-template-variable {
+	color: #BD63C5;
+}
+
+.hljs-attr,
+.hljs-attribute,
+.hljs-builtin-name {
+	color: #9CDCFE;
+}
+
+.hljs-section {
+	color: gold;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+
+/*.hljs-code {
+	font-family:'Monospace';
+}*/
+
+.hljs-bullet,
+.hljs-selector-tag,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-selector-attr,
+.hljs-selector-pseudo {
+	color: #D7BA7D;
+}
+
+.hljs-addition {
+	background-color: var(--vscode-diffEditor-insertedTextBackground, rgba(155, 185, 85, 0.2));
+	color: rgb(155, 185, 85);
+	display: inline-block;
+	width: 100%;
+}
+
+.hljs-deletion {
+	background: var(--vscode-diffEditor-removedTextBackground, rgba(255, 0, 0, 0.2));
+	color: rgb(255, 0, 0);
+	display: inline-block;
+	width: 100%;
+}
+
+
+/*
+From https://raw.githubusercontent.com/isagalaev/highlight.js/master/src/styles/vs.css
+*/
+/*
+
+Visual Studio-like style based on original C# coloring by Jason Diamond <jason@diamond.name>
+
+*/
+
+.vscode-light .hljs-function,
+.vscode-light .hljs-params,
+.vscode-light .hljs-number,
+.vscode-light .hljs-class  {
+	color: inherit;
+}
+
+.vscode-light .hljs-comment,
+.vscode-light .hljs-quote,
+.vscode-light .hljs-number,
+.vscode-light .hljs-class,
+.vscode-light .hljs-variable {
+	color: #008000;
+}
+
+.vscode-light .hljs-keyword,
+.vscode-light .hljs-selector-tag,
+.vscode-light .hljs-name,
+.vscode-light .hljs-tag {
+	color: #00f;
+}
+
+.vscode-light .hljs-built_in,
+.vscode-light .hljs-builtin-name {
+	color: #007acc;
+}
+
+.vscode-light .hljs-string,
+.vscode-light .hljs-section,
+.vscode-light .hljs-attribute,
+.vscode-light .hljs-literal,
+.vscode-light .hljs-template-tag,
+.vscode-light .hljs-template-variable,
+.vscode-light .hljs-type {
+	color: #a31515;
+}
+
+.vscode-light .hljs-subst,
+.vscode-light .hljs-selector-attr,
+.vscode-light .hljs-selector-pseudo,
+.vscode-light .hljs-meta,
+.vscode-light .hljs-meta-keyword {
+	color: #2b91af;
+}
+.vscode-light .hljs-title,
+.vscode-light .hljs-doctag {
+	color: #808080;
+}
+
+.vscode-light .hljs-attr {
+	color: #f00;
+}
+
+.vscode-light .hljs-symbol,
+.vscode-light .hljs-bullet,
+.vscode-light .hljs-link {
+	color: #00b0e8;
+}
+
+
+.vscode-light .hljs-emphasis {
+	font-style: italic;
+}
+
+.vscode-light .hljs-strong {
+	font-weight: bold;
+}
+</style>
+<style>@font-face{font-family:KaTeX_AMS;font-style:normal;font-weight:400;src:url(fonts/KaTeX_AMS-Regular.woff2) format("woff2"),url(fonts/KaTeX_AMS-Regular.woff) format("woff"),url(fonts/KaTeX_AMS-Regular.ttf) format("truetype")}@font-face{font-family:KaTeX_Caligraphic;font-style:normal;font-weight:700;src:url(fonts/KaTeX_Caligraphic-Bold.woff2) format("woff2"),url(fonts/KaTeX_Caligraphic-Bold.woff) format("woff"),url(fonts/KaTeX_Caligraphic-Bold.ttf) format("truetype")}@font-face{font-family:KaTeX_Caligraphic;font-style:normal;font-weight:400;src:url(fonts/KaTeX_Caligraphic-Regular.woff2) format("woff2"),url(fonts/KaTeX_Caligraphic-Regular.woff) format("woff"),url(fonts/KaTeX_Caligraphic-Regular.ttf) format("truetype")}@font-face{font-family:KaTeX_Fraktur;font-style:normal;font-weight:700;src:url(fonts/KaTeX_Fraktur-Bold.woff2) format("woff2"),url(fonts/KaTeX_Fraktur-Bold.woff) format("woff"),url(fonts/KaTeX_Fraktur-Bold.ttf) format("truetype")}@font-face{font-family:KaTeX_Fraktur;font-style:normal;font-weight:400;src:url(fonts/KaTeX_Fraktur-Regular.woff2) format("woff2"),url(fonts/KaTeX_Fraktur-Regular.woff) format("woff"),url(fonts/KaTeX_Fraktur-Regular.ttf) format("truetype")}@font-face{font-family:KaTeX_Main;font-style:normal;font-weight:700;src:url(fonts/KaTeX_Main-Bold.woff2) format("woff2"),url(fonts/KaTeX_Main-Bold.woff) format("woff"),url(fonts/KaTeX_Main-Bold.ttf) format("truetype")}@font-face{font-family:KaTeX_Main;font-style:italic;font-weight:700;src:url(fonts/KaTeX_Main-BoldItalic.woff2) format("woff2"),url(fonts/KaTeX_Main-BoldItalic.woff) format("woff"),url(fonts/KaTeX_Main-BoldItalic.ttf) format("truetype")}@font-face{font-family:KaTeX_Main;font-style:italic;font-weight:400;src:url(fonts/KaTeX_Main-Italic.woff2) format("woff2"),url(fonts/KaTeX_Main-Italic.woff) format("woff"),url(fonts/KaTeX_Main-Italic.ttf) format("truetype")}@font-face{font-family:KaTeX_Main;font-style:normal;font-weight:400;src:url(fonts/KaTeX_Main-Regular.woff2) format("woff2"),url(fonts/KaTeX_Main-Regular.woff) format("woff"),url(fonts/KaTeX_Main-Regular.ttf) format("truetype")}@font-face{font-family:KaTeX_Math;font-style:italic;font-weight:700;src:url(fonts/KaTeX_Math-BoldItalic.woff2) format("woff2"),url(fonts/KaTeX_Math-BoldItalic.woff) format("woff"),url(fonts/KaTeX_Math-BoldItalic.ttf) format("truetype")}@font-face{font-family:KaTeX_Math;font-style:italic;font-weight:400;src:url(fonts/KaTeX_Math-Italic.woff2) format("woff2"),url(fonts/KaTeX_Math-Italic.woff) format("woff"),url(fonts/KaTeX_Math-Italic.ttf) format("truetype")}@font-face{font-family:"KaTeX_SansSerif";font-style:normal;font-weight:700;src:url(fonts/KaTeX_SansSerif-Bold.woff2) format("woff2"),url(fonts/KaTeX_SansSerif-Bold.woff) format("woff"),url(fonts/KaTeX_SansSerif-Bold.ttf) format("truetype")}@font-face{font-family:"KaTeX_SansSerif";font-style:italic;font-weight:400;src:url(fonts/KaTeX_SansSerif-Italic.woff2) format("woff2"),url(fonts/KaTeX_SansSerif-Italic.woff) format("woff"),url(fonts/KaTeX_SansSerif-Italic.ttf) format("truetype")}@font-face{font-family:"KaTeX_SansSerif";font-style:normal;font-weight:400;src:url(fonts/KaTeX_SansSerif-Regular.woff2) format("woff2"),url(fonts/KaTeX_SansSerif-Regular.woff) format("woff"),url(fonts/KaTeX_SansSerif-Regular.ttf) format("truetype")}@font-face{font-family:KaTeX_Script;font-style:normal;font-weight:400;src:url(fonts/KaTeX_Script-Regular.woff2) format("woff2"),url(fonts/KaTeX_Script-Regular.woff) format("woff"),url(fonts/KaTeX_Script-Regular.ttf) format("truetype")}@font-face{font-family:KaTeX_Size1;font-style:normal;font-weight:400;src:url(fonts/KaTeX_Size1-Regular.woff2) format("woff2"),url(fonts/KaTeX_Size1-Regular.woff) format("woff"),url(fonts/KaTeX_Size1-Regular.ttf) format("truetype")}@font-face{font-family:KaTeX_Size2;font-style:normal;font-weight:400;src:url(fonts/KaTeX_Size2-Regular.woff2) format("woff2"),url(fonts/KaTeX_Size2-Regular.woff) format("woff"),url(fonts/KaTeX_Size2-Regular.ttf) format("truetype")}@font-face{font-family:KaTeX_Size3;font-style:normal;font-weight:400;src:url(fonts/KaTeX_Size3-Regular.woff2) format("woff2"),url(fonts/KaTeX_Size3-Regular.woff) format("woff"),url(fonts/KaTeX_Size3-Regular.ttf) format("truetype")}@font-face{font-family:KaTeX_Size4;font-style:normal;font-weight:400;src:url(fonts/KaTeX_Size4-Regular.woff2) format("woff2"),url(fonts/KaTeX_Size4-Regular.woff) format("woff"),url(fonts/KaTeX_Size4-Regular.ttf) format("truetype")}@font-face{font-family:KaTeX_Typewriter;font-style:normal;font-weight:400;src:url(fonts/KaTeX_Typewriter-Regular.woff2) format("woff2"),url(fonts/KaTeX_Typewriter-Regular.woff) format("woff"),url(fonts/KaTeX_Typewriter-Regular.ttf) format("truetype")}.katex{text-rendering:auto;font:normal 1.21em KaTeX_Main,Times New Roman,serif;line-height:1.2;text-indent:0}.katex *{-ms-high-contrast-adjust:none!important;border-color:currentColor}.katex .katex-version:after{content:"0.16.9"}.katex .katex-mathml{clip:rect(1px,1px,1px,1px);border:0;height:1px;overflow:hidden;padding:0;position:absolute;width:1px}.katex .katex-html>.newline{display:block}.katex .base{position:relative;white-space:nowrap;width:-webkit-min-content;width:-moz-min-content;width:min-content}.katex .base,.katex .strut{display:inline-block}.katex .textbf{font-weight:700}.katex .textit{font-style:italic}.katex .textrm{font-family:KaTeX_Main}.katex .textsf{font-family:KaTeX_SansSerif}.katex .texttt{font-family:KaTeX_Typewriter}.katex .mathnormal{font-family:KaTeX_Math;font-style:italic}.katex .mathit{font-family:KaTeX_Main;font-style:italic}.katex .mathrm{font-style:normal}.katex .mathbf{font-family:KaTeX_Main;font-weight:700}.katex .boldsymbol{font-family:KaTeX_Math;font-style:italic;font-weight:700}.katex .amsrm,.katex .mathbb,.katex .textbb{font-family:KaTeX_AMS}.katex .mathcal{font-family:KaTeX_Caligraphic}.katex .mathfrak,.katex .textfrak{font-family:KaTeX_Fraktur}.katex .mathboldfrak,.katex .textboldfrak{font-family:KaTeX_Fraktur;font-weight:700}.katex .mathtt{font-family:KaTeX_Typewriter}.katex .mathscr,.katex .textscr{font-family:KaTeX_Script}.katex .mathsf,.katex .textsf{font-family:KaTeX_SansSerif}.katex .mathboldsf,.katex .textboldsf{font-family:KaTeX_SansSerif;font-weight:700}.katex .mathitsf,.katex .textitsf{font-family:KaTeX_SansSerif;font-style:italic}.katex .mainrm{font-family:KaTeX_Main;font-style:normal}.katex .vlist-t{border-collapse:collapse;display:inline-table;table-layout:fixed}.katex .vlist-r{display:table-row}.katex .vlist{display:table-cell;position:relative;vertical-align:bottom}.katex .vlist>span{display:block;height:0;position:relative}.katex .vlist>span>span{display:inline-block}.katex .vlist>span>.pstrut{overflow:hidden;width:0}.katex .vlist-t2{margin-right:-2px}.katex .vlist-s{display:table-cell;font-size:1px;min-width:2px;vertical-align:bottom;width:2px}.katex .vbox{align-items:baseline;display:inline-flex;flex-direction:column}.katex .hbox{width:100%}.katex .hbox,.katex .thinbox{display:inline-flex;flex-direction:row}.katex .thinbox{max-width:0;width:0}.katex .msupsub{text-align:left}.katex .mfrac>span>span{text-align:center}.katex .mfrac .frac-line{border-bottom-style:solid;display:inline-block;width:100%}.katex .hdashline,.katex .hline,.katex .mfrac .frac-line,.katex .overline .overline-line,.katex .rule,.katex .underline .underline-line{min-height:1px}.katex .mspace{display:inline-block}.katex .clap,.katex .llap,.katex .rlap{position:relative;width:0}.katex .clap>.inner,.katex .llap>.inner,.katex .rlap>.inner{position:absolute}.katex .clap>.fix,.katex .llap>.fix,.katex .rlap>.fix{display:inline-block}.katex .llap>.inner{right:0}.katex .clap>.inner,.katex .rlap>.inner{left:0}.katex .clap>.inner>span{margin-left:-50%;margin-right:50%}.katex .rule{border:0 solid;display:inline-block;position:relative}.katex .hline,.katex .overline .overline-line,.katex .underline .underline-line{border-bottom-style:solid;display:inline-block;width:100%}.katex .hdashline{border-bottom-style:dashed;display:inline-block;width:100%}.katex .sqrt>.root{margin-left:.27777778em;margin-right:-.55555556em}.katex .fontsize-ensurer.reset-size1.size1,.katex .sizing.reset-size1.size1{font-size:1em}.katex .fontsize-ensurer.reset-size1.size2,.katex .sizing.reset-size1.size2{font-size:1.2em}.katex .fontsize-ensurer.reset-size1.size3,.katex .sizing.reset-size1.size3{font-size:1.4em}.katex .fontsize-ensurer.reset-size1.size4,.katex .sizing.reset-size1.size4{font-size:1.6em}.katex .fontsize-ensurer.reset-size1.size5,.katex .sizing.reset-size1.size5{font-size:1.8em}.katex .fontsize-ensurer.reset-size1.size6,.katex .sizing.reset-size1.size6{font-size:2em}.katex .fontsize-ensurer.reset-size1.size7,.katex .sizing.reset-size1.size7{font-size:2.4em}.katex .fontsize-ensurer.reset-size1.size8,.katex .sizing.reset-size1.size8{font-size:2.88em}.katex .fontsize-ensurer.reset-size1.size9,.katex .sizing.reset-size1.size9{font-size:3.456em}.katex .fontsize-ensurer.reset-size1.size10,.katex .sizing.reset-size1.size10{font-size:4.148em}.katex .fontsize-ensurer.reset-size1.size11,.katex .sizing.reset-size1.size11{font-size:4.976em}.katex .fontsize-ensurer.reset-size2.size1,.katex .sizing.reset-size2.size1{font-size:.83333333em}.katex .fontsize-ensurer.reset-size2.size2,.katex .sizing.reset-size2.size2{font-size:1em}.katex .fontsize-ensurer.reset-size2.size3,.katex .sizing.reset-size2.size3{font-size:1.16666667em}.katex .fontsize-ensurer.reset-size2.size4,.katex .sizing.reset-size2.size4{font-size:1.33333333em}.katex .fontsize-ensurer.reset-size2.size5,.katex .sizing.reset-size2.size5{font-size:1.5em}.katex .fontsize-ensurer.reset-size2.size6,.katex .sizing.reset-size2.size6{font-size:1.66666667em}.katex .fontsize-ensurer.reset-size2.size7,.katex .sizing.reset-size2.size7{font-size:2em}.katex .fontsize-ensurer.reset-size2.size8,.katex .sizing.reset-size2.size8{font-size:2.4em}.katex .fontsize-ensurer.reset-size2.size9,.katex .sizing.reset-size2.size9{font-size:2.88em}.katex .fontsize-ensurer.reset-size2.size10,.katex .sizing.reset-size2.size10{font-size:3.45666667em}.katex .fontsize-ensurer.reset-size2.size11,.katex .sizing.reset-size2.size11{font-size:4.14666667em}.katex .fontsize-ensurer.reset-size3.size1,.katex .sizing.reset-size3.size1{font-size:.71428571em}.katex .fontsize-ensurer.reset-size3.size2,.katex .sizing.reset-size3.size2{font-size:.85714286em}.katex .fontsize-ensurer.reset-size3.size3,.katex .sizing.reset-size3.size3{font-size:1em}.katex .fontsize-ensurer.reset-size3.size4,.katex .sizing.reset-size3.size4{font-size:1.14285714em}.katex .fontsize-ensurer.reset-size3.size5,.katex .sizing.reset-size3.size5{font-size:1.28571429em}.katex .fontsize-ensurer.reset-size3.size6,.katex .sizing.reset-size3.size6{font-size:1.42857143em}.katex .fontsize-ensurer.reset-size3.size7,.katex .sizing.reset-size3.size7{font-size:1.71428571em}.katex .fontsize-ensurer.reset-size3.size8,.katex .sizing.reset-size3.size8{font-size:2.05714286em}.katex .fontsize-ensurer.reset-size3.size9,.katex .sizing.reset-size3.size9{font-size:2.46857143em}.katex .fontsize-ensurer.reset-size3.size10,.katex .sizing.reset-size3.size10{font-size:2.96285714em}.katex .fontsize-ensurer.reset-size3.size11,.katex .sizing.reset-size3.size11{font-size:3.55428571em}.katex .fontsize-ensurer.reset-size4.size1,.katex .sizing.reset-size4.size1{font-size:.625em}.katex .fontsize-ensurer.reset-size4.size2,.katex .sizing.reset-size4.size2{font-size:.75em}.katex .fontsize-ensurer.reset-size4.size3,.katex .sizing.reset-size4.size3{font-size:.875em}.katex .fontsize-ensurer.reset-size4.size4,.katex .sizing.reset-size4.size4{font-size:1em}.katex .fontsize-ensurer.reset-size4.size5,.katex .sizing.reset-size4.size5{font-size:1.125em}.katex .fontsize-ensurer.reset-size4.size6,.katex .sizing.reset-size4.size6{font-size:1.25em}.katex .fontsize-ensurer.reset-size4.size7,.katex .sizing.reset-size4.size7{font-size:1.5em}.katex .fontsize-ensurer.reset-size4.size8,.katex .sizing.reset-size4.size8{font-size:1.8em}.katex .fontsize-ensurer.reset-size4.size9,.katex .sizing.reset-size4.size9{font-size:2.16em}.katex .fontsize-ensurer.reset-size4.size10,.katex .sizing.reset-size4.size10{font-size:2.5925em}.katex .fontsize-ensurer.reset-size4.size11,.katex .sizing.reset-size4.size11{font-size:3.11em}.katex .fontsize-ensurer.reset-size5.size1,.katex .sizing.reset-size5.size1{font-size:.55555556em}.katex .fontsize-ensurer.reset-size5.size2,.katex .sizing.reset-size5.size2{font-size:.66666667em}.katex .fontsize-ensurer.reset-size5.size3,.katex .sizing.reset-size5.size3{font-size:.77777778em}.katex .fontsize-ensurer.reset-size5.size4,.katex .sizing.reset-size5.size4{font-size:.88888889em}.katex .fontsize-ensurer.reset-size5.size5,.katex .sizing.reset-size5.size5{font-size:1em}.katex .fontsize-ensurer.reset-size5.size6,.katex .sizing.reset-size5.size6{font-size:1.11111111em}.katex .fontsize-ensurer.reset-size5.size7,.katex .sizing.reset-size5.size7{font-size:1.33333333em}.katex .fontsize-ensurer.reset-size5.size8,.katex .sizing.reset-size5.size8{font-size:1.6em}.katex .fontsize-ensurer.reset-size5.size9,.katex .sizing.reset-size5.size9{font-size:1.92em}.katex .fontsize-ensurer.reset-size5.size10,.katex .sizing.reset-size5.size10{font-size:2.30444444em}.katex .fontsize-ensurer.reset-size5.size11,.katex .sizing.reset-size5.size11{font-size:2.76444444em}.katex .fontsize-ensurer.reset-size6.size1,.katex .sizing.reset-size6.size1{font-size:.5em}.katex .fontsize-ensurer.reset-size6.size2,.katex .sizing.reset-size6.size2{font-size:.6em}.katex .fontsize-ensurer.reset-size6.size3,.katex .sizing.reset-size6.size3{font-size:.7em}.katex .fontsize-ensurer.reset-size6.size4,.katex .sizing.reset-size6.size4{font-size:.8em}.katex .fontsize-ensurer.reset-size6.size5,.katex .sizing.reset-size6.size5{font-size:.9em}.katex .fontsize-ensurer.reset-size6.size6,.katex .sizing.reset-size6.size6{font-size:1em}.katex .fontsize-ensurer.reset-size6.size7,.katex .sizing.reset-size6.size7{font-size:1.2em}.katex .fontsize-ensurer.reset-size6.size8,.katex .sizing.reset-size6.size8{font-size:1.44em}.katex .fontsize-ensurer.reset-size6.size9,.katex .sizing.reset-size6.size9{font-size:1.728em}.katex .fontsize-ensurer.reset-size6.size10,.katex .sizing.reset-size6.size10{font-size:2.074em}.katex .fontsize-ensurer.reset-size6.size11,.katex .sizing.reset-size6.size11{font-size:2.488em}.katex .fontsize-ensurer.reset-size7.size1,.katex .sizing.reset-size7.size1{font-size:.41666667em}.katex .fontsize-ensurer.reset-size7.size2,.katex .sizing.reset-size7.size2{font-size:.5em}.katex .fontsize-ensurer.reset-size7.size3,.katex .sizing.reset-size7.size3{font-size:.58333333em}.katex .fontsize-ensurer.reset-size7.size4,.katex .sizing.reset-size7.size4{font-size:.66666667em}.katex .fontsize-ensurer.reset-size7.size5,.katex .sizing.reset-size7.size5{font-size:.75em}.katex .fontsize-ensurer.reset-size7.size6,.katex .sizing.reset-size7.size6{font-size:.83333333em}.katex .fontsize-ensurer.reset-size7.size7,.katex .sizing.reset-size7.size7{font-size:1em}.katex .fontsize-ensurer.reset-size7.size8,.katex .sizing.reset-size7.size8{font-size:1.2em}.katex .fontsize-ensurer.reset-size7.size9,.katex .sizing.reset-size7.size9{font-size:1.44em}.katex .fontsize-ensurer.reset-size7.size10,.katex .sizing.reset-size7.size10{font-size:1.72833333em}.katex .fontsize-ensurer.reset-size7.size11,.katex .sizing.reset-size7.size11{font-size:2.07333333em}.katex .fontsize-ensurer.reset-size8.size1,.katex .sizing.reset-size8.size1{font-size:.34722222em}.katex .fontsize-ensurer.reset-size8.size2,.katex .sizing.reset-size8.size2{font-size:.41666667em}.katex .fontsize-ensurer.reset-size8.size3,.katex .sizing.reset-size8.size3{font-size:.48611111em}.katex .fontsize-ensurer.reset-size8.size4,.katex .sizing.reset-size8.size4{font-size:.55555556em}.katex .fontsize-ensurer.reset-size8.size5,.katex .sizing.reset-size8.size5{font-size:.625em}.katex .fontsize-ensurer.reset-size8.size6,.katex .sizing.reset-size8.size6{font-size:.69444444em}.katex .fontsize-ensurer.reset-size8.size7,.katex .sizing.reset-size8.size7{font-size:.83333333em}.katex .fontsize-ensurer.reset-size8.size8,.katex .sizing.reset-size8.size8{font-size:1em}.katex .fontsize-ensurer.reset-size8.size9,.katex .sizing.reset-size8.size9{font-size:1.2em}.katex .fontsize-ensurer.reset-size8.size10,.katex .sizing.reset-size8.size10{font-size:1.44027778em}.katex .fontsize-ensurer.reset-size8.size11,.katex .sizing.reset-size8.size11{font-size:1.72777778em}.katex .fontsize-ensurer.reset-size9.size1,.katex .sizing.reset-size9.size1{font-size:.28935185em}.katex .fontsize-ensurer.reset-size9.size2,.katex .sizing.reset-size9.size2{font-size:.34722222em}.katex .fontsize-ensurer.reset-size9.size3,.katex .sizing.reset-size9.size3{font-size:.40509259em}.katex .fontsize-ensurer.reset-size9.size4,.katex .sizing.reset-size9.size4{font-size:.46296296em}.katex .fontsize-ensurer.reset-size9.size5,.katex .sizing.reset-size9.size5{font-size:.52083333em}.katex .fontsize-ensurer.reset-size9.size6,.katex .sizing.reset-size9.size6{font-size:.5787037em}.katex .fontsize-ensurer.reset-size9.size7,.katex .sizing.reset-size9.size7{font-size:.69444444em}.katex .fontsize-ensurer.reset-size9.size8,.katex .sizing.reset-size9.size8{font-size:.83333333em}.katex .fontsize-ensurer.reset-size9.size9,.katex .sizing.reset-size9.size9{font-size:1em}.katex .fontsize-ensurer.reset-size9.size10,.katex .sizing.reset-size9.size10{font-size:1.20023148em}.katex .fontsize-ensurer.reset-size9.size11,.katex .sizing.reset-size9.size11{font-size:1.43981481em}.katex .fontsize-ensurer.reset-size10.size1,.katex .sizing.reset-size10.size1{font-size:.24108004em}.katex .fontsize-ensurer.reset-size10.size2,.katex .sizing.reset-size10.size2{font-size:.28929605em}.katex .fontsize-ensurer.reset-size10.size3,.katex .sizing.reset-size10.size3{font-size:.33751205em}.katex .fontsize-ensurer.reset-size10.size4,.katex .sizing.reset-size10.size4{font-size:.38572806em}.katex .fontsize-ensurer.reset-size10.size5,.katex .sizing.reset-size10.size5{font-size:.43394407em}.katex .fontsize-ensurer.reset-size10.size6,.katex .sizing.reset-size10.size6{font-size:.48216008em}.katex .fontsize-ensurer.reset-size10.size7,.katex .sizing.reset-size10.size7{font-size:.57859209em}.katex .fontsize-ensurer.reset-size10.size8,.katex .sizing.reset-size10.size8{font-size:.69431051em}.katex .fontsize-ensurer.reset-size10.size9,.katex .sizing.reset-size10.size9{font-size:.83317261em}.katex .fontsize-ensurer.reset-size10.size10,.katex .sizing.reset-size10.size10{font-size:1em}.katex .fontsize-ensurer.reset-size10.size11,.katex .sizing.reset-size10.size11{font-size:1.19961427em}.katex .fontsize-ensurer.reset-size11.size1,.katex .sizing.reset-size11.size1{font-size:.20096463em}.katex .fontsize-ensurer.reset-size11.size2,.katex .sizing.reset-size11.size2{font-size:.24115756em}.katex .fontsize-ensurer.reset-size11.size3,.katex .sizing.reset-size11.size3{font-size:.28135048em}.katex .fontsize-ensurer.reset-size11.size4,.katex .sizing.reset-size11.size4{font-size:.32154341em}.katex .fontsize-ensurer.reset-size11.size5,.katex .sizing.reset-size11.size5{font-size:.36173633em}.katex .fontsize-ensurer.reset-size11.size6,.katex .sizing.reset-size11.size6{font-size:.40192926em}.katex .fontsize-ensurer.reset-size11.size7,.katex .sizing.reset-size11.size7{font-size:.48231511em}.katex .fontsize-ensurer.reset-size11.size8,.katex .sizing.reset-size11.size8{font-size:.57877814em}.katex .fontsize-ensurer.reset-size11.size9,.katex .sizing.reset-size11.size9{font-size:.69453376em}.katex .fontsize-ensurer.reset-size11.size10,.katex .sizing.reset-size11.size10{font-size:.83360129em}.katex .fontsize-ensurer.reset-size11.size11,.katex .sizing.reset-size11.size11{font-size:1em}.katex .delimsizing.size1{font-family:KaTeX_Size1}.katex .delimsizing.size2{font-family:KaTeX_Size2}.katex .delimsizing.size3{font-family:KaTeX_Size3}.katex .delimsizing.size4{font-family:KaTeX_Size4}.katex .delimsizing.mult .delim-size1>span{font-family:KaTeX_Size1}.katex .delimsizing.mult .delim-size4>span{font-family:KaTeX_Size4}.katex .nulldelimiter{display:inline-block;width:.12em}.katex .delimcenter,.katex .op-symbol{position:relative}.katex .op-symbol.small-op{font-family:KaTeX_Size1}.katex .op-symbol.large-op{font-family:KaTeX_Size2}.katex .accent>.vlist-t,.katex .op-limits>.vlist-t{text-align:center}.katex .accent .accent-body{position:relative}.katex .accent .accent-body:not(.accent-full){width:0}.katex .overlay{display:block}.katex .mtable .vertical-separator{display:inline-block;min-width:1px}.katex .mtable .arraycolsep{display:inline-block}.katex .mtable .col-align-c>.vlist-t{text-align:center}.katex .mtable .col-align-l>.vlist-t{text-align:left}.katex .mtable .col-align-r>.vlist-t{text-align:right}.katex .svg-align{text-align:left}.katex svg{fill:currentColor;stroke:currentColor;fill-rule:nonzero;fill-opacity:1;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;display:block;height:inherit;position:absolute;width:100%}.katex svg path{stroke:none}.katex img{border-style:none;max-height:none;max-width:none;min-height:0;min-width:0}.katex .stretchy{display:block;overflow:hidden;position:relative;width:100%}.katex .stretchy:after,.katex .stretchy:before{content:""}.katex .hide-tail{overflow:hidden;position:relative;width:100%}.katex .halfarrow-left{left:0;overflow:hidden;position:absolute;width:50.2%}.katex .halfarrow-right{overflow:hidden;position:absolute;right:0;width:50.2%}.katex .brace-left{left:0;overflow:hidden;position:absolute;width:25.1%}.katex .brace-center{left:25%;overflow:hidden;position:absolute;width:50%}.katex .brace-right{overflow:hidden;position:absolute;right:0;width:25.1%}.katex .x-arrow-pad{padding:0 .5em}.katex .cd-arrow-pad{padding:0 .55556em 0 .27778em}.katex .mover,.katex .munder,.katex .x-arrow{text-align:center}.katex .boxpad{padding:0 .3em}.katex .fbox,.katex .fcolorbox{border:.04em solid;box-sizing:border-box}.katex .cancel-pad{padding:0 .2em}.katex .cancel-lap{margin-left:-.2em;margin-right:-.2em}.katex .sout{border-bottom-style:solid;border-bottom-width:.08em}.katex .angl{border-right:.049em solid;border-top:.049em solid;box-sizing:border-box;margin-right:.03889em}.katex .anglpad{padding:0 .03889em}.katex .eqn-num:before{content:"(" counter(katexEqnNo) ")";counter-increment:katexEqnNo}.katex .mml-eqn-num:before{content:"(" counter(mmlEqnNo) ")";counter-increment:mmlEqnNo}.katex .mtr-glue{width:50%}.katex .cd-vert-arrow{display:inline-block;position:relative}.katex .cd-label-left{display:inline-block;position:absolute;right:calc(50% + .3em);text-align:left}.katex .cd-label-right{display:inline-block;left:calc(50% + .3em);position:absolute;text-align:right}.katex-display{display:block;margin:1em 0;text-align:center}.katex-display>.katex{display:block;text-align:center;white-space:nowrap}.katex-display>.katex>.katex-html{display:block;position:relative}.katex-display>.katex>.katex-html>.tag{position:absolute;right:0}.katex-display.leqno>.katex>.katex-html>.tag{left:0;right:auto}.katex-display.fleqn>.katex{padding-left:2em;text-align:left}body{counter-reset:katexEqnNo mmlEqnNo}
+</style>
+<style>/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.katex-error {
+	color: var(--vscode-editorError-foreground);
+}
+</style>
+
+    </head>
+    <body class="vscode-body vscode-light">
+        <h1 data-line="0" class="code-line" dir="auto" id="azure-kubernetes-service---the-hard-way" tabindex="-1">Azure Kubernetes Service - The Hard Way</h1>
+<p data-line="2" class="code-line" dir="auto">Welcome to "Azure Kubernetes Service - The Hard Way". From this blog, you will learn how to deploy a secure and scalable Kubernetes cluster on Azure using Azure Kubernetes Service (AKS) and a number of adjacent Azure services. You will also learn how to apply best practices from the AKS secure baseline reference architecture, which provides a recommended starting point for a general purpose AKS cluster infrastructure.</p>
+<p data-line="4" class="code-line" dir="auto">The target audience of these instructions is intermediate to advanced Kubernetes users who want to improve their skills and knowledge about AKS and Azure. You will need to have some familiarity with Kubernetes concepts and tools such as pods, services, deployments, and kubectl. You will also need to have an Azure subscription with contributor permission and access to a bash shell. We recommend using Azure Cloud Shell for this, as it has all the necessary tools already installed.</p>
+<p data-line="6" class="code-line" dir="auto">To access the could shell, you can type <code>shell.azure.com</code> in your web browser. Bear in mind that Cloud Shell times out after around 20 minutes of inactivity. Make sure to copy all the environment variables you will be creating, to a file so that you don't loose them.</p>
+<p data-line="8" class="code-line" dir="auto">Upon finishing, you will have a deeper understanding of how to use AKS to deploy and manage a secure and scalable Kubernetes cluster on Azure. You will also have a working AKS cluster that follows the AKS secure baseline reference architecture. Expect the entire exercise to take up to eight hours.</p>
+<div data-line="11" class="code-line" dir="auto"></div>
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/aks-baseline-architecture-workshop.jpg" width="600">
+<h2 data-line="13" class="code-line" dir="auto" id="overview" tabindex="-1">Overview</h2>
+<p data-line="15" class="code-line" dir="auto">The AKS baseline is a reference architecture that provides a set of best practices and recommendations for deploying a secure and scalable Azure Kubernetes Service (AKS) cluster. One of the key components of the AKS baseline is the network design, which is divided into several subnets and virtual networks (VNets) to isolate and protect the cluster resources from external and internal threats. In this article, we will describe the purpose and configuration of each subnet and VNet in the AKS baseline, and how they work together to provide a robust network infrastructure for your AKS cluster.</p>
+<h2 data-line="17" class="code-line" dir="auto" id="ip-plan" tabindex="-1">IP Plan</h2>
+<p data-line="19" class="code-line" dir="auto">IP planning is an important aspect of deploying an AKS cluster and Azure services in general, as it affects the scalability, performance, security, and availability of the cluster and its workloads. IP planning involves choosing the right network topology, IP address ranges, subnet sizes, and network policies for the cluster and its nodes, pods, and services. For more information on IP planning for an AKS cluster, see <a href="https://learn.microsoft.com/en-us/azure/architecture/reference-architectures/containers/aks/baseline-aks#plan-the-ip-addresses" data-href="https://learn.microsoft.com/en-us/azure/architecture/reference-architectures/containers/aks/baseline-aks#plan-the-ip-addresses">Plan IP addressing for your cluster</a> and <a href="https://learn.microsoft.com/en-us/azure/aks/operator-best-practices-network" data-href="https://learn.microsoft.com/en-us/azure/aks/operator-best-practices-network">Best practices for network resources in AKS</a>.</p>
+<p data-line="22" class="code-line" dir="auto">This is the proposed IP design that we will adhere to throughout the documentation.</p>
+<div data-line="24" class="code-line" dir="auto"></div>
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/aks-baseline_network_ip_planning.jpg" width="600">
+<blockquote data-line="26" class="code-line" dir="auto">
+<p data-line="26" class="code-line" dir="auto">[!Note]
+IP planning is a crucial step that requires careful consideration of the number and size of subnets for your current solution, as well as the potential for future expansion. You should avoid using excessively large IP ranges, and instead be economical with IP and allocate only what you need for the present and the future.</p>
+</blockquote>
+<p data-line="29" class="code-line" dir="auto">Each subnet in AKS baseline has a specific purpose and configuration, further information can be found below.</p>
+<h3 data-line="31" class="code-line" dir="auto" id="hub-vnet" tabindex="-1">Hub VNET</h3>
+<ul data-line="33" class="code-line" dir="auto">
+<li data-line="33" class="code-line" dir="auto">
+<p data-line="33" class="code-line" dir="auto"><strong>Azure Firewall Subnet</strong>: This subnet is where the Azure Firewall is deployed. The firewall acts as an egress controller for the AKS cluster, filtering and logging the outbound traffic from the cluster to external resources or services. It also provides network address translation (NAT) functionality, which allows the cluster to access resources that are not reachable by private IP addresses. The subnet size can be small for this particular case, as it only needs to accommodate one firewall instance.</p>
+</li>
+<li data-line="35" class="code-line" dir="auto">
+<p data-line="35" class="code-line" dir="auto"><strong>Azure Bastion Subnet</strong>: This subnet is where the Azure Bastion service is deployed. Azure Bastion is a fully managed service that provides secure and seamless Remote Desktop Protocol (RDP) and Secure Shell (SSH) access to your virtual machines directly through the Azure portal⁴. This subnet is used for management and operations only, and it does not expose any resources to the internet. The subnet name must be <strong>AzureBastionSubnet</strong>, and the subnet size must be <strong>/16</strong> or larger.</p>
+</li>
+<li data-line="37" class="code-line" dir="auto">
+<p data-line="37" class="code-line" dir="auto"><strong>Jump Box Subnet</strong>: This subnet is where the jump server resides, where operation teams can login and access services in the spoke, to perform operations and maintenance.</p>
+</li>
+</ul>
+<h3 data-line="40" class="code-line" dir="auto" id="spoke-vnet" tabindex="-1">Spoke VNET</h3>
+<ul data-line="42" class="code-line" dir="auto">
+<li data-line="42" class="code-line" dir="auto">
+<p data-line="42" class="code-line" dir="auto"><strong>Endpoints Subnet</strong>: This subnet is where the private endpoints for Azure services are deployed. Private endpoints are a network interface that connects you privately and securely to a service powered by Azure Private Link. Private endpoints allow you to access Azure services, such as Azure Container Registry, Azure Key Vault, or Azure Storage, without exposing them to the internet or requiring a public IP address. The subnet name can be any valid name, and the subnet size depends on the number of private endpoints you need to create.</p>
+</li>
+<li data-line="44" class="code-line" dir="auto">
+<p data-line="44" class="code-line" dir="auto"><strong>AKS Subnet</strong>: This subnet is where the AKS cluster nodes are deployed. It uses Azure CNI networking, which assigns IP addresses from the subnet to each node and pod. The subnet size depends on the number of nodes and pods per node, and it should be large enough to accommodate the expected growth. The subnet also has a Network Security Group (NSG) that controls the inbound and outbound traffic to and from the nodes.</p>
+</li>
+<li data-line="46" class="code-line" dir="auto">
+<p data-line="46" class="code-line" dir="auto"><strong>Azure Application Gateway Subnet</strong>: This subnet is where the Azure Application Gateway is deployed. The application gateway acts as an ingress controller for the AKS cluster, routing external traffic to the appropriate services or pods inside the cluster. It also provides web application firewall (WAF) functionality, which helps protect the applications from common web attacks. The subnet size can be small, as it only needs to accommodate one or more application gateway instances. The subnet also has a NSG that allows inbound traffic on ports 80 and 443, and outbound traffic to the AKS cluster.</p>
+</li>
+<li data-line="48" class="code-line" dir="auto">
+<p data-line="48" class="code-line" dir="auto"><strong>Azure Loadbalancer Subnet</strong>: The load balancer subnet is a part of the network topology that supports the AKS cluster. It is where the internal load balancer (ILB) resides and assigns IP addresses to the services that are exposed within the cluster.</p>
+</li>
+</ul>
+<h3 data-line="51" class="code-line" dir="auto" id="prepare-environment-variables-for-hub-vnet-and-spoke-vnet" tabindex="-1">Prepare Environment Variables for HUB VNET and SPOKE VNET</h3>
+<p data-line="53" class="code-line" dir="auto">Let’s use the IP plan to set up some environment variables for the Hub VNet and adjust its configuration accordingly to the IP Plan above. Make sure to also save your environment variables to a text file, so that you can restore them later.</p>
+<p data-line="55" class="code-line" dir="auto">Configure the hub according to the IP Plan (see image above).</p>
+<pre><code data-line="57" class="code-line language-bash" dir="auto">HUB_VNET_NAME=Hub_VNET
+FW_SUBNET_NAME=AzureFirewallSubnet
+BASTION_SUBNET_NAME=AzureBastionSubnet
+HUB_VNET_PREFIX=10.0.0.0/22 <span class="hljs-comment"># IP address range of the Virtual network (VNet).</span>
+BASTION_SUBNET_PREFIX=10.0.0.128/26 <span class="hljs-comment"># IP address range of the Bastion subnet </span>
+FW_SUBNET_PREFIX=10.0.0.0/26 <span class="hljs-comment"># IP address range of the Firewall subnet</span>
+JUMPBOX_SUBNET_PREFIX=10.0.0.64/26 <span class="hljs-comment"># IP address range of the Jumpbox subnet</span>
+</code></pre>
+<p data-line="66" class="code-line" dir="auto">Configure the spoke according to the IP Plan (see image above).</p>
+<pre><code data-line="68" class="code-line language-bash" dir="auto">SPOKE_VNET_NAME=Spoke_VNET
+JUMPBOX_SUBNET_NAME=JumpboxSubnet
+ENDPOINTS_SUBNET_NAME=endpoints-subnet
+APPGW_SUBNET_NAME=app-gw-subnet
+AKS_SUBNET_NAME=aks-subnet
+LOADBALANCER_SUBNET_NAME=loadbalancer-subnet
+SPOKE_VNET_PREFIX=10.1.0.0/22 <span class="hljs-comment"># IP address range of the Virtual network (VNet).</span>
+AKS_SUBNET_PREFIX=10.1.0.0/24 <span class="hljs-comment"># IP address range of the AKS subnet</span>
+LOADBALANCER_SUBNET_PREFIX=10.1.1.0/28 <span class="hljs-comment"># IP address range of the Loadbalancer subnet</span>
+APPGW_SUBNET_PREFIX=10.1.2.0/24 <span class="hljs-comment"># IP address range of the Application Gateway subnet</span>
+ENDPOINTS_SUBNET_PREFIX=10.1.1.16/28 <span class="hljs-comment"># IP address range of the Endpoints subnet</span>
+</code></pre>
+<h2 data-line="84" class="code-line" dir="auto" id="infrastructure-deployment" tabindex="-1">Infrastructure Deployment</h2>
+<p data-line="86" class="code-line" dir="auto">The objective of this part is to guide you through the process of deploying the AKS baseline infrastructure. The infrastructure consists of the essential components and configurations that are required for running a secure and scalable AKS cluster.</p>
+<h3 data-line="88" class="code-line" dir="auto" id="prepare-environment-variables-for-infrastructure" tabindex="-1">Prepare Environment Variables for infrastructure</h3>
+<p data-line="90" class="code-line" dir="auto">This configuration sets up environment variables for the names and locations of various network and security resources, such as resource groups, virtual networks, subnets, network security groups, firewall, application gateway, route table, identity, virtual machines, AKS cluster, and ACR registry.</p>
+<blockquote data-line="92" class="code-line" dir="auto">
+<p data-line="92" class="code-line" dir="auto">[!Note]
+Since the Azure container registry has a globally unique FQDN name, you need to assign a distinct value to the <strong>ACR_NAME</strong> environment variable, else the ACR deployment will fail. Also, the ACR name can only container lowercase letters and numbers.</p>
+</blockquote>
+<pre><code data-line="95" class="code-line language-bash" dir="auto">HUB_RG=rg-hub
+SPOKE_RG=rg-spoke
+LOCATION=eastus 
+BASTION_NSG_NAME=Bastion_NSG
+JUMPBOX_NSG_NAME=Jumpbox_NSG
+AKS_NSG_NAME=Aks_NSG
+ENDPOINTS_NSG_NAME=Endpoints_NSG
+LOADBALANCER_NSG_NAME=Loadbalancer_NSG
+APPGW_NSG=Appgw_NSG
+FW_NAME=azure-firewall
+APPGW_NAME=AppGateway
+ROUTE_TABLE_NAME=spoke-rt
+AKS_IDENTITY_NAME=aks-msi
+JUMPBOX_VM_NAME=Jumpbox-VM
+AKS_CLUSTER_NAME=private-aks
+ACR_NAME=&lt;Globally unique name of the azure container registry&gt;
+STUDENT_NAME=&lt;e.g. your first name&gt; <span class="hljs-comment"># don't use spaces</span>
+</code></pre>
+<h3 data-line="115" class="code-line" dir="auto" id="create-the-resource-groups-for-the-hub-and-spoke" tabindex="-1">Create the Resource Groups for the Hub and Spoke.</h3>
+<pre><code data-line="117" class="code-line language-bash" dir="auto">az group create --name <span class="hljs-variable">$HUB_RG</span> --location <span class="hljs-variable">$LOCATION</span>
+az group create --name <span class="hljs-variable">$SPOKE_RG</span> --location <span class="hljs-variable">$LOCATION</span>
+</code></pre>
+<h3 data-line="122" class="code-line" dir="auto" id="create-network-security-groups-nsg-and-virtual-network-vnet-for-the-hub" tabindex="-1">Create Network Security Groups (NSG) and Virtual Network (VNET) for the Hub.</h3>
+<p data-line="123" class="code-line" dir="auto">In this step, we will begin by establishing Network Security Groups (NSGs) that will subsequently be associated with their respective subnet. It is crucial to note that there are specific prerequisites concerning security rules for certain subnets that must be met  before a service can be deployed. Azure Bastion is one of them.</p>
+<p data-line="125" class="code-line" dir="auto">For Azure Bastion, we are establishing security rules to permit both the control and data plane access to the AzureBastion. For a more detailed understanding of these rules, please refer to the following resource: <a href="https://learn.microsoft.com/en-us/azure/bastion/bastion-nsg" data-href="https://learn.microsoft.com/en-us/azure/bastion/bastion-nsg">More Information</a>.</p>
+<ol data-line="127" class="code-line" dir="auto">
+<li data-line="127" class="code-line" dir="auto">Create the NSG for AzureBastionSubnet.</li>
+</ol>
+<pre><code data-line="128" class="code-line language-bash" dir="auto">az network nsg create \
+    --resource-group <span class="hljs-variable">$HUB_RG</span> \
+    --name <span class="hljs-variable">$BASTION_NSG_NAME</span> \
+    --location <span class="hljs-variable">$LOCATION</span>
+</code></pre>
+<ol start="2" data-line="135" class="code-line" dir="auto">
+<li data-line="135" class="code-line" dir="auto">Associate the required <strong>inbound</strong> security rules to the NSG.</li>
+</ol>
+<pre><code data-line="136" class="code-line language-bash" dir="auto">    az network nsg rule create --name AllowHttpsInbound \
+    --nsg-name <span class="hljs-variable">$BASTION_NSG_NAME</span> --priority 120 --resource-group <span class="hljs-variable">$HUB_RG</span>\
+    --access Allow --protocol TCP --direction Inbound \
+    --source-address-prefixes <span class="hljs-string">"Internet"</span> \
+    --source-port-ranges <span class="hljs-string">"*"</span> \
+    --destination-address-prefixes <span class="hljs-string">"*"</span> \
+    --destination-port-ranges <span class="hljs-string">"443"</span>
+	
+   	az network nsg rule create --name AllowGatewayManagerInbound \
+    --nsg-name <span class="hljs-variable">$BASTION_NSG_NAME</span> --priority 130 --resource-group <span class="hljs-variable">$HUB_RG</span>\
+    --access Allow --protocol TCP --direction Inbound \
+    --source-address-prefixes <span class="hljs-string">"GatewayManager"</span> \
+    --source-port-ranges <span class="hljs-string">"*"</span> \
+    --destination-address-prefixes <span class="hljs-string">"*"</span> \
+    --destination-port-ranges <span class="hljs-string">"443"</span>
+	
+	az network nsg rule create --name AllowAzureLoadBalancerInbound \
+    --nsg-name <span class="hljs-variable">$BASTION_NSG_NAME</span> --priority 140 --resource-group <span class="hljs-variable">$HUB_RG</span>\
+    --access Allow --protocol TCP --direction Inbound \
+    --source-address-prefixes <span class="hljs-string">"AzureLoadBalancer"</span> \
+    --source-port-ranges <span class="hljs-string">"*"</span> \
+    --destination-address-prefixes <span class="hljs-string">"*"</span> \
+    --destination-port-ranges <span class="hljs-string">"443"</span>
+	
+	
+	az network nsg rule create --name AllowBastionHostCommunication \
+    --nsg-name <span class="hljs-variable">$BASTION_NSG_NAME</span> --priority 150 --resource-group <span class="hljs-variable">$HUB_RG</span>\
+    --access Allow --protocol TCP --direction Inbound \
+    --source-address-prefixes <span class="hljs-string">"VirtualNetwork"</span> \
+    --source-port-ranges <span class="hljs-string">"*"</span> \
+    --destination-address-prefixes <span class="hljs-string">"VirtualNetwork"</span> \
+    --destination-port-ranges 8080 5701
+</code></pre>
+<ol start="3" data-line="171" class="code-line" dir="auto">
+<li data-line="171" class="code-line" dir="auto">Associate the required <strong>outbound</strong> security rules to the NSG.</li>
+</ol>
+<pre><code data-line="173" class="code-line language-bash" dir="auto">    az network nsg rule create --name AllowSshRdpOutbound \
+    --nsg-name <span class="hljs-variable">$BASTION_NSG_NAME</span> --priority 100 --resource-group <span class="hljs-variable">$HUB_RG</span>\
+    --access Allow --protocol <span class="hljs-string">"*"</span> --direction outbound \
+    --source-address-prefixes <span class="hljs-string">"*"</span> \
+    --source-port-ranges <span class="hljs-string">"*"</span> \
+    --destination-address-prefixes <span class="hljs-string">"VirtualNetwork"</span> \
+    --destination-port-ranges 22 3389
+	
+    az network nsg rule create --name AllowAzureCloudOutbound \
+    --nsg-name <span class="hljs-variable">$BASTION_NSG_NAME</span> --priority 110 --resource-group <span class="hljs-variable">$HUB_RG</span>\
+    --access Allow --protocol Tcp --direction outbound \
+    --source-address-prefixes <span class="hljs-string">"*"</span> \
+    --source-port-ranges <span class="hljs-string">"*"</span> \
+    --destination-address-prefixes <span class="hljs-string">"AzureCloud"</span> \
+    --destination-port-ranges 443
+	
+	az network nsg rule create --name AllowBastionCommunication \
+    --nsg-name <span class="hljs-variable">$BASTION_NSG_NAME</span> --priority 120 --resource-group <span class="hljs-variable">$HUB_RG</span>\
+    --access Allow --protocol <span class="hljs-string">"*"</span> --direction outbound \
+    --source-address-prefixes <span class="hljs-string">"VirtualNetwork"</span> \
+    --source-port-ranges <span class="hljs-string">"*"</span> \
+    --destination-address-prefixes <span class="hljs-string">"VirtualNetwork"</span> \
+    --destination-port-ranges 8080 5701
+	
+	az network nsg rule create --name AllowHttpOutbound \
+    --nsg-name <span class="hljs-variable">$BASTION_NSG_NAME</span> --priority 130 --resource-group <span class="hljs-variable">$HUB_RG</span>\
+    --access Allow --protocol <span class="hljs-string">"*"</span> --direction outbound \
+    --source-address-prefixes <span class="hljs-string">"*"</span> \
+    --source-port-ranges <span class="hljs-string">"*"</span> \
+    --destination-address-prefixes <span class="hljs-string">"Internet"</span> \
+    --destination-port-ranges 80
+</code></pre>
+<ol start="4" data-line="207" class="code-line" dir="auto">
+<li data-line="207" class="code-line" dir="auto">Create an NSG for the JumpBox subnet.</li>
+</ol>
+<pre><code data-line="209" class="code-line language-bash" dir="auto">az network nsg create \
+    --resource-group <span class="hljs-variable">$HUB_RG</span> \
+    --name <span class="hljs-variable">$JUMPBOX_NSG_NAME</span> \
+    --location <span class="hljs-variable">$LOCATION</span>
+</code></pre>
+<ol start="5" data-line="215" class="code-line" dir="auto">
+<li data-line="215" class="code-line" dir="auto">Create the HUB VNET with one subnet for <strong>Azure Bastion Subnet</strong> and associate it to the bastion NSG.</li>
+</ol>
+<pre><code data-line="217" class="code-line language-bash" dir="auto">az network vnet create \
+    --resource-group <span class="hljs-variable">$HUB_RG</span>  \
+    --name <span class="hljs-variable">$HUB_VNET_NAME</span> \
+    --address-prefixes <span class="hljs-variable">$HUB_VNET_PREFIX</span> \
+    --subnet-name <span class="hljs-variable">$BASTION_SUBNET_NAME</span> \
+    --subnet-prefixes <span class="hljs-variable">$BASTION_SUBNET_PREFIX</span> \
+    --network-security-group <span class="hljs-variable">$BASTION_NSG_NAME</span>
+</code></pre>
+<ol start="6" data-line="227" class="code-line" dir="auto">
+<li data-line="227" class="code-line" dir="auto">Create a subnet for the Azure Firewall.</li>
+</ol>
+<pre><code data-line="230" class="code-line language-bash" dir="auto">az network vnet subnet create \
+    --resource-group <span class="hljs-variable">$HUB_RG</span>  \
+    --vnet-name <span class="hljs-variable">$HUB_VNET_NAME</span> \
+    --name <span class="hljs-variable">$FW_SUBNET_NAME</span> \
+    --address-prefixes <span class="hljs-variable">$FW_SUBNET_PREFIX</span>
+</code></pre>
+<ol start="7" data-line="238" class="code-line" dir="auto">
+<li data-line="238" class="code-line" dir="auto">Create a subnet for the Virtual Machine that will be used as "jumpbox".</li>
+</ol>
+<pre><code data-line="240" class="code-line language-bash" dir="auto">az network vnet subnet create \
+    --resource-group <span class="hljs-variable">$HUB_RG</span>  \
+    --vnet-name <span class="hljs-variable">$HUB_VNET_NAME</span> \
+    --name <span class="hljs-variable">$JUMPBOX_SUBNET_NAME</span> \
+    --address-prefixes <span class="hljs-variable">$JUMPBOX_SUBNET_PREFIX</span> \
+    --network-security-group <span class="hljs-variable">$JUMPBOX_NSG_NAME</span>
+</code></pre>
+<p data-line="248" class="code-line" dir="auto">You have successfully configured the network for your hub virtual network.You have established three subnets and two NSGs, as depicted on the image:</p>
+<div data-line="250" class="code-line" dir="auto"></div>
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/HubVnetandNsgOnly.jpg" width="400">
+<br>
+<br>
+<ol start="8" data-line="256" class="code-line" dir="auto">
+<li data-line="256" class="code-line" dir="auto">
+<p data-line="256" class="code-line" dir="auto">To Validate your deployment, navigate to the Azure portal at <a href="https://portal.azure.com" data-href="https://portal.azure.com">https://portal.azure.com</a> and enter your login credentials.</p>
+</li>
+<li data-line="258" class="code-line" dir="auto">
+<p data-line="258" class="code-line" dir="auto">Once logged in, locate and select your resource group called <strong>rg-hub</strong> where the hub vnet is deployed.</p>
+</li>
+<li data-line="260" class="code-line" dir="auto">
+<p data-line="260" class="code-line" dir="auto">Select your vnet called <strong>HUB_VNET</strong>.</p>
+</li>
+<li data-line="262" class="code-line" dir="auto">
+<p data-line="262" class="code-line" dir="auto">In the left-hand side menu, under the <strong>Settings</strong> section, select <strong>Subnets</strong>.</p>
+</li>
+<li data-line="264" class="code-line" dir="auto">
+<p data-line="264" class="code-line" dir="auto">Make sure that your subnets have the appropriate IP range and that Network Security Groups (NSGs) are correctly associated with their respective subnets as depicted below.</p>
+</li>
+</ol>
+<div data-line="267" class="code-line" dir="auto"></div>
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/hubandspokevnet.jpg" width="1000">
+<h3 data-line="269" class="code-line" dir="auto" id="create-network-security-groups-and-virtual-network-for-the-spoke" tabindex="-1">Create Network Security Groups and Virtual Network for the Spoke.</h3>
+<p data-line="270" class="code-line" dir="auto">We will now start to setup the spoke vnet, subnets and their respective NSGs.</p>
+<ol data-line="272" class="code-line" dir="auto">
+<li data-line="272" class="code-line" dir="auto">Create the NSG for AKS subnet.</li>
+</ol>
+<pre><code data-line="273" class="code-line language-bash" dir="auto">az network nsg create \
+    --resource-group <span class="hljs-variable">$SPOKE_RG</span> \
+    --name <span class="hljs-variable">$AKS_NSG_NAME</span> \
+    --location <span class="hljs-variable">$LOCATION</span>
+</code></pre>
+<ol start="2" data-line="279" class="code-line" dir="auto">
+<li data-line="279" class="code-line" dir="auto">Create the NSG for endpoints subnet, were the endpoints will reside.</li>
+</ol>
+<pre><code data-line="280" class="code-line language-bash" dir="auto">az network nsg create \
+    --resource-group <span class="hljs-variable">$SPOKE_RG</span> \
+    --name <span class="hljs-variable">$ENDPOINTS_NSG_NAME</span> \
+    --location <span class="hljs-variable">$LOCATION</span>
+</code></pre>
+<ol start="3" data-line="286" class="code-line" dir="auto">
+<li data-line="286" class="code-line" dir="auto">Create the NSG for load balancer subnet, were the internal load balancer will reside.</li>
+</ol>
+<pre><code data-line="287" class="code-line language-bash" dir="auto">az network nsg create \
+    --resource-group <span class="hljs-variable">$SPOKE_RG</span> \
+    --name <span class="hljs-variable">$LOADBALANCER_NSG_NAME</span> \
+    --location <span class="hljs-variable">$LOCATION</span>
+</code></pre>
+<ol start="4" data-line="293" class="code-line" dir="auto">
+<li data-line="293" class="code-line" dir="auto">To use an NSG with your application gateway, you need to open these port ranges:</li>
+</ol>
+<p data-line="295" class="code-line" dir="auto">Inbound rules: The <strong>Internet service tag</strong> needs access to port <strong>65200-65535</strong> for the backend health API. Your application traffic needs access to TCP port <strong>80 and/or 443</strong>. for futher information refer to <a href="https://learn.microsoft.com/en-us/azure/application-gateway/configuration-infrastructure#required-security-rules" data-href="https://learn.microsoft.com/en-us/azure/application-gateway/configuration-infrastructure#required-security-rules">Required security rules for Application Gateway</a> for more information.</p>
+<pre><code data-line="297" class="code-line language-bash" dir="auto">az network nsg create \
+    --resource-group <span class="hljs-variable">$SPOKE_RG</span> \
+    --name <span class="hljs-variable">$APPGW_NSG</span> \
+    --location <span class="hljs-variable">$LOCATION</span>
+</code></pre>
+<ol start="5" data-line="304" class="code-line" dir="auto">
+<li data-line="304" class="code-line" dir="auto">Create the NSG rule to allow application traffic, on port 443 and 80.</li>
+</ol>
+<pre><code data-line="306" class="code-line language-bash" dir="auto"><span class="hljs-comment"># Allow Internet Client request on Port 443 and 80</span>
+az network nsg rule create \
+    --resource-group <span class="hljs-variable">$SPOKE_RG</span> \
+    --nsg-name <span class="hljs-variable">$APPGW_NSG</span> \
+    --name Allow-Internet-Inbound-HTTP-HTTPS \
+    --priority 100 \
+    --source-address-prefixes Internet \
+    --destination-port-ranges 80 443 \
+    --access Allow \
+    --protocol Tcp \
+    --description <span class="hljs-string">"Allow inbound traffic to port 80 and 443 to Application Gateway from client requests originating from the Internet"</span>
+</code></pre>
+<ol start="6" data-line="320" class="code-line" dir="auto">
+<li data-line="320" class="code-line" dir="auto">Create the NSG rule to allow application traffic, on port range 65200-65535.</li>
+</ol>
+<pre><code data-line="322" class="code-line language-bash" dir="auto"><span class="hljs-comment"># Infrastructure ports</span>
+az network nsg rule create \
+    --resource-group <span class="hljs-variable">$SPOKE_RG</span> \
+    --nsg-name <span class="hljs-variable">$APPGW_NSG</span> \
+    --name Allow-GatewayManager-Inbound \
+    --priority 110 \
+    --source-address-prefixes <span class="hljs-string">"GatewayManager"</span> \
+    --destination-port-ranges 65200-65535 \
+    --access Allow \
+    --protocol Tcp \
+    --description <span class="hljs-string">"Allow inbound traffic to ports 65200-65535 from GatewayManager service tag"</span>
+</code></pre>
+<ol start="7" data-line="336" class="code-line" dir="auto">
+<li data-line="336" class="code-line" dir="auto">Create the spoke VNET with one subnet for <strong>AKS Subnet</strong> and associate it to the AKS NSG.</li>
+</ol>
+<pre><code data-line="338" class="code-line language-bash" dir="auto">az network vnet create \
+    --resource-group <span class="hljs-variable">$SPOKE_RG</span>  \
+    --name <span class="hljs-variable">$SPOKE_VNET_NAME</span> \
+    --address-prefixes <span class="hljs-variable">$SPOKE_VNET_PREFIX</span> \
+    --subnet-name <span class="hljs-variable">$AKS_SUBNET_NAME</span> \
+    --subnet-prefixes <span class="hljs-variable">$AKS_SUBNET_PREFIX</span> \
+	--network-security-group <span class="hljs-variable">$AKS_NSG_NAME</span>
+</code></pre>
+<ol start="8" data-line="348" class="code-line" dir="auto">
+<li data-line="348" class="code-line" dir="auto">Create the subnet for <strong>Endpoints</strong> and associate it to the endpoints NSG.</li>
+</ol>
+<pre><code data-line="350" class="code-line language-bash" dir="auto">az network vnet subnet create \
+    --resource-group <span class="hljs-variable">$SPOKE_RG</span>  \
+    --vnet-name <span class="hljs-variable">$SPOKE_VNET_NAME</span>  \
+    --name <span class="hljs-variable">$ENDPOINTS_SUBNET_NAME</span> \
+    --address-prefixes <span class="hljs-variable">$ENDPOINTS_SUBNET_PREFIX</span> \
+	--network-security-group <span class="hljs-variable">$ENDPOINTS_NSG_NAME</span>
+</code></pre>
+<ol start="9" data-line="359" class="code-line" dir="auto">
+<li data-line="359" class="code-line" dir="auto">Create subnet for the <strong>load balancer</strong> that will be used for ingress traffic and associate it to the loadbalancer NSG.</li>
+</ol>
+<pre><code data-line="361" class="code-line language-bash" dir="auto">az network vnet subnet create \
+    --resource-group <span class="hljs-variable">$SPOKE_RG</span>  \
+    --vnet-name <span class="hljs-variable">$SPOKE_VNET_NAME</span> \
+    --name <span class="hljs-variable">$LOADBALANCER_SUBNET_NAME</span> \
+    --address-prefixes <span class="hljs-variable">$LOADBALANCER_SUBNET_PREFIX</span> \
+	--network-security-group <span class="hljs-variable">$LOADBALANCER_NSG_NAME</span>
+</code></pre>
+<ol start="10" data-line="370" class="code-line" dir="auto">
+<li data-line="370" class="code-line" dir="auto">Create subnet for the <strong>Application Gateway</strong> and associate it to the Application Gateway NSG.</li>
+</ol>
+<pre><code data-line="372" class="code-line language-bash" dir="auto">az network vnet subnet create \
+    --resource-group <span class="hljs-variable">$SPOKE_RG</span>  \
+    --vnet-name <span class="hljs-variable">$SPOKE_VNET_NAME</span> \
+    --name <span class="hljs-variable">$APPGW_SUBNET_NAME</span> \
+    --address-prefixes <span class="hljs-variable">$APPGW_SUBNET_PREFIX</span> \
+	--network-security-group <span class="hljs-variable">$APPGW_NSG</span>
+</code></pre>
+<p data-line="381" class="code-line" dir="auto">You have successfully configured the network for your spoke virtual network. You should now have established the following setup in your Azure subscription.</p>
+<div data-line="384" class="code-line" dir="auto"></div>
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/hubandspokeonly.jpg" width="400">
+<ol start="11" data-line="388" class="code-line" dir="auto">
+<li data-line="388" class="code-line" dir="auto">
+<p data-line="388" class="code-line" dir="auto">Navigate to the Azure portal at <a href="https://portal.azure.com" data-href="https://portal.azure.com">https://portal.azure.com</a> again.</p>
+</li>
+<li data-line="390" class="code-line" dir="auto">
+<p data-line="390" class="code-line" dir="auto">Locate and select your resource group called <strong>rg-spoke</strong> where the spoke vnet is deployed.</p>
+</li>
+<li data-line="392" class="code-line" dir="auto">
+<p data-line="392" class="code-line" dir="auto">Select the vnet called <strong>Spoke_VNET</strong>.</p>
+</li>
+<li data-line="394" class="code-line" dir="auto">
+<p data-line="394" class="code-line" dir="auto">In the left-hand side menu, under the <strong>Settings</strong> section, select <strong>Subnets</strong>.</p>
+</li>
+<li data-line="396" class="code-line" dir="auto">
+<p data-line="396" class="code-line" dir="auto">Make sure that your subnets have the appropriate IP range and that Network Security Groups (NSGs) are correctly associated with their respective subnets.</p>
+</li>
+</ol>
+<div data-line="398" class="code-line" dir="auto"></div>
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/spokevnet.jpg" width="1000">
+<h3 data-line="400" class="code-line" dir="auto" id="create-vnet-peering-between-hub-and-spoke" tabindex="-1">Create VNET Peering Between Hub and Spoke</h3>
+<p data-line="402" class="code-line" dir="auto">The next step is to create a virtual network peering between the hub and spoke VNets. This will enable the communication between the VNETs and allow the AKS cluster to route traffic to the Firewall.</p>
+<ol data-line="404" class="code-line" dir="auto">
+<li data-line="404" class="code-line" dir="auto">Before we can do a VNET peering we need to obtain the full resource id of the Spoke_VNET and Hub_VNET as they resides in different resource groups.</li>
+</ol>
+<pre><code data-line="406" class="code-line language-bash" dir="auto">SPOKE_VNET_ID=$(az network vnet show --resource-group <span class="hljs-variable">$SPOKE_RG</span> --name <span class="hljs-variable">$SPOKE_VNET_NAME</span> --query <span class="hljs-built_in">id</span> --output tsv)
+</code></pre>
+<pre><code data-line="410" class="code-line language-bash" dir="auto">HUB_VNET_ID=$(az network vnet show --resource-group <span class="hljs-variable">$HUB_RG</span> --name <span class="hljs-variable">$HUB_VNET_NAME</span> --query <span class="hljs-built_in">id</span> --output tsv)
+</code></pre>
+<ol start="2" data-line="414" class="code-line" dir="auto">
+<li data-line="414" class="code-line" dir="auto">Now, create a peering connection from the hub to the spoke virtual network.</li>
+</ol>
+<pre><code data-line="416" class="code-line language-bash" dir="auto">az network vnet peering create \
+    --resource-group <span class="hljs-variable">$HUB_RG</span>  \
+    --name hub-to-spoke \
+    --vnet-name <span class="hljs-variable">$HUB_VNET_NAME</span> \
+    --remote-vnet <span class="hljs-variable">$SPOKE_VNET_ID</span> \
+    --allow-vnet-access
+</code></pre>
+<ol start="3" data-line="425" class="code-line" dir="auto">
+<li data-line="425" class="code-line" dir="auto">Then create a peering connection from the spoke to hub virtual network.</li>
+</ol>
+<pre><code data-line="427" class="code-line language-bash" dir="auto">az network vnet peering create \
+    --resource-group <span class="hljs-variable">$SPOKE_RG</span>  \
+    --name spoke-to-hub \
+    --vnet-name <span class="hljs-variable">$SPOKE_VNET_NAME</span> \
+    --remote-vnet <span class="hljs-variable">$HUB_VNET_ID</span> \
+    --allow-vnet-access
+</code></pre>
+<p data-line="436" class="code-line" dir="auto">Peering should be established and the high level design should now look like this:</p>
+<div data-line="438" class="code-line" dir="auto"></div>
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/hubandspokewithpeering.jpg" width="400">
+<ol start="4" data-line="442" class="code-line" dir="auto">
+<li data-line="442" class="code-line" dir="auto">
+<p data-line="442" class="code-line" dir="auto">Navigate to the Azure portal at <a href="https://portal.azure.com" data-href="https://portal.azure.com">https://portal.azure.com</a></p>
+</li>
+<li data-line="444" class="code-line" dir="auto">
+<p data-line="444" class="code-line" dir="auto">Locate and select the resource group called <strong>rg-spoke</strong> where the spoke vnet is deployed.</p>
+</li>
+<li data-line="446" class="code-line" dir="auto">
+<p data-line="446" class="code-line" dir="auto">Select the vnet called <strong>Spoke_VNET</strong>.</p>
+</li>
+<li data-line="448" class="code-line" dir="auto">
+<p data-line="448" class="code-line" dir="auto">In the left-hand side menu, under the <strong>Settings</strong> section, select <strong>peerings</strong>.</p>
+</li>
+<li data-line="450" class="code-line" dir="auto">
+<p data-line="450" class="code-line" dir="auto">Ensure that the peering status is set to <strong>Connected</strong>.</p>
+</li>
+<li data-line="452" class="code-line" dir="auto">
+<p data-line="452" class="code-line" dir="auto">Repeat step 4 - 7 but for Hub_VNET.</p>
+</li>
+</ol>
+<div data-line="454" class="code-line" dir="auto"></div>
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/vnetpeeringconnected.jpg" width="1000">
+<h3 data-line="457" class="code-line" dir="auto" id="create-azure-bastion-and-jumpbox-vm" tabindex="-1">Create Azure Bastion and Jumpbox VM</h3>
+<ol data-line="459" class="code-line" dir="auto">
+<li data-line="459" class="code-line" dir="auto">The Bastion Host needs a Public IP. Create the Public IP address.</li>
+</ol>
+<pre><code data-line="461" class="code-line language-bash" dir="auto">az network public-ip create \
+    --resource-group <span class="hljs-variable">$HUB_RG</span>  \
+    --name Bastion-PIP \
+    --sku Standard \
+    --allocation-method Static
+</code></pre>
+<ol start="2" data-line="469" class="code-line" dir="auto">
+<li data-line="469" class="code-line" dir="auto">Create JumpBox Virtual Machine.</li>
+</ol>
+<blockquote data-line="471" class="code-line" dir="auto">
+<p data-line="471" class="code-line" dir="auto">[!Note]
+Ensure you specify a <strong>password</strong> for the admin user called <strong>azureuser</strong>.
+The password length must be between 12 and 72. Password must have 3 of the following: 1 lower case character, 1 upper case character, 1 number and 1 special character.</p>
+</blockquote>
+<pre><code data-line="476" class="code-line language-bash" dir="auto">az vm create \
+    --resource-group <span class="hljs-variable">$HUB_RG</span> \
+    --name <span class="hljs-variable">$JUMPBOX_VM_NAME</span> \
+    --image Ubuntu2204 \
+    --admin-username azureuser \
+    --admin-password &lt;SPECIFY A PASSWORD HERE&gt; \
+    --vnet-name <span class="hljs-variable">$HUB_VNET_NAME</span> \
+    --subnet <span class="hljs-variable">$JUMPBOX_SUBNET_NAME</span> \
+    --size Standard_B2s \
+    --storage-sku Standard_LRS \
+    --os-disk-name <span class="hljs-variable">$JUMPBOX_VM_NAME</span>-VM-osdisk \
+    --os-disk-size-gb 128 \
+    --public-ip-address <span class="hljs-string">""</span> \
+    --nsg <span class="hljs-string">""</span>  
+</code></pre>
+<ol start="4" data-line="495" class="code-line" dir="auto">
+<li data-line="495" class="code-line" dir="auto">Create the bastion host in hub vnet and associate it to the public IP.</li>
+</ol>
+<blockquote data-line="497" class="code-line" dir="auto">
+<p data-line="497" class="code-line" dir="auto">[!Note]
+Azure Bastion service requires a dedicated subnet named <strong>AzureBastionSubnet</strong> to provide secure and seamless RDP/SSH connectivity to your virtual machines. When you deploy Azure Bastion service, it will automatically create this subnet for you, if it does not exist in the target virtual network. However, if the subnet already exists, it must meet the minimum size of <strong>/26</strong> or larger, otherwise the deployment will fail.</p>
+</blockquote>
+<pre><code data-line="500" class="code-line language-bash" dir="auto">az network bastion create \
+    --resource-group <span class="hljs-variable">$HUB_RG</span> \
+    --name bastionhost \
+    --public-ip-address Bastion-PIP \
+    --vnet-name <span class="hljs-variable">$HUB_VNET_NAME</span> \
+    --location <span class="hljs-variable">$LOCATION</span>
+</code></pre>
+<ol start="5" data-line="511" class="code-line" dir="auto">
+<li data-line="511" class="code-line" dir="auto">
+<p data-line="511" class="code-line" dir="auto">Upon successful installation of the Jumpbox Virtual Machine (VM). Navigate to the Azure portal at <a href="https://portal.azure.com" data-href="https://portal.azure.com">https://portal.azure.com</a></p>
+</li>
+<li data-line="513" class="code-line" dir="auto">
+<p data-line="513" class="code-line" dir="auto">Locate and select your <strong>rg-hub</strong> where the Jumpbox has been deployed.</p>
+</li>
+<li data-line="515" class="code-line" dir="auto">
+<p data-line="515" class="code-line" dir="auto">Within your resource group, find and click on the <strong>Jumpbox VM</strong>.</p>
+</li>
+<li data-line="517" class="code-line" dir="auto">
+<p data-line="517" class="code-line" dir="auto">In the left-hand side menu, under the <strong>Connect</strong> section, select ‘Bastion’.</p>
+</li>
+<li data-line="519" class="code-line" dir="auto">
+<p data-line="519" class="code-line" dir="auto">Enter the <strong>credentials</strong> for the Jumpbox VM and verify that you can log in successfully.</p>
+</li>
+</ol>
+<p data-line="521" class="code-line" dir="auto">For additional information on accessing VMs through Bastion, please refer to this <a href="https://learn.microsoft.com/en-us/azure/bastion/create-host-cli#steps" data-href="https://learn.microsoft.com/en-us/azure/bastion/create-host-cli#steps">Microsoft Azure Bastion tutorial</a></p>
+<p data-line="523" class="code-line" dir="auto">After completing these steps, The high-level targeted architecture now matches the following diagram:</p>
+<div data-line="525" class="code-line" dir="auto"></div>
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/hubandspokewithpeeringBastionJumpbox.jpg" width="400">
+<h3 data-line="527" class="code-line" dir="auto" id="create-an-azure-firewall-and-setup-a-user-defined-route-udr" tabindex="-1">Create an Azure Firewall and Setup a User Defined Route (UDR)</h3>
+<p data-line="529" class="code-line" dir="auto">To secure your outbound traffic, you can use an Azure Firewall. The following steps will help you restrict the outbound access and to certain FQDNs that are needed by the cluster. further information can be found here: <a href="https://learn.microsoft.com/en-us/azure/aks/limit-egress-traffic" data-href="https://learn.microsoft.com/en-us/azure/aks/limit-egress-traffic">Control egress traffic using Azure Firewall in Azure Kubernetes Service (AKS)</a></p>
+<ol data-line="531" class="code-line" dir="auto">
+<li data-line="531" class="code-line" dir="auto">Create Azure Firewall, and deploy it to it to firewall subnet in hub vnet.</li>
+</ol>
+<pre><code data-line="533" class="code-line language-bash" dir="auto">az network firewall create \
+    --resource-group <span class="hljs-variable">$HUB_RG</span> \
+    --name <span class="hljs-variable">$FW_NAME</span> \
+    --location <span class="hljs-variable">$LOCATION</span> \
+    --vnet-name <span class="hljs-variable">$HUB_VNET_NAME</span> \
+    --enable-dns-proxy <span class="hljs-literal">true</span>
+
+</code></pre>
+<ol start="2" data-line="543" class="code-line" dir="auto">
+<li data-line="543" class="code-line" dir="auto">The firewall needs a Public IP address. Create the Public IP.</li>
+</ol>
+<pre><code data-line="545" class="code-line language-bash" dir="auto">az network public-ip create \
+    --name fw-pip \
+    --resource-group <span class="hljs-variable">$HUB_RG</span> \
+    --location <span class="hljs-variable">$LOCATION</span> \
+    --allocation-method static \
+    --sku standard
+
+</code></pre>
+<ol start="3" data-line="555" class="code-line" dir="auto">
+<li data-line="555" class="code-line" dir="auto">Associate the public IP address with the Firewall.</li>
+</ol>
+<pre><code data-line="557" class="code-line language-bash" dir="auto">az network firewall ip-config create \
+    --firewall-name <span class="hljs-variable">$FW_NAME</span> \
+    --name FW-config \
+    --public-ip-address fw-pip \
+    --resource-group <span class="hljs-variable">$HUB_RG</span> \
+    --vnet-name <span class="hljs-variable">$HUB_VNET_NAME</span>
+
+</code></pre>
+<ol start="4" data-line="567" class="code-line" dir="auto">
+<li data-line="567" class="code-line" dir="auto">Update the existing Azure Firewall configuration.</li>
+</ol>
+<pre><code data-line="569" class="code-line language-bash" dir="auto">az network firewall update \
+    --name <span class="hljs-variable">$FW_NAME</span> \
+    --resource-group <span class="hljs-variable">$HUB_RG</span> 
+</code></pre>
+<ol start="5" data-line="575" class="code-line" dir="auto">
+<li data-line="575" class="code-line" dir="auto">Create Network rules in Azure Firewall.</li>
+</ol>
+<p data-line="577" class="code-line" dir="auto">The following network rules allows outbound traffic from any source address to certain destinations and ports. If the required destination is not specified the AKS cluster will fail to deploy.</p>
+<p data-line="579" class="code-line" dir="auto">Please note that these transactions are slow. Expect each rule to require around 5 minutes to complete.</p>
+<pre><code data-line="581" class="code-line language-bash" dir="auto">az network firewall network-rule create -g <span class="hljs-variable">$HUB_RG</span> -f <span class="hljs-variable">$FW_NAME</span> --collection-name <span class="hljs-string">'aksfwnr'</span> -n <span class="hljs-string">'apiudp'</span> --protocols <span class="hljs-string">'UDP'</span> --source-addresses <span class="hljs-string">'*'</span> --destination-addresses <span class="hljs-string">"AzureCloud.<span class="hljs-variable">$LOCATION</span>"</span> --destination-ports 1194 --action allow --priority 100
+
+
+az network firewall network-rule create -g <span class="hljs-variable">$HUB_RG</span> -f <span class="hljs-variable">$FW_NAME</span> --collection-name <span class="hljs-string">'aksfwnr'</span> -n <span class="hljs-string">'apitcp'</span> --protocols <span class="hljs-string">'TCP'</span> --source-addresses <span class="hljs-string">'*'</span> --destination-addresses <span class="hljs-string">"AzureCloud.<span class="hljs-variable">$LOCATION</span>"</span> --destination-ports 9000
+
+
+az network firewall network-rule create -g <span class="hljs-variable">$HUB_RG</span> -f <span class="hljs-variable">$FW_NAME</span> --collection-name <span class="hljs-string">'aksfwnr'</span> -n <span class="hljs-string">'time'</span> --protocols <span class="hljs-string">'UDP'</span> --source-addresses <span class="hljs-string">'*'</span> --destination-fqdns <span class="hljs-string">'ntp.ubuntu.com'</span> --destination-ports 123
+</code></pre>
+<ol start="6" data-line="591" class="code-line" dir="auto">
+<li data-line="591" class="code-line" dir="auto">Create Azure Firewall application rule.</li>
+</ol>
+<p data-line="593" class="code-line" dir="auto">This rule specifies the FQDN's which are required by AKS, <strong>AzureKubernetesService</strong> tag which include all the FQDNs listed in Outbound network and FQDN rules for AKS clusters.</p>
+<p data-line="595" class="code-line" dir="auto">For more information about required egress destinations, see <a href="https://learn.microsoft.com/en-us/azure/aks/outbound-rules-control-egress" data-href="https://learn.microsoft.com/en-us/azure/aks/outbound-rules-control-egress">Outbound network and FQDN rules for Azure Kubernetes Service (AKS) clusters</a></p>
+<pre><code data-line="598" class="code-line language-bash" dir="auto">az network firewall application-rule create -g <span class="hljs-variable">$HUB_RG</span> -f <span class="hljs-variable">$FW_NAME</span> --collection-name <span class="hljs-string">'aksfwar'</span> -n <span class="hljs-string">'fqdn'</span> --source-addresses <span class="hljs-string">'*'</span> --protocols <span class="hljs-string">'http=80'</span> <span class="hljs-string">'https=443'</span> --fqdn-tags <span class="hljs-string">"AzureKubernetesService"</span> --action allow --priority 100
+</code></pre>
+<ol start="7" data-line="602" class="code-line" dir="auto">
+<li data-line="602" class="code-line" dir="auto">Create a route table in the spoke.</li>
+</ol>
+<pre><code data-line="604" class="code-line language-bash" dir="auto">az network route-table create \
+    --resource-group <span class="hljs-variable">$SPOKE_RG</span>  \
+    --name <span class="hljs-variable">$ROUTE_TABLE_NAME</span>
+
+</code></pre>
+<ol start="8" data-line="611" class="code-line" dir="auto">
+<li data-line="611" class="code-line" dir="auto">Create a route to the internet via the Azure Firewall.</li>
+</ol>
+<p data-line="613" class="code-line" dir="auto">In order to create the route we need to obtain the private IP address of the Firewall.To get the private IP address of the Firewall, you need to run the following command:</p>
+<pre><code data-line="615" class="code-line language-bash" dir="auto">az network firewall show --resource-group <span class="hljs-variable">$HUB_RG</span> --name <span class="hljs-variable">$FW_NAME</span> |grep  privateIPAddress
+</code></pre>
+<p data-line="619" class="code-line" dir="auto">Then store the output (the ip address) in an environment variable:</p>
+<pre><code data-line="621" class="code-line language-bash" dir="auto">FW_PRIVATE_IP=&lt;IP Address from previous <span class="hljs-built_in">command</span>&gt;
+</code></pre>
+<p data-line="625" class="code-line" dir="auto">Create the route table to route egress traffic to the firewall in the hub VNET:</p>
+<pre><code data-line="626" class="code-line language-bash" dir="auto">az network route-table route create \
+    --resource-group <span class="hljs-variable">$SPOKE_RG</span>  \
+    --name default-route \
+    --route-table-name <span class="hljs-variable">$ROUTE_TABLE_NAME</span> \
+    --address-prefix 0.0.0.0/0 \
+    --next-hop-type VirtualAppliance \
+    --next-hop-ip-address <span class="hljs-variable">$FW_PRIVATE_IP</span>
+
+</code></pre>
+<blockquote data-line="636" class="code-line" dir="auto">
+<p data-line="636" class="code-line" dir="auto">[!Note]
+The route will direct all traffic (0.0.0.0/0) to the next hop type of VirtualAppliance, which is the firewall instance. The next hop IP address is the private IP address of the firewall, which is stored in the environment variable $FW_PRIVATE_IP. This way, the traffic from the AKS subnet will be routed to the firewall instance on its private endpoint. This will allow you to perform inspection on outbound traffic.</p>
+</blockquote>
+<ol start="9" data-line="639" class="code-line" dir="auto">
+<li data-line="639" class="code-line" dir="auto">Associate the route table with the AKS subnet.</li>
+</ol>
+<pre><code data-line="641" class="code-line language-bash" dir="auto">az network vnet subnet update \
+    --resource-group <span class="hljs-variable">$SPOKE_RG</span>  \
+    --vnet-name <span class="hljs-variable">$SPOKE_VNET_NAME</span> \
+    --name <span class="hljs-variable">$AKS_SUBNET_NAME</span> \
+    --route-table <span class="hljs-variable">$ROUTE_TABLE_NAME</span>
+</code></pre>
+<p data-line="649" class="code-line" dir="auto">You have successfully configured the firewall in the hub VNet, set up network and application rules, and created a route table associated with the AKS subnet to direct all internet-bound traffic through the Azure Firewall.</p>
+<div data-line="652" class="code-line" dir="auto"></div>
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/hubandspokewithpeeringBastionJumpboxFirewall.jpg" width="400">
+<div data-line="655" class="code-line" dir="auto"></div>
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/OutboundTraffic.jpg" width="600">
+<ol start="10" data-line="659" class="code-line" dir="auto">
+<li data-line="659" class="code-line" dir="auto">
+<p data-line="659" class="code-line" dir="auto">To validate your deployment, navigate to the Azure portal at <a href="https://portal.azure.com" data-href="https://portal.azure.com">https://portal.azure.com</a></p>
+</li>
+<li data-line="661" class="code-line" dir="auto">
+<p data-line="661" class="code-line" dir="auto">Locate and select your resource group called <strong>rg-hub</strong> where the hub vnet is deployed.</p>
+</li>
+<li data-line="663" class="code-line" dir="auto">
+<p data-line="663" class="code-line" dir="auto">Select your firewall called <strong>azure-firewall</strong>.</p>
+</li>
+<li data-line="665" class="code-line" dir="auto">
+<p data-line="665" class="code-line" dir="auto">In the left-hand side menu, under the <strong>Settings</strong> section, select <strong>Rules</strong>.</p>
+</li>
+<li data-line="667" class="code-line" dir="auto">
+<p data-line="667" class="code-line" dir="auto">Click on  <strong>Network rule collection</strong></p>
+</li>
+<li data-line="669" class="code-line" dir="auto">
+<p data-line="669" class="code-line" dir="auto">Verify that you have a network rule collection called <strong>aksfwnr</strong> which should contain 3 rules. Inspect the rules.</p>
+</li>
+</ol>
+<div data-line="671" class="code-line" dir="auto"></div>
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/azfwnr.jpg" width="1000">
+<ol start="16" data-line="674" class="code-line" dir="auto">
+<li data-line="674" class="code-line" dir="auto">
+<p data-line="674" class="code-line" dir="auto">Click on <strong>Application rule collection</strong>.</p>
+</li>
+<li data-line="676" class="code-line" dir="auto">
+<p data-line="676" class="code-line" dir="auto">Verify that you have an application rule collection called <strong>aksfwar</strong> which should contain 1 rule. Inspect the rule.</p>
+</li>
+</ol>
+<div data-line="678" class="code-line" dir="auto"></div>
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/azfwar.jpg" width="1000">
+<ol start="18" data-line="681" class="code-line" dir="auto">
+<li data-line="681" class="code-line" dir="auto">
+<p data-line="681" class="code-line" dir="auto">Lets validate the routing between AKS subnet and Azure Firewall, in the Azure portal, in the top menu select <strong>Resource Groups</strong>.</p>
+</li>
+<li data-line="683" class="code-line" dir="auto">
+<p data-line="683" class="code-line" dir="auto">Select resource group <strong>rg-spoke</strong>.</p>
+</li>
+<li data-line="685" class="code-line" dir="auto">
+<p data-line="685" class="code-line" dir="auto">Select routing table called <strong>spoke-rt</strong>.</p>
+</li>
+<li data-line="687" class="code-line" dir="auto">
+<p data-line="687" class="code-line" dir="auto">Ensure that the default route has a prefix of <strong>0.0.0.0/0</strong> and the next hop is set to the <strong>virtual appliance</strong> with the <strong>IP</strong> address of the Azure Firewall. Also, make sure that the routing table is associated with the AKS subnet called <strong>aks-subnet</strong>.</p>
+</li>
+</ol>
+<div data-line="689" class="code-line" dir="auto"></div>
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/spokert.jpg" width="1000">
+<h3 data-line="692" class="code-line" dir="auto" id="deploy-azure-kubernetes-service" tabindex="-1">Deploy Azure Kubernetes Service</h3>
+<p data-line="694" class="code-line" dir="auto">This part covers deploying AKS with outbound traffic configured to use a user-defined routing table, ensuring traffic passes through the Azure Firewall. A private DNS zone is also created when deploying a private AKS cluster. A user-assigned identity with necessary permissions is assigned to the cluster and load balancer subnet. This identity is a type of managed identity in Azure.</p>
+<ol data-line="696" class="code-line" dir="auto">
+<li data-line="696" class="code-line" dir="auto">Create a user-assigned managed identity.</li>
+</ol>
+<pre><code data-line="698" class="code-line language-bash" dir="auto">az identity create \
+    --resource-group <span class="hljs-variable">$SPOKE_RG</span> \
+    --name <span class="hljs-variable">$AKS_IDENTITY_NAME</span>-<span class="hljs-variable">${STUDENT_NAME}</span>
+</code></pre>
+<ol start="2" data-line="704" class="code-line" dir="auto">
+<li data-line="704" class="code-line" dir="auto">Get the id of the user managed identity.</li>
+</ol>
+<pre><code data-line="706" class="code-line language-bash" dir="auto"> IDENTITY_ID=$(az identity show \
+    --resource-group <span class="hljs-variable">$SPOKE_RG</span> \
+    --name <span class="hljs-variable">$AKS_IDENTITY_NAME</span>-<span class="hljs-variable">${STUDENT_NAME}</span> \
+    --query <span class="hljs-built_in">id</span> \
+    --output tsv)
+</code></pre>
+<ol start="3" data-line="714" class="code-line" dir="auto">
+<li data-line="714" class="code-line" dir="auto">Get the principal id of the user managed identity.</li>
+</ol>
+<pre><code data-line="716" class="code-line language-bash" dir="auto">PRINCIPAL_ID=$(az identity show \
+    --resource-group <span class="hljs-variable">$SPOKE_RG</span> \
+    --name <span class="hljs-variable">$AKS_IDENTITY_NAME</span>-<span class="hljs-variable">${STUDENT_NAME}</span> \
+    --query principalId \
+    --output tsv)
+</code></pre>
+<ol start="4" data-line="724" class="code-line" dir="auto">
+<li data-line="724" class="code-line" dir="auto">Get the scope of the routing table.</li>
+</ol>
+<pre><code data-line="726" class="code-line language-bash" dir="auto">RT_SCOPE=$(az network route-table show \
+    --resource-group <span class="hljs-variable">$SPOKE_RG</span> \
+    --name <span class="hljs-variable">$ROUTE_TABLE_NAME</span>  \
+    --query <span class="hljs-built_in">id</span> \
+    --output tsv)
+</code></pre>
+<ol start="5" data-line="734" class="code-line" dir="auto">
+<li data-line="734" class="code-line" dir="auto">Assign permissions for the AKS user defined managed identity to the routing table.</li>
+</ol>
+<pre><code data-line="736" class="code-line language-bash" dir="auto">az role assignment create \
+    --assignee <span class="hljs-variable">$PRINCIPAL_ID</span>\
+    --scope <span class="hljs-variable">$RT_SCOPE</span> \
+    --role <span class="hljs-string">"Network Contributor"</span>
+</code></pre>
+<ol start="6" data-line="743" class="code-line" dir="auto">
+<li data-line="743" class="code-line" dir="auto">Assign permission for the AKS user defined managed identity to the load balancer subnet.</li>
+</ol>
+<pre><code data-line="745" class="code-line language-bash" dir="auto">LB_SUBNET_SCOPE=$(az network vnet subnet list \
+    --resource-group <span class="hljs-variable">$SPOKE_RG</span> \
+    --vnet-name <span class="hljs-variable">$SPOKE_VNET_NAME</span> \
+    --query <span class="hljs-string">"[?name=='<span class="hljs-variable">$LOADBALANCER_SUBNET_NAME</span>'].id"</span> \
+    --output tsv)
+</code></pre>
+<pre><code data-line="753" class="code-line language-bash" dir="auto">az role assignment create \
+    --assignee <span class="hljs-variable">$PRINCIPAL_ID</span> \
+    --scope <span class="hljs-variable">$LB_SUBNET_SCOPE</span> \
+    --role <span class="hljs-string">"Network Contributor"</span>
+
+</code></pre>
+<blockquote data-line="760" class="code-line" dir="auto">
+<p data-line="760" class="code-line" dir="auto">[!Note]
+Granting the Network Contributor role to the load balancer subnet in AKS could result in over-privileged access. To minimize security risks, it is recommended to only provide AKS with the necessary permissions to function effectively, adhering to the principle of least privilege access. For more information refer to <a href="./docs/customrole.md" data-href="./docs/customrole.md">Creating Azure custom role</a>.</p>
+</blockquote>
+<ol start="7" data-line="763" class="code-line" dir="auto">
+<li data-line="763" class="code-line" dir="auto">Retrieve the scope of AKS subnet, were AKS shall be deployed.</li>
+</ol>
+<pre><code data-line="765" class="code-line language-bash" dir="auto">AKS_SUBNET_SCOPE=$(az network vnet subnet list \
+    --resource-group <span class="hljs-variable">$SPOKE_RG</span> \
+    --vnet-name <span class="hljs-variable">$SPOKE_VNET_NAME</span> \
+    --query <span class="hljs-string">"[?name=='<span class="hljs-variable">$AKS_SUBNET_NAME</span>'].id"</span> \
+    --output tsv)
+</code></pre>
+<ol start="8" data-line="773" class="code-line" dir="auto">
+<li data-line="773" class="code-line" dir="auto">Deploy a Highly Available Private AKS Cluster.</li>
+</ol>
+<p data-line="775" class="code-line" dir="auto">To deploy a highly available private AKS cluster, you can use the following command:</p>
+<p data-line="777" class="code-line" dir="auto">This command creates an AKS cluster with two system nodes, using the specified VNet subnet ID and cluster name. It is configured as a private cluster with user-defined routing and OIDC issuer and workload identity enabled. The network plugin and policy are set to Azure, and the public FQDN is disabled. The cluster is deployed across availability zones 1, 2, and 3.</p>
+<p data-line="779" class="code-line" dir="auto">For more information about OIDC and Workload Identity refer to <a href="https://learn.microsoft.com/en-us/azure/aks/workload-identity-overview" data-href="https://learn.microsoft.com/en-us/azure/aks/workload-identity-overview">Use Microsoft Entra Workload ID with Azure Kubernetes Service (AKS)</a></p>
+<pre><code data-line="781" class="code-line language-bash" dir="auto">az aks create --resource-group <span class="hljs-variable">$SPOKE_RG</span> --node-count 2 --vnet-subnet-id <span class="hljs-variable">$AKS_SUBNET_SCOPE</span> --name <span class="hljs-variable">$AKS_CLUSTER_NAME</span>-<span class="hljs-variable">${STUDENT_NAME}</span> --enable-private-cluster --outbound-type userDefinedRouting --enable-oidc-issuer --enable-workload-identity --generate-ssh-keys --assign-identity <span class="hljs-variable">$IDENTITY_ID</span> --network-plugin azure --network-policy azure --disable-public-fqdn --zones 1 2 3
+</code></pre>
+<blockquote data-line="785" class="code-line" dir="auto">
+<p data-line="785" class="code-line" dir="auto">[!Note]
+A private AKS cluster has its Kubernetes API endpoint isolated from public access, allowing access only within the same virtual network. To communicate with the private AKS cluster from a jumpbox in a different virtual network, a virtual network link must be created between the two networks for DNS resolution. This will be covered in a later section.</p>
+</blockquote>
+<ol start="9" data-line="788" class="code-line" dir="auto">
+<li data-line="788" class="code-line" dir="auto">An additional nodepool will be created to host user workloads. Auto-scaling is enabled to allow for automatic scaling out and scaling in based on demand. The worker nodes will be distributed across three different zones to ensure higher availability.</li>
+</ol>
+<pre><code data-line="790" class="code-line language-bash" dir="auto">az aks nodepool add --resource-group <span class="hljs-variable">$SPOKE_RG</span> --cluster-name <span class="hljs-variable">$AKS_CLUSTER_NAME</span>-<span class="hljs-variable">${STUDENT_NAME}</span> --name userpool --node-count 3 --mode user --zones 1 2 3 --enable-cluster-autoscaler --min-count 1 --max-count 5
+</code></pre>
+<ol start="10" data-line="794" class="code-line" dir="auto">
+<li data-line="794" class="code-line" dir="auto">Create a virtual network link to resolve AKS private endpoint from HUB vnet.</li>
+</ol>
+<p data-line="796" class="code-line" dir="auto">Fetch the node group of the AKS cluster, and save it in an environment variable.</p>
+<pre><code data-line="798" class="code-line language-bash" dir="auto">NODE_GROUP=$(az aks show --resource-group <span class="hljs-variable">$SPOKE_RG</span> --name <span class="hljs-variable">$AKS_CLUSTER_NAME</span>-<span class="hljs-variable">${STUDENT_NAME}</span> --query nodeResourceGroup -o tsv)
+</code></pre>
+<p data-line="802" class="code-line" dir="auto">Fetch the AKS DNS zone name.</p>
+<pre><code data-line="804" class="code-line language-bash" dir="auto">DNS_ZONE_NAME=$(az network private-dns zone list --resource-group <span class="hljs-variable">$NODE_GROUP</span> --query <span class="hljs-string">"[0].name"</span> -o tsv)
+
+</code></pre>
+<p data-line="808" class="code-line" dir="auto">Fetch the ID of the HUB virtual network.</p>
+<pre><code data-line="810" class="code-line language-bash" dir="auto">HUB_VNET_ID=$(az network vnet show -g <span class="hljs-variable">$HUB_RG</span> -n <span class="hljs-variable">$HUB_VNET_NAME</span> --query <span class="hljs-built_in">id</span> --output tsv)
+</code></pre>
+<p data-line="814" class="code-line" dir="auto">Create a virtual network link between the hub virtual network and the AKS private DNS zone, that was created for the AKS cluster.</p>
+<pre><code data-line="816" class="code-line language-bash" dir="auto">az network private-dns <span class="hljs-built_in">link</span> vnet create --name <span class="hljs-string">"hubnetdnsconfig"</span> --registration-enabled <span class="hljs-literal">false</span> --resource-group <span class="hljs-variable">$NODE_GROUP</span> --virtual-network <span class="hljs-variable">$HUB_VNET_ID</span> --zone-name <span class="hljs-variable">$DNS_ZONE_NAME</span> 
+</code></pre>
+<p data-line="820" class="code-line" dir="auto">Validate your deployment in the Azure portal.</p>
+<ol start="11" data-line="822" class="code-line" dir="auto">
+<li data-line="822" class="code-line" dir="auto">
+<p data-line="822" class="code-line" dir="auto">Navigate to the Azure portal at <a href="https://portal.azure.com" data-href="https://portal.azure.com">https://portal.azure.com</a>.</p>
+</li>
+<li data-line="824" class="code-line" dir="auto">
+<p data-line="824" class="code-line" dir="auto">Click on <strong>Resource groups</strong> to view all of your resource groups in your subscription. You should have 3 RGs which you have created,<strong>MC_rg-spoke_private-aks-xxxx_eastus</strong>, <strong>rg-hub</strong> and <strong>rg-spoke</strong></p>
+</li>
+</ol>
+<blockquote data-line="826" class="code-line" dir="auto">
+<p data-line="826" class="code-line" dir="auto">[!Note]
+MC_rg-spoke_private-aks-xxxx_eastus is a resource group automatically created when deploying an AKS cluster. It is used by Azure to manage resources for the cluster, this particular resource group is also known as Node group.</p>
+</blockquote>
+<div data-line="830" class="code-line" dir="auto"></div>
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/resourcegroups.jpg" width="1000">
+<ol start="13" data-line="834" class="code-line" dir="auto">
+<li data-line="834" class="code-line" dir="auto">
+<p data-line="834" class="code-line" dir="auto">Verify that a virtual network link exists between the Hub and spoke to enable the jumpbox to resolve the AKS domain name and access the cluster. Select the node group called <strong>MC_rg-spoke_private-aks-xxxxx_eastus</strong>.</p>
+</li>
+<li data-line="836" class="code-line" dir="auto">
+<p data-line="836" class="code-line" dir="auto">Select the <strong>Private DNS zone</strong>.</p>
+</li>
+<li data-line="838" class="code-line" dir="auto">
+<p data-line="838" class="code-line" dir="auto">On your left hand side menu, under <strong>Settings</strong> click on <strong>Virtual network links</strong>.</p>
+</li>
+<li data-line="840" class="code-line" dir="auto">
+<p data-line="840" class="code-line" dir="auto">Validate that there is a link name called <strong>hubnetdnsconfig</strong> and the link status is set to <strong>Completed</strong> and the virtual network is set to <strong>Hub_VNET</strong>.</p>
+</li>
+</ol>
+<div data-line="842" class="code-line" dir="auto"></div>
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/virtualnetworklinks.jpg" width="1000">
+<ol start="17" data-line="845" class="code-line" dir="auto">
+<li data-line="845" class="code-line" dir="auto">
+<p data-line="845" class="code-line" dir="auto">On the top menu click <strong>Resource groups</strong> and choose <strong>rg-spoke</strong> from the resource group list.</p>
+</li>
+<li data-line="847" class="code-line" dir="auto">
+<p data-line="847" class="code-line" dir="auto">Click on the AKS resource called private-aks-<your student="" name="">. Verify that the Private cluster is set to Enabled.</your></p>
+</li>
+</ol>
+<div data-line="850" class="code-line" dir="auto"></div>
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/aksoverviewprivatecluster.jpg" width="1000">
+<ol start="19" data-line="853" class="code-line" dir="auto">
+<li data-line="853" class="code-line" dir="auto">Verify AKS control plane connectivity.</li>
+</ol>
+<p data-line="855" class="code-line" dir="auto">In this section we will verify that we are able to connect to the AKS cluster from the jumpbox, firstly we need to connect to the cluster successfully and secondly we need to verify that the kubernetes client is able to communicate with the AKS control plane from the jumpbox.</p>
+<ol start="20" data-line="857" class="code-line" dir="auto">
+<li data-line="857" class="code-line" dir="auto">
+<p data-line="857" class="code-line" dir="auto">Select resource group <strong>rg-hub</strong> where the Jumpbox has been deployed.</p>
+</li>
+<li data-line="859" class="code-line" dir="auto">
+<p data-line="859" class="code-line" dir="auto">Within your resource group, find and click on the virtual machine called <strong>Jumpbox VM</strong>.</p>
+</li>
+<li data-line="861" class="code-line" dir="auto">
+<p data-line="861" class="code-line" dir="auto">In the left-hand side menu, under  <strong>Connect</strong> section, select <strong>Bastion</strong>.</p>
+</li>
+<li data-line="863" class="code-line" dir="auto">
+<p data-line="863" class="code-line" dir="auto">Enter the <strong>credentials</strong> for the Jumpbox VM and verify that you can log in successfully.</p>
+</li>
+<li data-line="865" class="code-line" dir="auto">
+<p data-line="865" class="code-line" dir="auto">Once successfully logged in to the jumpbox you need to install a few tools. Run the commands one by one, or create a bash script.</p>
+</li>
+</ol>
+<pre><code data-line="867" class="code-line language-bash" dir="auto"><span class="hljs-comment"># Update apt repo</span>
+sudo apt update 
+<span class="hljs-comment"># Install Docker</span>
+sudo apt install docker.io -y
+<span class="hljs-comment"># Install azure CLI</span>
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+<span class="hljs-comment"># Install AKS CLI (kubectl)</span>
+sudo az aks install-cli
+<span class="hljs-comment"># Add user to Docker group</span>
+sudo usermod -aG docker <span class="hljs-variable">$USER</span>
+</code></pre>
+<ol start="7" data-line="881" class="code-line" dir="auto">
+<li data-line="881" class="code-line" dir="auto">Now, <strong>login to Azure</strong> in order to obtain AKS credentials.</li>
+</ol>
+<pre><code data-line="883" class="code-line language-bash" dir="auto">az login
+az account <span class="hljs-built_in">set</span> --subscription &lt;SUBSCRIPTION ID&gt;
+</code></pre>
+<blockquote data-line="887" class="code-line" dir="auto">
+<p data-line="887" class="code-line" dir="auto">[!Note]
+To check the current subscription, run the command: <strong>az account show</strong>
+To change the subscription, run the command: <strong>az account set --subscription <subscription id="">, where <subscription id=""></subscription></subscription></strong> the ID of the desired subscription. You can find the subscription ID by running the command: <strong>az account list --output table</strong></p>
+</blockquote>
+<ol start="8" data-line="891" class="code-line" dir="auto">
+<li data-line="891" class="code-line" dir="auto">Add your Environment variables to the jumpbox bash shell.</li>
+</ol>
+<pre><code data-line="893" class="code-line language-bash" dir="auto">SPOKE_RG=rg-spoke
+AKS_CLUSTER_NAME=private-aks
+STUDENT_NAME=&lt;WRITE YOUR STUDENT NAME HERE&gt;
+</code></pre>
+<ol start="8" data-line="899" class="code-line" dir="auto">
+<li data-line="899" class="code-line" dir="auto">Download the AKS credentials onto the jumpbox.</li>
+</ol>
+<pre><code data-line="901" class="code-line language-bash" dir="auto">az aks get-credentials --resource-group <span class="hljs-variable">$SPOKE_RG</span> --name <span class="hljs-variable">$AKS_CLUSTER_NAME</span>-<span class="hljs-variable">${STUDENT_NAME}</span>
+</code></pre>
+<ol start="9" data-line="905" class="code-line" dir="auto">
+<li data-line="905" class="code-line" dir="auto">Ensure you can list resources in AKS.</li>
+</ol>
+<pre><code data-line="907" class="code-line language-bash" dir="auto">kubectl get nodes
+</code></pre>
+<p data-line="911" class="code-line" dir="auto">The following output shows the result of running the command kubectl get nodes on with kubectl CLI.</p>
+<pre><code data-line="913" class="code-line language-bash" dir="auto">azureuser@Jumpbox-VM:~$ kubectl get nodes
+NAME                                STATUS   ROLES   AGE   VERSION
+aks-nodepool1-12240482-vmss000000   Ready    agent   89m   v1.27.9
+aks-nodepool1-12240482-vmss000001   Ready    agent   89m   v1.27.9
+aks-userpool-16991029-vmss000000    Ready    agent   78m   v1.27.9
+</code></pre>
+<ol start="10" data-line="920" class="code-line" dir="auto">
+<li data-line="920" class="code-line" dir="auto">Log out from the Jumpbox host.</li>
+</ol>
+<p data-line="922" class="code-line" dir="auto">Congratulations! You have completed the steps to deploy a private AKS cluster and configure its network settings. You have assigned a user assigned identity to the cluster that has the required permissions to modify the user-defined routing table and load balancer subnet. You have also created a virtual network link between the hub virtual network and the private DNS zone of the cluster. This enables the jumpbox to resolve the private API server of the cluster and access it for management and maintenance purposes.</p>
+<div data-line="925" class="code-line" dir="auto"></div>
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/hubandspokewithpeeringBastionJumpboxFirewallaksvirtualnetlink.jpg" width="400">
+<div data-line="927" class="code-line" dir="auto"></div>
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/aksjumpbox.jpg" width="600">
+<h3 data-line="929" class="code-line" dir="auto" id="deploy-azure-container-registry" tabindex="-1">Deploy Azure Container Registry</h3>
+<p data-line="931" class="code-line" dir="auto">In this section, we will learn how to deploy a private Azure Container Registry that will store our container images. A private container registry is a type of container registry that is not accessible from the public internet. To enable access to the private container registry from the jumpbox, we need to create some networking resources that will allow us to resolve the container registry name and connect to it securely. These resources are: a private endpoint, a private link, and a virtual network link. We will see how to create and configure these resources in the following steps. We will also test the connection to the private container registry by pushing some images to it from the jumpbox.</p>
+<ol data-line="933" class="code-line" dir="auto">
+<li data-line="933" class="code-line" dir="auto">Create the Azure Container Registry, and disable public access to the registry.</li>
+</ol>
+<pre><code data-line="935" class="code-line language-bash" dir="auto">az acr create \
+    --resource-group <span class="hljs-variable">$SPOKE_RG</span> \
+    --name <span class="hljs-variable">$ACR_NAME</span> \
+    --sku Premium \
+    --admin-enabled <span class="hljs-literal">false</span> \
+    --location <span class="hljs-variable">$LOCATION</span> \
+    --allow-trusted-services <span class="hljs-literal">false</span> \
+    --public-network-enabled <span class="hljs-literal">false</span>
+</code></pre>
+<blockquote data-line="946" class="code-line" dir="auto">
+<p data-line="946" class="code-line" dir="auto">[!IMPORTANT]
+Ensure you have a globally unique name for your ACR, or else the deployment will fail.</p>
+</blockquote>
+<ol start="2" data-line="949" class="code-line" dir="auto">
+<li data-line="949" class="code-line" dir="auto">Configure the private DNS zone for ACR.</li>
+</ol>
+<pre><code data-line="951" class="code-line language-bash" dir="auto">az network private-dns zone create \
+  --resource-group <span class="hljs-variable">$SPOKE_RG</span> \
+  --name <span class="hljs-string">"privatelink.azurecr.io"</span>
+</code></pre>
+<ol start="3" data-line="958" class="code-line" dir="auto">
+<li data-line="958" class="code-line" dir="auto">Create a virtual network link to the spoke network.</li>
+</ol>
+<pre><code data-line="960" class="code-line language-bash" dir="auto">az network private-dns <span class="hljs-built_in">link</span> vnet create \
+  --resource-group <span class="hljs-variable">$SPOKE_RG</span> \
+  --zone-name <span class="hljs-string">"privatelink.azurecr.io"</span> \
+  --name ACRDNSSpokeLink \
+  --virtual-network <span class="hljs-variable">$SPOKE_VNET_NAME</span> \
+  --registration-enabled <span class="hljs-literal">false</span>
+</code></pre>
+<ol start="4" data-line="969" class="code-line" dir="auto">
+<li data-line="969" class="code-line" dir="auto">Create a virtual network link to the hub network.</li>
+</ol>
+<blockquote data-line="971" class="code-line" dir="auto">
+<p data-line="971" class="code-line" dir="auto">[!Note]
+The $HUB_VNET_ID variable specifies the full path to the virtual network in another resource group, allowing the command to correctly link to it.
+Make sure the environment variable $HUB_VNET_ID is populated before running the command below. If it is empty, just rerun the command:</p>
+</blockquote>
+<p data-line="975" class="code-line" dir="auto"><code>HUB_VNET_ID=$(az network vnet show -g $HUB_RG -n $HUB_VNET_NAME --query id --output tsv)</code></p>
+<pre><code data-line="977" class="code-line language-bash" dir="auto">az network private-dns <span class="hljs-built_in">link</span> vnet create \
+  --resource-group <span class="hljs-variable">$SPOKE_RG</span> \
+  --zone-name <span class="hljs-string">"privatelink.azurecr.io"</span> \
+  --name ACRDNSHubLink \
+  --virtual-network <span class="hljs-variable">$HUB_VNET_ID</span> \
+  --registration-enabled <span class="hljs-literal">false</span>
+</code></pre>
+<ol start="5" data-line="986" class="code-line" dir="auto">
+<li data-line="986" class="code-line" dir="auto">Create ACR private endpoint.</li>
+</ol>
+<p data-line="988" class="code-line" dir="auto">To create a private endpoint for an Azure Container Registry (ACR), you need to obtain the resource ID of the container registry. This resource ID is used to specify the target resource when creating the private endpoint.</p>
+<pre><code data-line="990" class="code-line language-bash" dir="auto">REGISTRY_ID=$(az acr show --name <span class="hljs-variable">$ACR_NAME</span> \
+  --query <span class="hljs-string">'id'</span> --output tsv)
+
+</code></pre>
+<pre><code data-line="996" class="code-line language-bash" dir="auto">az network private-endpoint create \
+    --name ACRPrivateEndpoint \
+    --resource-group <span class="hljs-variable">$SPOKE_RG</span> \
+    --vnet-name <span class="hljs-variable">$SPOKE_VNET_NAME</span> \
+    --subnet <span class="hljs-variable">$ENDPOINTS_SUBNET_NAME</span> \
+    --private-connection-resource-id <span class="hljs-variable">$REGISTRY_ID</span> \
+    --group-ids registry \
+    --connection-name PrivateACRConnection
+</code></pre>
+<ol start="6" data-line="1007" class="code-line" dir="auto">
+<li data-line="1007" class="code-line" dir="auto">Configure DNS record for ACR.</li>
+</ol>
+<p data-line="1009" class="code-line" dir="auto">In this section we will configure DNS records for an Azure Container Registry (ACR) using Azure Private Link.This is to ensure that the ACR can be accessed over a private network connection, enhancing security by eliminating exposure to the public internet.</p>
+<p data-line="1011" class="code-line" dir="auto">Before we can configure the DNS record we need to obtain the private IP address of the ACR, both the control and data plane.</p>
+<p data-line="1013" class="code-line" dir="auto">Get endpoint IP configuration:</p>
+<pre><code data-line="1015" class="code-line language-bash" dir="auto">NETWORK_INTERFACE_ID=$(az network private-endpoint show \
+  --name ACRPrivateEndpoint \
+  --resource-group <span class="hljs-variable">$SPOKE_RG</span> \
+  --query <span class="hljs-string">'networkInterfaces[0].id'</span> \
+  --output tsv)
+</code></pre>
+<p data-line="1023" class="code-line" dir="auto">Fetch the private IP address associated with the ACR. These IP addresses are used for data and control of the container registry.</p>
+<pre><code data-line="1025" class="code-line language-bash" dir="auto">az network nic show --ids <span class="hljs-variable">$NETWORK_INTERFACE_ID</span> |grep azurecr.io -B 7
+</code></pre>
+<p data-line="1029" class="code-line" dir="auto">In the output you should see two IP addresses, and their associated FQDNS. It should look similar to this:</p>
+<pre><code data-line="1031" class="code-line" dir="auto">      "name": "privateEndpointIpConfig.9c4c0ee4-c187-4094-aede-fc0dabb70236",
+      "primary": true,
+      "privateIPAddress": "10.1.1.20",
+      "privateIPAddressVersion": "IPv4",
+      "privateIPAllocationMethod": "Dynamic",
+      "privateLinkConnectionProperties": {
+        "fqdns": [
+          "acrforakssecurity.westus2.data.azurecr.io"
+--
+      "name": "privateEndpointIpConfig.7ffb814c-aacc-4199-a07d-35f61df0ea1f",
+      "primary": false,
+      "privateIPAddress": "10.1.1.21",
+      "privateIPAddressVersion": "IPv4",
+      "privateIPAllocationMethod": "Dynamic",
+      "privateLinkConnectionProperties": {
+        "fqdns": [
+          "acrforakssecurity.azurecr.io"
+</code></pre>
+<p data-line="1051" class="code-line" dir="auto">Note down the <strong>privateIPAddress</strong> and <strong>fqdns</strong> as it will be used in a later step (when creating DNS zones).</p>
+<ol start="7" data-line="1054" class="code-line" dir="auto">
+<li data-line="1054" class="code-line" dir="auto">Create a new 'A' record set for control in the private DNZ zone.</li>
+</ol>
+<pre><code data-line="1056" class="code-line language-bash" dir="auto">az network private-dns record-set a create \
+  --name <span class="hljs-variable">$ACR_NAME</span> \
+  --zone-name privatelink.azurecr.io \
+  --resource-group <span class="hljs-variable">$SPOKE_RG</span>
+</code></pre>
+<ol start="8" data-line="1063" class="code-line" dir="auto">
+<li data-line="1063" class="code-line" dir="auto">Create a new 'A' record set for data in the private DNZ zone.</li>
+</ol>
+<pre><code data-line="1065" class="code-line language-bash" dir="auto">az network private-dns record-set a create \
+  --name <span class="hljs-variable">$ACR_NAME</span>.<span class="hljs-variable">$LOCATION</span>.data \
+  --zone-name privatelink.azurecr.io \
+  --resource-group <span class="hljs-variable">$SPOKE_RG</span>
+</code></pre>
+<ol start="9" data-line="1072" class="code-line" dir="auto">
+<li data-line="1072" class="code-line" dir="auto">Update the 'A' record to contain the data IP address of the ACR.</li>
+</ol>
+<pre><code data-line="1074" class="code-line language-bash" dir="auto">az network private-dns record-set a add-record \
+  --record-set-name <span class="hljs-variable">$ACR_NAME</span>.<span class="hljs-variable">$LOCATION</span>.data \
+  --zone-name privatelink.azurecr.io \
+  --resource-group <span class="hljs-variable">$SPOKE_RG</span> \
+  --ipv4-address &lt;IP address assicoated with FQDN <span class="hljs-string">"<span class="hljs-variable">$ACR_NAME</span>.<span class="hljs-variable">$LOCATION</span>.data.azurecr.io"</span>&gt;
+</code></pre>
+<ol start="10" data-line="1082" class="code-line" dir="auto">
+<li data-line="1082" class="code-line" dir="auto">Update the 'A' record to contain the control IP address of the ACR.</li>
+</ol>
+<pre><code data-line="1084" class="code-line language-bash" dir="auto">az network private-dns record-set a add-record \
+  --record-set-name <span class="hljs-variable">$ACR_NAME</span> \
+  --zone-name privatelink.azurecr.io \
+  --resource-group <span class="hljs-variable">$SPOKE_RG</span> \
+  --ipv4-address &lt;IP address associated with FQDN <span class="hljs-string">"<span class="hljs-variable">$ACR_NAME</span>.azurecr.io"</span>&gt;
+</code></pre>
+<p data-line="1094" class="code-line" dir="auto">Validate your deployment in the Azure portal.</p>
+<ol start="11" data-line="1096" class="code-line" dir="auto">
+<li data-line="1096" class="code-line" dir="auto">
+<p data-line="1096" class="code-line" dir="auto">Navigate to the Azure portal at <a href="https://portal.azure.com" data-href="https://portal.azure.com">https://portal.azure.com</a> and enter your login credentials.</p>
+</li>
+<li data-line="1098" class="code-line" dir="auto">
+<p data-line="1098" class="code-line" dir="auto">log in and select the <strong>rg-spoke</strong> resource group. Verify that you have a <strong>container registry</strong> and a private endpoint named <strong>ACRPrivateEndpoint</strong> deployed in your resource group, as well as a network card named <strong>ACRPrivateEndpoint.nic.xxxxx</strong>.</p>
+</li>
+</ol>
+<div data-line="1100" class="code-line" dir="auto"></div>
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/acrresourcegroup.jpg" width="1000">
+<ol start="13" data-line="1103" class="code-line" dir="auto">
+<li data-line="1103" class="code-line" dir="auto">Select the private DNS zone named <strong>privatelink.azurecr.io</strong>. Ensure that you have two ‘A’ records, one for control and one for data, and that the correct IP addresses are configured.</li>
+</ol>
+<div data-line="1105" class="code-line" dir="auto"></div>
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/acrprivatednszonearecord.jpg" width="1000">
+<ol start="14" data-line="1107" class="code-line" dir="auto">
+<li data-line="1107" class="code-line" dir="auto">In the left-hand side menu, under <strong>Settings</strong> section, select <strong>Virtual Network links</strong>. Ensure you have the link status set to completed for both hub and spoke.</li>
+</ol>
+<div data-line="1109" class="code-line" dir="auto"></div>
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/virtualnetworklinksacr.jpg" width="1000">
+<ol start="15" data-line="1112" class="code-line" dir="auto">
+<li data-line="1112" class="code-line" dir="auto">Test the connection to ACR from the Jumpbox.</li>
+</ol>
+<p data-line="1114" class="code-line" dir="auto">In this section, you will learn how to check if you can access your private Azure Container Registry (ACR) and push Docker images to it. You will need to have the Azure CLI installed and logged in to your Azure account. You will also need to have Docker installed and running on your Jumpbox. Here are the steps to follow:</p>
+<ol start="16" data-line="1116" class="code-line" dir="auto">
+<li data-line="1116" class="code-line" dir="auto">
+<p data-line="1116" class="code-line" dir="auto">Select resource group <strong>rg-hub</strong> where the Jumpbox has been deployed.</p>
+</li>
+<li data-line="1118" class="code-line" dir="auto">
+<p data-line="1118" class="code-line" dir="auto">Within your resource group, find and click on the <strong>Jumpbox VM</strong>.</p>
+</li>
+<li data-line="1120" class="code-line" dir="auto">
+<p data-line="1120" class="code-line" dir="auto">In the left-hand side menu, under the <strong>Connect</strong> section, select ‘Bastion’.</p>
+</li>
+<li data-line="1122" class="code-line" dir="auto">
+<p data-line="1122" class="code-line" dir="auto">Enter the <strong>credentials</strong> for the Jumpbox VM and verify that you can log in successfully.</p>
+</li>
+<li data-line="1124" class="code-line" dir="auto">
+<p data-line="1124" class="code-line" dir="auto">Once successfully logged in to the jumpbox <strong>login to Azure</strong> if you have not already done so in previous steps.</p>
+</li>
+</ol>
+<pre><code data-line="1126" class="code-line language-bash" dir="auto">az login
+</code></pre>
+<p data-line="1130" class="code-line" dir="auto">Identify your subscription id from the list, if you have several subscriptions.</p>
+<pre><code data-line="1132" class="code-line language-bash" dir="auto">az account list -o table
+</code></pre>
+<p data-line="1136" class="code-line" dir="auto">Set your subscription id to be the default subscription.</p>
+<pre><code data-line="1138" class="code-line language-bash" dir="auto">az account <span class="hljs-built_in">set</span> --subscription &lt;SUBSCRIPTION ID&gt;
+</code></pre>
+<ol start="21" data-line="1142" class="code-line" dir="auto">
+<li data-line="1142" class="code-line" dir="auto">Validate private link connection.</li>
+</ol>
+<p data-line="1144" class="code-line" dir="auto">List your ACR in your subscription and note down the ACR name.</p>
+<pre><code data-line="1146" class="code-line language-bash" dir="auto">az acr list -o table
+</code></pre>
+<p data-line="1150" class="code-line" dir="auto">Example output:</p>
+<pre><code data-line="1152" class="code-line language-bash" dir="auto">azureuser@Jumpbox-VM:~$ az acr list -o table
+NAME        RESOURCE GROUP    LOCATION    SKU      LOGIN SERVER           CREATION DATE         ADMIN ENABLED
+----------  ----------------  ----------  -------  ---------------------  --------------------  ---------------
+alibaksacr  rg-spoke          eastus      Premium  alibaksacr.azurecr.io  2024-03-03T07:56:00Z  False
+</code></pre>
+<pre><code data-line="1159" class="code-line language-bash" dir="auto">dig &lt;REGISTRY NAME&gt;.azurecr.io
+</code></pre>
+<p data-line="1163" class="code-line" dir="auto">Example output shows the registry's private IP address in the address space of the subnet:</p>
+<pre><code data-line="1165" class="code-line language-dns" dir="auto">
+azureuser@Jumpbox-VM:~$ dig alibaksacr.azurecr.io
+
+<span class="hljs-comment">; &lt;&lt;&gt;&gt; DiG 9.18.18-0ubuntu0.22.04.2-Ubuntu &lt;&lt;&gt;&gt; alibaksacr.azurecr.io</span>
+<span class="hljs-comment">;; global options: +cmd</span>
+<span class="hljs-comment">;; Got answer:</span>
+<span class="hljs-comment">;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 3738</span>
+<span class="hljs-comment">;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1</span>
+
+<span class="hljs-comment">;; OPT PSEUDOSECTION:</span>
+<span class="hljs-comment">; EDNS: version: 0, flags:; udp: 65494</span>
+<span class="hljs-comment">;; QUESTION SECTION:</span>
+<span class="hljs-comment">;alibaksacr.azurecr.io.         IN      A</span>
+
+<span class="hljs-comment">;; ANSWER SECTION:</span>
+alibaksacr.azurecr.io.  <span class="hljs-number">60</span>      <span class="hljs-keyword">IN</span>      <span class="hljs-keyword">CNAME</span>   alibaksacr.privatelink.azurecr.io.
+alibaksacr.privatelink.azurecr.io. <span class="hljs-number">1800</span> <span class="hljs-keyword">IN</span> <span class="hljs-keyword">A</span>    <span class="hljs-number">10.1.1.21</span>
+
+<span class="hljs-comment">;; Query time: 8 msec</span>
+<span class="hljs-comment">;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)</span>
+<span class="hljs-comment">;; WHEN: Sun Mar 03 09:04:31 UTC 2024</span>
+<span class="hljs-comment">;; MSG SIZE  rcvd: 103</span>
+</code></pre>
+<ol start="22" data-line="1190" class="code-line" dir="auto">
+<li data-line="1190" class="code-line" dir="auto">Test the connection to the container registry, you will push a container to it. You will need to create a Dockerfile, build the docker image, authenticate towards ACR and push the image to the container registry.</li>
+</ol>
+<pre><code data-line="1192" class="code-line language-bash" dir="auto">vim Dockerfile
+</code></pre>
+<p data-line="1196" class="code-line" dir="auto">Add the following content to the Dockerfile.</p>
+<pre><code data-line="1198" class="code-line language-bash" dir="auto">FROM nginx
+EXPOSE 80
+</code></pre>
+<p data-line="1203" class="code-line" dir="auto">Build the Docker image.</p>
+<pre><code data-line="1205" class="code-line language-bash" dir="auto">docker build --tag nginx .
+</code></pre>
+<p data-line="1209" class="code-line" dir="auto">Example output:</p>
+<pre><code data-line="1211" class="code-line language-bash" dir="auto">azureuser@Jumpbox-VM:~$  docker build --tag nginx .
+
+Sending build context to Docker daemon  222.7kB
+Step 1/3 : FROM nginx
+latest: Pulling from library/nginx
+a803e7c4b030: Pull complete 
+8b625c47d697: Pull complete 
+4d3239651a63: Pull complete 
+0f816efa513d: Pull complete 
+01d159b8db2f: Pull complete 
+5fb9a81470f3: Pull complete 
+9b1e1e7164db: Pull complete 
+Digest: sha256:32da30332506740a2f7c34d5dc70467b7f14ec67d912703568daff790ab3f755
+Status: Downloaded newer image <span class="hljs-keyword">for</span> nginx:latest
+ ---&gt; 61395b4c586d
+Step 2/3 : EXPOSE 80
+ ---&gt; Running <span class="hljs-keyword">in</span> d7267ee641b6
+Removing intermediate container d7267ee641b6
+ ---&gt; 06a5ac2e4ba6
+Step 3/3 : CMD [“nginx”, “-g”, “daemon off;”]
+ ---&gt; Running <span class="hljs-keyword">in</span> c02c94dc283c
+Removing intermediate container c02c94dc283c
+ ---&gt; 49a47448ba86
+Successfully built 49a47448ba86
+Successfully tagged nginx:latest
+</code></pre>
+<p data-line="1239" class="code-line" dir="auto">Create an alias of the image.</p>
+<pre><code data-line="1241" class="code-line language-bash" dir="auto">docker tag nginx &lt;CONTAINER REGISTRY NAME&gt;.azurecr.io/nginx
+</code></pre>
+<p data-line="1245" class="code-line" dir="auto">Authenticate to ACR with your AD user.</p>
+<pre><code data-line="1247" class="code-line language-bash" dir="auto">az acr login --name &lt;CONTAINER REGISTRY NAME&gt; 
+</code></pre>
+<p data-line="1251" class="code-line" dir="auto">Upload the docker image to the ACR repository.</p>
+<pre><code data-line="1253" class="code-line language-bash" dir="auto">docker push &lt;CONTAINER REGISTRY NAME&gt;.azurecr.io/nginx
+</code></pre>
+<p data-line="1257" class="code-line" dir="auto">Example output:</p>
+<pre><code data-line="1259" class="code-line language-bash" dir="auto">azureuser@Jumpbox-VM:~$ docker push acraksbl.azurecr.io/nginx
+Using default tag: latest
+The push refers to repository [acraksbl.azurecr.io/nginx]
+d26d4f0eb474: Pushed 
+a7e2a768c198: Pushed 
+9c6261b5d198: Pushed 
+ea43d4f82a03: Pushed 
+1dc45c680d0f: Pushed 
+eb7e3384f0ab: Pushed 
+d310e774110a: Pushed 
+latest: digest: sha256:3dc6726adf74039f21eccf8f3b5de773080f8183545de5a235726132f70aba63 size: 1778
+</code></pre>
+<ol start="23" data-line="1273" class="code-line" dir="auto">
+<li data-line="1273" class="code-line" dir="auto">To enable AKS to pull images from ACR, you can attach AKS to the ACR. This command updates the existing AKS cluster and attaches it to the ACR.</li>
+</ol>
+<pre><code data-line="1275" class="code-line language-bash" dir="auto">az aks update \
+    --resource-group <span class="hljs-variable">$SPOKE_RG</span> \
+    --name <span class="hljs-variable">$AKS_CLUSTER_NAME</span>-<span class="hljs-variable">${STUDENT_NAME}</span> \
+    --attach-acr <span class="hljs-variable">$ACR_NAME</span>
+</code></pre>
+<ol start="24" data-line="1282" class="code-line" dir="auto">
+<li data-line="1282" class="code-line" dir="auto">Validate AKS is able to pull images from ACR, by deploying a simple application to the AKS cluster. During deployment, the AKS cluster will pull the container image of the application from ACR.</li>
+</ol>
+<p data-line="1284" class="code-line" dir="auto">On the Jumpbox VM create a yaml file.</p>
+<pre><code data-line="1286" class="code-line language-bash" dir="auto">vim test-pod.yaml
+</code></pre>
+<p data-line="1290" class="code-line" dir="auto">Pro-tip: when you copy to vim, prevent vim from auto-indenting the text you paste.</p>
+<pre><code data-line="1292" class="code-line language-bash" dir="auto">:<span class="hljs-built_in">set</span> <span class="hljs-built_in">paste</span>
+</code></pre>
+<p data-line="1296" class="code-line" dir="auto">Press enter.</p>
+<p data-line="1298" class="code-line" dir="auto">Paste in the following manifest file which creates a pod named <strong>internal-test-app</strong> which fetches the docker images from our internal container registry, created in previous step.</p>
+<pre><code data-line="1300" class="code-line language-yaml" dir="auto"><span class="hljs-attr">apiVersion:</span> <span class="hljs-string">v1</span>
+<span class="hljs-attr">kind:</span> <span class="hljs-string">Pod</span>
+<span class="hljs-attr">metadata:</span>
+  <span class="hljs-attr">name:</span> <span class="hljs-string">internal-test-app</span>
+  <span class="hljs-attr">labels:</span>
+    <span class="hljs-attr">app:</span> <span class="hljs-string">internal-test-app</span>
+<span class="hljs-attr">spec:</span>
+  <span class="hljs-attr">containers:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">nginx</span>
+    <span class="hljs-attr">image:</span> <span class="hljs-string">&lt;ACR</span> <span class="hljs-string">NAME&gt;.azurecr.io/nginx</span>
+    <span class="hljs-attr">ports:</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-attr">containerPort:</span> <span class="hljs-number">80</span>
+</code></pre>
+<p data-line="1315" class="code-line" dir="auto">Create the pod.</p>
+<pre><code data-line="1317" class="code-line language-yaml" dir="auto"><span class="hljs-string">kubectl</span> <span class="hljs-string">apply</span> <span class="hljs-string">-f</span> <span class="hljs-string">test-pod.yaml</span>
+</code></pre>
+<p data-line="1321" class="code-line" dir="auto">Verify that the pod is in running state.</p>
+<pre><code data-line="1323" class="code-line language-bash" dir="auto">kubectl get po --show-labels
+</code></pre>
+<p data-line="1327" class="code-line" dir="auto">Example output:</p>
+<pre><code data-line="1329" class="code-line language-bash" dir="auto">azureuser@Jumpbox-VM:~$ kubectl get po 
+NAME                READY   STATUS    RESTARTS   AGE
+internal-test-app   1/1     Running   0          8s
+</code></pre>
+<p data-line="1335" class="code-line" dir="auto">The next step is to set up an internal load balancer that will direct the traffic to our internal pod. The internal load balancer will be deployed in the load balancer subnet of the spoke-vnet.</p>
+<pre><code data-line="1338" class="code-line language-yaml" dir="auto"><span class="hljs-string">vim</span> <span class="hljs-string">internal-app-service.yaml</span>
+</code></pre>
+<pre><code data-line="1342" class="code-line language-bash" dir="auto">:<span class="hljs-built_in">set</span> <span class="hljs-built_in">paste</span>
+</code></pre>
+<p data-line="1346" class="code-line" dir="auto">Press enter.</p>
+<p data-line="1348" class="code-line" dir="auto">Copy the following manifest to expose the pod to the internet. Replace <strong><loadbalancer subnet=""></loadbalancer></strong> with your subnet name stored in your local shell environment variable <strong>$LOADBALANCER_SUBNET_NAME</strong>.</p>
+<pre><code data-line="1350" class="code-line language-yaml" dir="auto"><span class="hljs-attr">apiVersion:</span> <span class="hljs-string">v1</span>
+<span class="hljs-attr">kind:</span> <span class="hljs-string">Service</span>
+<span class="hljs-attr">metadata:</span>
+  <span class="hljs-attr">name:</span> <span class="hljs-string">internal-test-app-service</span>
+  <span class="hljs-attr">annotations:</span>
+    <span class="hljs-attr">service.beta.kubernetes.io/azure-load-balancer-internal:</span> <span class="hljs-string">"true"</span>
+    <span class="hljs-attr">service.beta.kubernetes.io/azure-load-balancer-internal-subnet:</span> <span class="hljs-string">"&lt;LOADBALANCER SUBNET NAME&gt;"</span>
+<span class="hljs-attr">spec:</span>
+  <span class="hljs-attr">type:</span> <span class="hljs-string">LoadBalancer</span>
+  <span class="hljs-attr">ports:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-attr">port:</span> <span class="hljs-number">80</span>
+  <span class="hljs-attr">selector:</span>
+    <span class="hljs-attr">app:</span> <span class="hljs-string">internal-test-app</span>
+</code></pre>
+<p data-line="1366" class="code-line" dir="auto">Deploy the service object in AKS.</p>
+<pre><code data-line="1368" class="code-line language-bash" dir="auto">kubectl create -f internal-app-service.yaml
+</code></pre>
+<p data-line="1372" class="code-line" dir="auto">Verify that your service object is created and associated with the pod that you have created, also ensure that you have recieved an external IP, which should be a private IP address range from the load balancer subnet.</p>
+<pre><code data-line="1375" class="code-line language-bash" dir="auto">kubectl get svc -o wide
+</code></pre>
+<p data-line="1379" class="code-line" dir="auto">Example output:</p>
+<pre><code data-line="1381" class="code-line language-bash" dir="auto">azureuser@Jumpbox-VM:~$ kubectl get svc -o wide
+NAME                        TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE    SELECTOR
+internal-test-app-service   LoadBalancer   10.0.22.55   10.1.1.4      80:31644/TCP   112s   app=internal-test-app
+kubernetes                  ClusterIP      10.0.0.1     &lt;none&gt;        443/TCP        13h    &lt;none&gt;
+</code></pre>
+<blockquote data-line="1388" class="code-line" dir="auto">
+<p data-line="1388" class="code-line" dir="auto">[!Note]
+Note down the EXTERNAL-IP (Private IP of the load balancer), as this will be used for creating the application gateway.</p>
+</blockquote>
+<p data-line="1391" class="code-line" dir="auto">Verify that you are able to access the exposed Nginx pod from your jumpbox VM.</p>
+<pre><code data-line="1393" class="code-line language-bash" dir="auto">azureuser@Jumpbox-VM:~$ curl &lt;EXTERNAL-IP&gt;
+</code></pre>
+<p data-line="1397" class="code-line" dir="auto">Example output:</p>
+<pre><code data-line="1399" class="code-line language-bash" dir="auto">azureuser@Jumpbox-VM:~$ curl 10.1.1.4
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;<span class="hljs-built_in">head</span>&gt;
+&lt;title&gt;Welcome to nginx!&lt;/title&gt;
+&lt;style&gt;
+html { color-scheme: light dark; }
+body { width: 35em; margin: 0 auto;
+font-family: Tahoma, Verdana, Arial, sans-serif; }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Welcome to nginx!&lt;/h1&gt;
+&lt;p&gt;If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.&lt;/p&gt;
+
+&lt;p&gt;For online documentation and support please refer to
+&lt;a href=<span class="hljs-string">"http://nginx.org/"</span>&gt;nginx.org&lt;/a&gt;.&lt;br/&gt;
+Commercial support is available at
+&lt;a href=<span class="hljs-string">"http://nginx.com/"</span>&gt;nginx.com&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Thank you <span class="hljs-keyword">for</span> using nginx.&lt;/em&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p data-line="1426" class="code-line" dir="auto">You have successfully deployed a private Azure Container Registry that is accessible from the jumpbox host. You also built and deployed the nginx image, which is only exposed over the private network.</p>
+<div data-line="1428" class="code-line" dir="auto"></div>
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/hubandspokewithpeeringBastionJumpboxFirewallaksvirtualnetlinkandacrandinternalloadbalancer.jpg" width="400">
+<h3 data-line="1430" class="code-line" dir="auto" id="deploy-azure-application-gateway" tabindex="-1">Deploy Azure Application Gateway.</h3>
+<p data-line="1432" class="code-line" dir="auto">In this section, you will set up an application gateway that will terminate TLS connections at its ingress. You will also learn how to perform these tasks: upload a certificate to Application Gateway, configure AKS as a backend pool by routing traffic to its internal load balancer, create a health probe to check the health of the AKS backend pool, and set up a WAF (Web Application Firewall) to defend against common web attacks.</p>
+<ol data-line="1434" class="code-line" dir="auto">
+<li data-line="1434" class="code-line" dir="auto">Create public IP address with a domain name associated to the public IP resource.</li>
+</ol>
+<p data-line="1436" class="code-line" dir="auto">The public IP address will be associated with a fully qualified domain name (FQDN) based on the location of your IP address and a unique name that you provide. For example, if you create an IP address in westeurope, the FQDN would look similar to this:</p>
+<pre><code data-line="1438" class="code-line" dir="auto">myveryuniquename.westeurope.cloudapp.azure.com
+</code></pre>
+<p data-line="1442" class="code-line" dir="auto">Lets make an environment variable of the uniqe name, and call it $DNS_NAME.</p>
+<pre><code data-line="1444" class="code-line" dir="auto">DNS_NAME=&lt;your unique name&gt;
+</code></pre>
+<pre><code data-line="1449" class="code-line language-bash" dir="auto">az network public-ip create -g <span class="hljs-variable">$SPOKE_RG</span> -n AGPublicIPAddress --dns-name <span class="hljs-variable">$DNS_NAME</span> --allocation-method Static --sku Standard --location <span class="hljs-variable">$LOCATION</span>
+</code></pre>
+<ol start="2" data-line="1453" class="code-line" dir="auto">
+<li data-line="1453" class="code-line" dir="auto">Create WAF policy.</li>
+</ol>
+<pre><code data-line="1456" class="code-line language-bash" dir="auto">az network application-gateway waf-policy create --name ApplicationGatewayWAFPolicy --resource-group <span class="hljs-variable">$SPOKE_RG</span>
+</code></pre>
+<ol start="3" data-line="1460" class="code-line" dir="auto">
+<li data-line="1460" class="code-line" dir="auto">Create self signed certificate.</li>
+</ol>
+<p data-line="1462" class="code-line" dir="auto">In order to expose your services to internet using HTTPs, you need to add a certificate to Application Gateway. In a production setting, this would be a trusted certificate from a certificate authority such as <strong>letsencrypt</strong>. In the interest of simplicity, you will instead create a self signed certificate, and upload to Application Gateway.</p>
+<p data-line="1464" class="code-line" dir="auto">Following are short instructions on how to create the self signed certificate. If you want to understand the details, or need more information, please review this page: <a href="https://learn.microsoft.com/en-us/azure/application-gateway/self-signed-certificates" data-href="https://learn.microsoft.com/en-us/azure/application-gateway/self-signed-certificates">https://learn.microsoft.com/en-us/azure/application-gateway/self-signed-certificates</a></p>
+<p data-line="1466" class="code-line" dir="auto">Step one is to create a Root CA Certificate. During the creation, you will need to provide an FQDN. This FQDN will be the one associated with the Public IP address created above.</p>
+<p data-line="1468" class="code-line" dir="auto">To get the FQDN you can run the following command:</p>
+<pre><code data-line="1470" class="code-line" dir="auto">az network public-ip show -g $SPOKE_RG -n AGPublicIPAddress --query dnsSettings.fqdn
+</code></pre>
+<p data-line="1474" class="code-line" dir="auto">After this, use the following commands to create a key and sign the key (self signed).</p>
+<pre><code data-line="1476" class="code-line" dir="auto">openssl genrsa -out my.key 2048
+openssl req -new -x509 -sha256 -key my.key -out my.crt -days 365
+</code></pre>
+<p data-line="1481" class="code-line" dir="auto">When prompted, type the password for the root key (and note it down), and the organizational information for the custom CA such as Country/Region, State, Org, OU, and the fully qualified domain name from the step above. Here is an example of how it might look:</p>
+<pre><code data-line="1483" class="code-line" dir="auto">peter [ ~ ]$ openssl req -new -x509 -sha256 -key my.key -out my.crt -days 365
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) [AU]:SE
+State or Province Name (full name) [Some-State]:
+Locality Name (eg, city) []:
+Organization Name (eg, company) [Internet Widgits Pty Ltd]:
+Organizational Unit Name (eg, section) []:
+Common Name (e.g. server FQDN or YOUR name) []:uniqueappgwname.eastus.cloudapp.azure.com
+Email Address []:johndoe@contoso.com
+</code></pre>
+<p data-line="1501" class="code-line" dir="auto">Now, combine the private key and the certificate into a single .pfx file. Choose a good certificate password and make a note of it, as it will be used when creating the Application Gateway.</p>
+<pre><code data-line="1503" class="code-line" dir="auto">openssl pkcs12 -export -out my.pfx -inkey my.key -in my.crt -password pass:&lt;CERTIFICATE PASSWORD&gt;
+</code></pre>
+<ol start="4" data-line="1507" class="code-line" dir="auto">
+<li data-line="1507" class="code-line" dir="auto">Create Application Gateway.</li>
+</ol>
+<blockquote data-line="1509" class="code-line" dir="auto">
+<p data-line="1509" class="code-line" dir="auto">[!Note]
+Before executing the command below, make sure the certificate is located in <strong>your working directory</strong>. Replace <strong><certificate password=""></certificate></strong> with the password you used when creating the certificate and <strong><load balancer="" private="" ip=""></load></strong> with the private IP of the load balancer.</p>
+</blockquote>
+<pre><code data-line="1512" class="code-line language-bash" dir="auto">az network application-gateway create \
+  --name AppGateway \
+  --location <span class="hljs-variable">$LOCATION</span> \
+  --resource-group <span class="hljs-variable">$SPOKE_RG</span> \
+  --vnet-name <span class="hljs-variable">$SPOKE_VNET_NAME</span> \
+  --subnet <span class="hljs-variable">$APPGW_SUBNET_NAME</span> \
+  --capacity 1 \
+  --sku WAF_v2 \
+  --http-settings-cookie-based-affinity Disabled \
+  --frontend-port 443 \
+  --http-settings-port 80 \
+  --http-settings-protocol Http \
+  --priority <span class="hljs-string">"1"</span> \
+  --public-ip-address AGPublicIPAddress \
+  --cert-file my.pfx \
+  --cert-password <span class="hljs-string">"&lt;CERTIFICATE PASSWORD&gt;"</span> \
+  --waf-policy ApplicationGatewayWAFPolicy \
+  --servers &lt;LOAD BALANCER PRIVATE IP&gt;
+</code></pre>
+<ol start="5" data-line="1533" class="code-line" dir="auto">
+<li data-line="1533" class="code-line" dir="auto">Create a custom probe for the application gateway that will monitor the health of the AKS backend pool.</li>
+</ol>
+<pre><code data-line="1535" class="code-line language-bash" dir="auto"> az network application-gateway probe create \
+    --gateway-name <span class="hljs-variable">$APPGW_NAME</span> \
+    --resource-group <span class="hljs-variable">$SPOKE_RG</span> \
+    --name health-probe \
+    --protocol Http \
+    --path / \
+    --interval 30 \
+    --<span class="hljs-built_in">timeout</span> 120 \
+    --threshold 3 \
+    --host 127.0.0.1
+</code></pre>
+<ol start="6" data-line="1548" class="code-line" dir="auto">
+<li data-line="1548" class="code-line" dir="auto">Associate the health probe to the backend pool.</li>
+</ol>
+<pre><code data-line="1550" class="code-line language-bash" dir="auto">az network application-gateway http-settings update -g <span class="hljs-variable">$SPOKE_RG</span> --gateway-name <span class="hljs-variable">$APPGW_NAME</span> -n appGatewayBackendHttpSettings --probe health-probe
+</code></pre>
+<p data-line="1554" class="code-line" dir="auto">Validate your deployment in the Azure portal.</p>
+<ol start="7" data-line="1556" class="code-line" dir="auto">
+<li data-line="1556" class="code-line" dir="auto">
+<p data-line="1556" class="code-line" dir="auto">Select the resource group called <strong>rg-spoke</strong> where the application gateway is deployed.</p>
+</li>
+<li data-line="1558" class="code-line" dir="auto">
+<p data-line="1558" class="code-line" dir="auto">Select your Azure Application Gateway called <strong>AppGateway</strong>. Ensure you have a <strong>Public IP address</strong> and Tier set to <strong>WAF v2</strong>.</p>
+</li>
+</ol>
+<div data-line="1562" class="code-line" dir="auto"></div>
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/appgwoverview.jpg" width="1000">
+<ol start="9" data-line="1565" class="code-line" dir="auto">
+<li data-line="1565" class="code-line" dir="auto">
+<p data-line="1565" class="code-line" dir="auto">In the left-hand side menu, under the <strong>Settings</strong> section, select <strong>Backend pools</strong> and choose from the list  <strong>appGatewayBackendPool</strong>.</p>
+</li>
+<li data-line="1567" class="code-line" dir="auto">
+<p data-line="1567" class="code-line" dir="auto">Ensure the target type is set to <strong>IP address or FQDN</strong> and target is set to the IP address of your <strong>internal load balancer</strong>.</p>
+</li>
+</ol>
+<div data-line="1570" class="code-line" dir="auto"></div>
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/appGatewayBackendPool.jpg" width="1000">
+<ol start="11" data-line="1573" class="code-line" dir="auto">
+<li data-line="1573" class="code-line" dir="auto">
+<p data-line="1573" class="code-line" dir="auto">On the top menu click on <strong>AppGateway | Backend pools</strong>.</p>
+</li>
+<li data-line="1575" class="code-line" dir="auto">
+<p data-line="1575" class="code-line" dir="auto">Lets verify the backend settings of Application Gateway, in the left-hand side menu choose *<strong>Backend settings</strong>.</p>
+</li>
+<li data-line="1577" class="code-line" dir="auto">
+<p data-line="1577" class="code-line" dir="auto">From the list click on <strong>appGatewayBackendHttpSettings</strong> validate that the backend port is configured for port 80, and that health probe called <strong>health-probe</strong> is associated to the backend.</p>
+</li>
+</ol>
+<div data-line="1579" class="code-line" dir="auto"></div>
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/backendsettings.jpg" width="1000">
+<ol start="14" data-line="1582" class="code-line" dir="auto">
+<li data-line="1582" class="code-line" dir="auto">
+<p data-line="1582" class="code-line" dir="auto">Press <strong>Cancel</strong></p>
+</li>
+<li data-line="1584" class="code-line" dir="auto">
+<p data-line="1584" class="code-line" dir="auto">Verify that we have Web application rules configured. In the left-hand side menu choose *<strong>Web Application Firewall</strong>.</p>
+</li>
+<li data-line="1586" class="code-line" dir="auto">
+<p data-line="1586" class="code-line" dir="auto">Click on <strong>ApplicationGatewayWAFPolicy</strong> In the left-hand side menu choose *<strong>Managed rules</strong>.</p>
+</li>
+</ol>
+<div data-line="1589" class="code-line" dir="auto"></div>
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/managedruleswaf.jpg" width="600">
+<p data-line="1591" class="code-line" dir="auto">We have successfully completed the deployment and configuration of the network and cluster resources. The following diagram shows the high-level architecture of the solution. As you can see, there is a test pod running in AKS that can receive traffic from the internet through the Azure Application Gateway and the Azure Internal Load Balancer. We can also access the private API server of the AKS cluster and the private container registry from the jumpbox using the private endpoints and links. We have also enabled outbound traffic from the AKS subnet to go through the Azure Firewall for inspection and filtering. In the next section, we will validate if we can access our test pod securely from the Internet.</p>
+<div data-line="1594" class="code-line" dir="auto"></div>
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/hubandspokewithpeeringBastionJumpboxFirewallaksvirtualnetlinkandacrandinternalloadbalancerandapplicationgw.jpg" width="400">
+<h3 data-line="1597" class="code-line" dir="auto" id="validate-ingress-connection" tabindex="-1">Validate Ingress Connection.</h3>
+<p data-line="1598" class="code-line" dir="auto">Open your web browser and access the domain created above: <code>https://&lt;application gateway FQDN&gt;</code></p>
+<blockquote data-line="1600" class="code-line" dir="auto">
+<p data-line="1600" class="code-line" dir="auto">[!Note]
+The certificate used was self-signed, so the browser will issue a warning that the content is potentially unsafe.
+In a production setting, a certificate from a well known certificate authority should be used, but this is
+beyond the scope of this tutorial.</p>
+</blockquote>
+<p data-line="1605" class="code-line" dir="auto">If you discard the warning, you should see a similar output as to the one below.</p>
+<div data-line="1607" class="code-line" dir="auto"></div>
+<img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/nginx-warning.png" width="600">
+<p data-line="1610" class="code-line" dir="auto">You have now verified connectivity from the public IP address, through the Application Gateway to the nginx pod running in your private AKS cluster. Well done!</p>
+<h3 data-line="1612" class="code-line" dir="auto" id="clean-up-resources-in-aks" tabindex="-1">Clean Up Resources in AKS</h3>
+<p data-line="1613" class="code-line" dir="auto">Once you have verified that everything works as depicted earlier you can issue the following commands from the jumpbox to delete the resources.</p>
+<pre><code data-line="1615" class="code-line language-bash" dir="auto">kubectl delete -f test-pod.yaml
+kubectl delete -f internal-app-service.yaml
+</code></pre>
+
+        <script>var Be=(e,t)=>()=>(t||e((t={exports:{}}).exports,t),t.exports);var Me=Be((Lt,Ne)=>{var xe="Expected a function",Ae=NaN,Qe="[object Symbol]",Ze=/^\s+|\s+$/g,et=/^[-+]0x[0-9a-f]+$/i,tt=/^0b[01]+$/i,nt=/^0o[0-7]+$/i,rt=parseInt,it=typeof global=="object"&&global&&global.Object===Object&&global,at=typeof self=="object"&&self&&self.Object===Object&&self,ot=it||at||Function("return this")(),st=Object.prototype,lt=st.toString,ct=Math.max,ut=Math.min,ue=function(){return ot.Date.now()};function dt(e,t,n){var r,i,a,s,u,m,d=0,p=!1,b=!1,T=!0;if(typeof e!="function")throw new TypeError(xe);t=Le(t)||0,te(n)&&(p=!!n.leading,b="maxWait"in n,a=b?ct(Le(n.maxWait)||0,t):a,T="trailing"in n?!!n.trailing:T);function E(v){var A=r,_=i;return r=i=void 0,d=v,s=e.apply(_,A),s}function N(v){return d=v,u=setTimeout(L,t),p?E(v):s}function g(v){var A=v-m,_=v-d,h=t-A;return b?ut(h,a-_):h}function S(v){var A=v-m,_=v-d;return m===void 0||A>=t||A<0||b&&_>=a}function L(){var v=ue();if(S(v))return U(v);u=setTimeout(L,g(v))}function U(v){return u=void 0,T&&r?E(v):(r=i=void 0,s)}function R(){u!==void 0&&clearTimeout(u),d=0,r=m=i=u=void 0}function Y(){return u===void 0?s:U(ue())}function I(){var v=ue(),A=S(v);if(r=arguments,i=this,m=v,A){if(u===void 0)return N(m);if(b)return u=setTimeout(L,t),E(m)}return u===void 0&&(u=setTimeout(L,t)),s}return I.cancel=R,I.flush=Y,I}function ft(e,t,n){var r=!0,i=!0;if(typeof e!="function")throw new TypeError(xe);return te(n)&&(r="leading"in n?!!n.leading:r,i="trailing"in n?!!n.trailing:i),dt(e,t,{leading:r,maxWait:t,trailing:i})}function te(e){var t=typeof e;return!!e&&(t=="object"||t=="function")}function mt(e){return!!e&&typeof e=="object"}function gt(e){return typeof e=="symbol"||mt(e)&&lt.call(e)==Qe}function Le(e){if(typeof e=="number")return e;if(gt(e))return Ae;if(te(e)){var t=typeof e.valueOf=="function"?e.valueOf():e;e=te(t)?t+"":t}if(typeof e!="string")return e===0?e:+e;e=e.replace(Ze,"");var n=tt.test(e);return n||nt.test(e)?rt(e.slice(2),n?2:8):et.test(e)?Ae:+e}Ne.exports=ft});var pe="code-line",F=class{constructor(t,n,r){this.element=t;this.line=n;this.codeElement=r;this._detailParentElements=Array.from(Re(t,"DETAILS"))}get isVisible(){return!this._detailParentElements.some(t=>!t.open)}},ae=(()=>{let e,t=-1;return n=>{if(!e||n!==t){t=n,e=[new F(document.body,-1)];for(let r of document.getElementsByClassName(pe)){if(!(r instanceof HTMLElement))continue;let i=+r.getAttribute("data-line");isNaN(i)||(r.tagName==="CODE"&&r.parentElement&&r.parentElement.tagName==="PRE"?e.push(new F(r.parentElement,i,r)):r.tagName==="UL"||r.tagName==="OL"||e.push(new F(r,i)))}}return e}})();function oe(e,t){let n=Math.floor(e),r=ae(t),i=r[0]||null;for(let a of r){if(a.line===n)return{previous:a,next:void 0};if(a.line>n)return{previous:i,next:a};i=a}return{previous:i}}function He(e,t){let n=ae(t).filter(m=>m.isVisible),r=e-window.scrollY,i=-1,a=n.length-1;for(;i+1<a;){let m=Math.floor((i+a)/2),d=W(n[m]);d.top+d.height>=r?a=m:i=m}let s=n[a],u=W(s);return a>=1&&u.top>r?{previous:n[i],next:s}:a>1&&a<n.length&&u.top+u.height>r?{previous:s,next:n[a+1]}:{previous:s}}function W({element:e}){let t=e.getBoundingClientRect(),n=e.querySelector(`.${pe}`);if(n){let r=n.getBoundingClientRect(),i=Math.max(1,r.top-t.top);return{top:t.top,height:i}}return t}function K(e,t,n){if(!n.settings?.scrollPreviewWithEditor)return;if(e<=0){window.scroll(window.scrollX,0);return}let{previous:r,next:i}=oe(e,t);if(!r)return;let a=0,s=W(r),u=s.top;if(i&&i.line!==r.line){let m=(e-r.line)/(i.line-r.line),d=u+s.height,p=i.element.getBoundingClientRect().top-d;a=d+m*p}else{let m=e-Math.floor(e);a=u+s.height*m}a=Math.abs(a)<1?Math.sign(a):a,window.scroll(window.scrollX,Math.max(1,window.scrollY+a))}function se(e,t){let{previous:n,next:r}=He(e,t);if(n){if(n.line<0)return 0;let i=W(n),a=e-window.scrollY-i.top;if(r){let s=a/(W(r).top-i.top);return n.line+s*(r.line-n.line)}else{let s=a/i.height;return n.line+s}}return null}function ve(e,t){return ae(t).find(n=>n.element.id===e)}function*Re(e,t){for(let n=e.parentElement;n;n=n.parentElement)n.tagName===t&&(yield n)}var J=class{onDidChangeTextEditorSelection(t,n){let{previous:r}=oe(t,n);this._update(r&&(r.codeElement||r.element))}_update(t){this._unmarkActiveElement(this._current),this._markActiveElement(t),this._current=t}_unmarkActiveElement(t){t&&t.classList.toggle("code-active-line",!1)}_markActiveElement(t){t&&t.classList.toggle("code-active-line",!0)}};function he(e){document.readyState==="loading"||document.readyState==="uninitialized"?document.addEventListener("DOMContentLoaded",e):e()}var be=(e,t)=>({postMessage(n,r){e.postMessage({type:n,source:t.settings.source,...r})}});function le(e){let t=document.getElementById("vscode-markdown-preview-data");if(t){let n=t.getAttribute(e);if(n)return JSON.parse(n)}throw new Error(`Could not load data for ${e}`)}var Q=class{constructor(){this._settings=le("data-settings")}get settings(){return this._settings}updateSettings(t){this._settings=t}};var ye=11;function ke(e,t){var n=t.attributes,r,i,a,s,u;if(!(t.nodeType===ye||e.nodeType===ye)){for(var m=n.length-1;m>=0;m--)r=n[m],i=r.name,a=r.namespaceURI,s=r.value,a?(i=r.localName||i,u=e.getAttributeNS(a,i),u!==s&&(r.prefix==="xmlns"&&(i=r.name),e.setAttributeNS(a,i,s))):(u=e.getAttribute(i),u!==s&&e.setAttribute(i,s));for(var d=e.attributes,p=d.length-1;p>=0;p--)r=d[p],i=r.name,a=r.namespaceURI,a?(i=r.localName||i,t.hasAttributeNS(a,i)||e.removeAttributeNS(a,i)):t.hasAttribute(i)||e.removeAttribute(i)}}var Z,Ue="http://www.w3.org/1999/xhtml",w=typeof document>"u"?void 0:document,Fe=!!w&&"content"in w.createElement("template"),We=!!w&&w.createRange&&"createContextualFragment"in w.createRange();function Ve(e){var t=w.createElement("template");return t.innerHTML=e,t.content.childNodes[0]}function je(e){Z||(Z=w.createRange(),Z.selectNode(w.body));var t=Z.createContextualFragment(e);return t.childNodes[0]}function qe(e){var t=w.createElement("body");return t.innerHTML=e,t.childNodes[0]}function Xe(e){return e=e.trim(),Fe?Ve(e):We?je(e):qe(e)}function ee(e,t){var n=e.nodeName,r=t.nodeName,i,a;return n===r?!0:(i=n.charCodeAt(0),a=r.charCodeAt(0),i<=90&&a>=97?n===r.toUpperCase():a<=90&&i>=97?r===n.toUpperCase():!1)}function Ye(e,t){return!t||t===Ue?w.createElement(e):w.createElementNS(t,e)}function ze(e,t){for(var n=e.firstChild;n;){var r=n.nextSibling;t.appendChild(n),n=r}return t}function ce(e,t,n){e[n]!==t[n]&&(e[n]=t[n],e[n]?e.setAttribute(n,""):e.removeAttribute(n))}var Te={OPTION:function(e,t){var n=e.parentNode;if(n){var r=n.nodeName.toUpperCase();r==="OPTGROUP"&&(n=n.parentNode,r=n&&n.nodeName.toUpperCase()),r==="SELECT"&&!n.hasAttribute("multiple")&&(e.hasAttribute("selected")&&!t.selected&&(e.setAttribute("selected","selected"),e.removeAttribute("selected")),n.selectedIndex=-1)}ce(e,t,"selected")},INPUT:function(e,t){ce(e,t,"checked"),ce(e,t,"disabled"),e.value!==t.value&&(e.value=t.value),t.hasAttribute("value")||e.removeAttribute("value")},TEXTAREA:function(e,t){var n=t.value;e.value!==n&&(e.value=n);var r=e.firstChild;if(r){var i=r.nodeValue;if(i==n||!n&&i==e.placeholder)return;r.nodeValue=n}},SELECT:function(e,t){if(!t.hasAttribute("multiple")){for(var n=-1,r=0,i=e.firstChild,a,s;i;)if(s=i.nodeName&&i.nodeName.toUpperCase(),s==="OPTGROUP")a=i,i=a.firstChild;else{if(s==="OPTION"){if(i.hasAttribute("selected")){n=r;break}r++}i=i.nextSibling,!i&&a&&(i=a.nextSibling,a=null)}e.selectedIndex=n}}},V=1,Ge=11,we=3,Ee=8;function B(){}function $e(e){if(e)return e.getAttribute&&e.getAttribute("id")||e.id}function Ke(e){return function(n,r,i){if(i||(i={}),typeof r=="string")if(n.nodeName==="#document"||n.nodeName==="HTML"||n.nodeName==="BODY"){var a=r;r=w.createElement("html"),r.innerHTML=a}else r=Xe(r);var s=i.getNodeKey||$e,u=i.onBeforeNodeAdded||B,m=i.onNodeAdded||B,d=i.onBeforeElUpdated||B,p=i.onElUpdated||B,b=i.onBeforeNodeDiscarded||B,T=i.onNodeDiscarded||B,E=i.onBeforeElChildrenUpdated||B,N=i.childrenOnly===!0,g=Object.create(null),S=[];function L(c){S.push(c)}function U(c,l){if(c.nodeType===V)for(var o=c.firstChild;o;){var f=void 0;l&&(f=s(o))?L(f):(T(o),o.firstChild&&U(o,l)),o=o.nextSibling}}function R(c,l,o){b(c)!==!1&&(l&&l.removeChild(c),T(c),U(c,o))}function Y(c){if(c.nodeType===V||c.nodeType===Ge)for(var l=c.firstChild;l;){var o=s(l);o&&(g[o]=l),Y(l),l=l.nextSibling}}Y(n);function I(c){m(c);for(var l=c.firstChild;l;){var o=l.nextSibling,f=s(l);if(f){var x=g[f];x&&ee(l,x)?(l.parentNode.replaceChild(x,l),A(x,l)):I(l)}else I(l);l=o}}function v(c,l,o){for(;l;){var f=l.nextSibling;(o=s(l))?L(o):R(l,c,!0),l=f}}function A(c,l,o){var f=s(l);f&&delete g[f],!(!o&&(d(c,l)===!1||(e(c,l),p(c),E(c,l)===!1)))&&(c.nodeName!=="TEXTAREA"?_(c,l):Te.TEXTAREA(c,l))}function _(c,l){var o=l.firstChild,f=c.firstChild,x,P,k,G,O;e:for(;o;){for(G=o.nextSibling,x=s(o);f;){if(k=f.nextSibling,o.isSameNode&&o.isSameNode(f)){o=G,f=k;continue e}P=s(f);var $=f.nodeType,D=void 0;if($===o.nodeType&&($===V?(x?x!==P&&((O=g[x])?k===O?D=!1:(c.insertBefore(O,f),P?L(P):R(f,c,!0),f=O):D=!1):P&&(D=!1),D=D!==!1&&ee(f,o),D&&A(f,o)):($===we||$==Ee)&&(D=!0,f.nodeValue!==o.nodeValue&&(f.nodeValue=o.nodeValue))),D){o=G,f=k;continue e}P?L(P):R(f,c,!0),f=k}if(x&&(O=g[x])&&ee(O,o))c.appendChild(O),A(O,o);else{var ie=u(o);ie!==!1&&(ie&&(o=ie),o.actualize&&(o=o.actualize(c.ownerDocument||w)),c.appendChild(o),I(o))}o=G,f=k}v(c,f,P);var ge=Te[c.nodeName];ge&&ge(c,l)}var h=n,z=h.nodeType,me=r.nodeType;if(!N){if(z===V)me===V?ee(n,r)||(T(n),h=ze(n,Ye(r.nodeName,r.namespaceURI))):h=r;else if(z===we||z===Ee){if(me===z)return h.nodeValue!==r.nodeValue&&(h.nodeValue=r.nodeValue),h;h=r}}if(h===r)T(n);else{if(r.isSameNode&&r.isSameNode(h))return;if(A(h,r,N),S)for(var ne=0,_e=S.length;ne<_e;ne++){var re=g[S[ne]];re&&R(re,re.parentNode,!1)}}return!N&&h!==n&&n.parentNode&&(h.actualize&&(h=h.actualize(n.ownerDocument||w)),n.parentNode.replaceChild(h,n)),h}}var Je=Ke(ke),Se=Je;var Ce=Me(),H=0,Pe=new J,y=new Q,M=0,j=y.settings.source,q=acquireVsCodeApi(),de=q.getState()??{},C={...de,...le("data-state")};typeof de.scrollProgress<"u"&&de?.resource!==C.resource&&(C.scrollProgress=0);q.setState(C);var X=be(q,y);window.cspAlerter.setPoster(X);window.styleLoadingMonitor.setPoster(X);function fe(e){let t=document.getElementsByTagName("img");if(t.length>0){let n=Array.from(t,r=>r.complete?Promise.resolve():new Promise(i=>{r.addEventListener("load",()=>i()),r.addEventListener("error",()=>i())}));Promise.all(n).then(()=>setTimeout(e,0))}else setTimeout(e,0)}he(()=>{let e=C.scrollProgress;if(Oe(),typeof e=="number"&&!y.settings.fragment){fe(()=>{H+=1;let t=Math.max(1,e*document.body.clientHeight);window.scrollTo(0,t)});return}y.settings.scrollPreviewWithEditor&&fe(()=>{if(y.settings.fragment){let t;try{t=encodeURIComponent(y.settings.fragment)}catch{t=y.settings.fragment}C.fragment=void 0,q.setState(C);let n=ve(t,M);n&&(H+=1,K(n.line,M,y))}else isNaN(y.settings.line)||(H+=1,K(y.settings.line,M,y))}),typeof y.settings.selectedLine=="number"&&Pe.onDidChangeTextEditorSelection(y.settings.selectedLine,M)});var pt=(()=>{let e=Ce(t=>{H+=1,fe(()=>K(t,M,y))},50);return t=>{isNaN(t)||(C.line=t,e(t))}})();window.addEventListener("resize",()=>{H+=1,Ie()},!0);function Oe(){let e=document.getElementsByTagName("img"),t=0;for(let n of e)n.id="image-"+t,t+=1,n.setAttribute("data-vscode-context",JSON.stringify({webviewSection:"image",id:n.id,preventDefaultContextMenuItems:!0,resource:j}))}async function De(e,t=5){if(!document.hasFocus()&&t>0){setTimeout(()=>{De(e,t-1)},20);return}try{await navigator.clipboard.write([new ClipboardItem({"image/png":new Promise(n=>{let r=document.createElement("canvas");r!==null&&(r.width=e.naturalWidth,r.height=e.naturalHeight,r.getContext("2d")?.drawImage(e,0,0)),r.toBlob(i=>{i&&n(i),r.remove()},"image/png")})})])}catch(n){console.error(n)}}window.addEventListener("message",async e=>{let t=e.data;switch(t.type){case"copyImage":{let n=document.getElementById(t.id);n instanceof HTMLImageElement&&De(n);return}case"onDidChangeTextEditorSelection":t.source===j&&Pe.onDidChangeTextEditorSelection(t.line,M);return;case"updateView":t.source===j&&pt(t.line);return;case"updateContent":{let n=document.querySelector(".markdown-body"),i=new DOMParser().parseFromString(t.content,"text/html");for(let a of Array.from(i.querySelectorAll("meta")))a.hasAttribute("http-equiv")&&a.remove();if(t.source!==j)n.replaceWith(i.querySelector(".markdown-body")),j=t.source;else{let a=["open"],s=(d,p)=>{if(d.isEqualNode(p))return!0;if(d.tagName!==p.tagName||d.textContent!==p.textContent)return!1;let b=[...d.attributes].filter(g=>!a.includes(g.name)),T=[...p.attributes].filter(g=>!a.includes(g.name));if(b.length!==T.length)return!1;for(let g=0;g<b.length;++g){let S=b[g],L=T[g];if(S.name!==L.name||S.value!==L.value&&S.name!=="data-line")return!1}let E=Array.from(d.children),N=Array.from(p.children);return E.length===N.length&&E.every((g,S)=>s(g,N[S]))},u=i.querySelector(".markdown-body"),m=u.querySelectorAll("link");for(let d of m)d.remove();u.prepend(...m),Se(n,u,{childrenOnly:!0,onBeforeElUpdated:(d,p)=>{if(s(d,p)){let b=d.querySelectorAll("[data-line]"),T=p.querySelectorAll("[data-line]");b.length!==T.length&&console.log("unexpected line number change");for(let E=0;E<b.length;++E){let N=b[E],g=T[E];g&&N.setAttribute("data-line",g.getAttribute("data-line"))}return!1}return d.tagName==="DETAILS"&&p.tagName==="DETAILS"&&d.hasAttribute("open")&&p.setAttribute("open",""),!0}})}++M,window.dispatchEvent(new CustomEvent("vscode.markdown.updateContent")),Oe();break}}},!1);document.addEventListener("dblclick",e=>{if(!y.settings.doubleClickToSwitchToEditor)return;for(let r=e.target;r;r=r.parentNode)if(r.tagName==="A")return;let t=e.pageY,n=se(t,M);typeof n=="number"&&!isNaN(n)&&X.postMessage("didClick",{line:Math.floor(n)})});var vt=["http:","https:","mailto:","vscode:","vscode-insiders:"];document.addEventListener("click",e=>{if(!e)return;let t=e.target;for(;t;){if(t.tagName&&t.tagName==="A"&&t.href){if(t.getAttribute("href").startsWith("#"))return;let n=t.getAttribute("data-href");if(!n){if(vt.some(r=>t.href.startsWith(r)))return;n=t.getAttribute("href")}if(!/^[a-z\-]+:/i.test(n)){X.postMessage("openLink",{href:n}),e.preventDefault(),e.stopPropagation();return}return}t=t.parentNode}},!0);window.addEventListener("scroll",Ce(()=>{if(Ie(),H>0)H-=1;else{let e=se(window.scrollY,M);typeof e=="number"&&!isNaN(e)&&X.postMessage("revealLine",{line:e})}},50));function Ie(){C.scrollProgress=window.scrollY/document.body.clientHeight,q.setState(C)}
+</script>
+
+    </body>
+</html>
