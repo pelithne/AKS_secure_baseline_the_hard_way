@@ -1450,6 +1450,7 @@ az network nsg rule create \
 <ol start="2" data-line="469" class="code-line" dir="auto">
 <li data-line="469" class="code-line" dir="auto">Create JumpBox Virtual Machine.</li>
 </ol>
+<br>
 <blockquote data-line="471" class="code-line" dir="auto">
 <p data-line="471" class="code-line" dir="auto">Note:
 Ensure you specify a <strong>password</strong> for the admin user called <strong>azureuser</strong>.
@@ -1474,6 +1475,7 @@ The password length must be between 12 and 72. Password must have 3 of the follo
 <ol start="4" data-line="495" class="code-line" dir="auto">
 <li data-line="495" class="code-line" dir="auto">Create the bastion host in hub vnet and associate it to the public IP.</li>
 </ol>
+<br>
 <blockquote data-line="497" class="code-line" dir="auto">
 <p data-line="497" class="code-line" dir="auto">Note:
 Azure Bastion service requires a dedicated subnet named <strong>AzureBastionSubnet</strong> to provide secure and seamless RDP/SSH connectivity to your virtual machines. When you deploy Azure Bastion service, it will automatically create this subnet for you, if it does not exist in the target virtual network. However, if the subnet already exists, it must meet the minimum size of <strong>/26</strong> or larger, otherwise the deployment will fail.</p>
@@ -1596,6 +1598,7 @@ az network firewall network-rule create -g <span class="hljs-variable">$HUB_RG</
     --next-hop-ip-address <span class="hljs-variable">$FW_PRIVATE_IP</span>
 
 </code></pre>
+<br>
 <blockquote data-line="636" class="code-line" dir="auto">
 <p data-line="636" class="code-line" dir="auto">Note:
 The route will direct all traffic (0.0.0.0/0) to the next hop type of VirtualAppliance, which is the firewall instance. The next hop IP address is the private IP address of the firewall, which is stored in the environment variable $FW_PRIVATE_IP. This way, the traffic from the AKS subnet will be routed to the firewall instance on its private endpoint. This will allow you to perform inspection on outbound traffic.</p>
@@ -1722,6 +1725,7 @@ The route will direct all traffic (0.0.0.0/0) to the next hop type of VirtualApp
     --role <span class="hljs-string">"Network Contributor"</span>
 
 </code></pre>
+<br>
 <blockquote data-line="760" class="code-line" dir="auto">
 <p data-line="760" class="code-line" dir="auto">Note:
 Granting the Network Contributor role to the load balancer subnet in AKS could result in over-privileged access. To minimize security risks, it is recommended to only provide AKS with the necessary permissions to function effectively, adhering to the principle of least privilege access. For more information refer to <a href="./docs/customrole.md" data-href="./docs/customrole.md">Creating Azure custom role</a>.</p>
@@ -1744,6 +1748,7 @@ Granting the Network Contributor role to the load balancer subnet in AKS could r
 <p data-line="779" class="code-line" dir="auto">For more information about OIDC and Workload Identity refer to <a href="https://learn.microsoft.com/en-us/azure/aks/workload-identity-overview" data-href="https://learn.microsoft.com/en-us/azure/aks/workload-identity-overview">Use Microsoft Entra Workload ID with Azure Kubernetes Service (AKS)</a></p>
 <pre><code data-line="781" class="code-line language-bash" dir="auto">az aks create --resource-group <span class="hljs-variable">$SPOKE_RG</span> --node-count 2 --vnet-subnet-id <span class="hljs-variable">$AKS_SUBNET_SCOPE</span> --name <span class="hljs-variable">$AKS_CLUSTER_NAME</span>-<span class="hljs-variable">${STUDENT_NAME}</span> --enable-private-cluster --outbound-type userDefinedRouting --enable-oidc-issuer --enable-workload-identity --generate-ssh-keys --assign-identity <span class="hljs-variable">$IDENTITY_ID</span> --network-plugin azure --network-policy azure --disable-public-fqdn --zones 1 2 3
 </code></pre>
+<br>
 <blockquote data-line="785" class="code-line" dir="auto">
 <p data-line="785" class="code-line" dir="auto">Note:
 A private AKS cluster has its Kubernetes API endpoint isolated from public access, allowing access only within the same virtual network. To communicate with the private AKS cluster from a jumpbox in a different virtual network, a virtual network link must be created between the two networks for DNS resolution. This will be covered in a later section.</p>
@@ -1779,6 +1784,7 @@ A private AKS cluster has its Kubernetes API endpoint isolated from public acces
 <p data-line="824" class="code-line" dir="auto">Click on <strong>Resource groups</strong> to view all of your resource groups in your subscription. You should have 3 RGs which you have created,<strong>MC_rg-spoke_private-aks-xxxx_eastus</strong>, <strong>rg-hub</strong> and <strong>rg-spoke</strong></p>
 </li>
 </ol>
+<br>
 <blockquote data-line="826" class="code-line" dir="auto">
 <p data-line="826" class="code-line" dir="auto">Note:
 MC_rg-spoke_private-aks-xxxx_eastus is a resource group automatically created when deploying an AKS cluster. It is used by Azure to manage resources for the cluster, this particular resource group is also known as Node group.</p>
@@ -1850,6 +1856,7 @@ sudo usermod -aG docker <span class="hljs-variable">$USER</span>
 <pre><code data-line="883" class="code-line language-bash" dir="auto">az login
 az account <span class="hljs-built_in">set</span> --subscription &lt;SUBSCRIPTION ID&gt;
 </code></pre>
+<br>
 <blockquote data-line="887" class="code-line" dir="auto">
 <p data-line="887" class="code-line" dir="auto">Note:
 To check the current subscription, run the command: <strong>az account show</strong>
@@ -1926,6 +1933,7 @@ Ensure you have a globally unique name for your ACR, or else the deployment will
 <ol start="4" data-line="969" class="code-line" dir="auto">
 <li data-line="969" class="code-line" dir="auto">Create a virtual network link to the hub network.</li>
 </ol>
+<br>
 <blockquote data-line="971" class="code-line" dir="auto">
 <p data-line="971" class="code-line" dir="auto">Note:
 The $HUB_VNET_ID variable specifies the full path to the virtual network in another resource group, allowing the command to correctly link to it.
@@ -2251,6 +2259,7 @@ NAME                        TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)   
 internal-test-app-service   LoadBalancer   10.0.22.55   10.1.1.4      80:31644/TCP   112s   app=internal-test-app
 kubernetes                  ClusterIP      10.0.0.1     &lt;none&gt;        443/TCP        13h    &lt;none&gt;
 </code></pre>
+<br>
 <blockquote data-line="1388" class="code-line" dir="auto">
 <p data-line="1388" class="code-line" dir="auto">Note:
 Note down the EXTERNAL-IP (Private IP of the load balancer), as this will be used for creating the application gateway.</p>
@@ -2342,6 +2351,7 @@ Email Address []:johndoe@contoso.com
 <ol start="4" data-line="1507" class="code-line" dir="auto">
 <li data-line="1507" class="code-line" dir="auto">Create Application Gateway.</li>
 </ol>
+<br>
 <blockquote data-line="1509" class="code-line" dir="auto">
 <p data-line="1509" class="code-line" dir="auto">Note:
 Before executing the command below, make sure the certificate is located in <strong>your working directory</strong>. Replace <strong><certificate password=""></certificate></strong> with the password you used when creating the certificate and <strong><load balancer="" private="" ip=""></load></strong> with the private IP of the load balancer.</p>
@@ -2437,6 +2447,7 @@ Before executing the command below, make sure the certificate is located in <str
 <img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/hubandspokewithpeeringBastionJumpboxFirewallaksvirtualnetlinkandacrandinternalloadbalancerandapplicationgw.jpg" width="400">
 <h3 data-line="1597" class="code-line" dir="auto" id="validate-ingress-connection" tabindex="-1">Validate Ingress Connection.</h3>
 <p data-line="1598" class="code-line" dir="auto">Open your web browser and access the domain created above: <code>https://&lt;application gateway FQDN&gt;</code></p>
+<br>
 <blockquote data-line="1600" class="code-line" dir="auto">
 <p data-line="1600" class="code-line" dir="auto">Note:
 The certificate used was self-signed, so the browser will issue a warning that the content is potentially unsafe.
