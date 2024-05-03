@@ -1,10 +1,10 @@
-# AKS Secure Baseline - The Hard Way
+# Azure Kubernetes Service - The Hard Way
 
-Welcome to "AKS baseline - The Hard Way". From this text, you will learn how to deploy a secure and scalable Kubernetes cluster on Azure using Azure Kubernetes Service (AKS) and a number of other Azure services. You will also learn how to apply the best practices from the AKS secure baseline reference architecture, which provides a recommended starting point for a general purpose AKS cluster infrastructure. 
+Welcome to "Azure Kubernetes Service - The Hard Way". From this blog, you will learn how to deploy a secure and scalable Kubernetes cluster on Azure using Azure Kubernetes Service (AKS) and a number of adjacent Azure services. You will also learn how to apply best practices from the AKS secure baseline reference architecture, which provides a recommended starting point for a general purpose AKS cluster infrastructure. 
 
-The target audience of these instructions is intermediate to advanced Kubernetes users who want to improve their skills and knowledge about AKS and Azure. You will need to have some familiarity with Kubernetes concepts and tools such as pods, services, deployments, and kubectl. You will also need to have an Azure subscription with contributor permission and access to a bash shell. We recommend using Azure Cloud Shell for this, as it has all the necessary tools already installed. Bear in mind that Cloud Shell times out after around 20 minutes of inactivity. Make sure to copy all the environment variables you will be creating, to a file so that you don't loose them.
+The target audience of these instructions is intermediate to advanced Kubernetes users who want to improve their skills and knowledge about AKS and Azure. You will need to have some familiarity with Kubernetes concepts and tools such as pods, services, deployments, and kubectl. You will also need to have an Azure subscription with contributor permission and access to a bash shell. We recommend using Azure Cloud Shell for this, as it has all the necessary tools already installed. 
 
-To access the could shell, you can type ````shell.azure.com```` in your web browser. 
+To access the could shell, you can type ````shell.azure.com```` in your web browser. Bear in mind that Cloud Shell times out after around 20 minutes of inactivity. Make sure to copy all the environment variables you will be creating, to a file so that you don't loose them.
 
 Upon finishing, you will have a deeper understanding of how to use AKS to deploy and manage a secure and scalable Kubernetes cluster on Azure. You will also have a working AKS cluster that follows the AKS secure baseline reference architecture. Expect the entire exercise to take up to eight hours.
 
@@ -42,7 +42,7 @@ Each subnet in AKS baseline has a specific purpose and configuration, further in
 
 - **Endpoints Subnet**: This subnet is where the private endpoints for Azure services are deployed. Private endpoints are a network interface that connects you privately and securely to a service powered by Azure Private Link. Private endpoints allow you to access Azure services, such as Azure Container Registry, Azure Key Vault, or Azure Storage, without exposing them to the internet or requiring a public IP address. The subnet name can be any valid name, and the subnet size depends on the number of private endpoints you need to create.
 
-- **AKS Subnet**: This subnet is where the AKS cluster nodes are deployed. It uses Azure CNI networking, which assigns IP addresses from the subnet to each node and pod. The subnet size depends on the number of nodes and pods per node, and it should be large enough to accommodate the expected growth. The subnet also has a network security group (NSG) that controls the inbound and outbound traffic to and from the nodes.
+- **AKS Subnet**: This subnet is where the AKS cluster nodes are deployed. It uses Azure CNI networking, which assigns IP addresses from the subnet to each node and pod. The subnet size depends on the number of nodes and pods per node, and it should be large enough to accommodate the expected growth. The subnet also has a Network Security Group (NSG) that controls the inbound and outbound traffic to and from the nodes.
 
 - **Azure Application Gateway Subnet**: This subnet is where the Azure Application Gateway is deployed. The application gateway acts as an ingress controller for the AKS cluster, routing external traffic to the appropriate services or pods inside the cluster. It also provides web application firewall (WAF) functionality, which helps protect the applications from common web attacks. The subnet size can be small, as it only needs to accommodate one or more application gateway instances. The subnet also has a NSG that allows inbound traffic on ports 80 and 443, and outbound traffic to the AKS cluster.
 
@@ -252,9 +252,9 @@ You have successfully configured the network for your hub virtual network.You ha
 <br>
 <br>
 
-Validate your deployment in the Azure portal.
 
-8) Navigate to the Azure portal at [https://portal.azure.com](https://portal.azure.com) and enter your login credentials.
+
+8) To Validate your deployment, navigate to the Azure portal at [https://portal.azure.com](https://portal.azure.com) and enter your login credentials.
 
 9) Once logged in, locate and select your resource group called **rg-hub** where the hub vnet is deployed.
 
@@ -384,13 +384,13 @@ You have successfully configured the network for your spoke virtual network. You
 
 <img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/hubandspokeonly.jpg" width="400">
 
-Validate your deployment in the Azure portal.
 
-11) Navigate to the Azure portal at [https://portal.azure.com](https://portal.azure.com) and enter your login credentials.
 
-12) Once logged in, locate and select your resource group called **rg-spoke** where the spoke vnet is deployed.
+11) Navigate to the Azure portal at [https://portal.azure.com](https://portal.azure.com) again.
 
-13) Select your vnet called **Spoke_VNET**.
+12) Locate and select your resource group called **rg-spoke** where the spoke vnet is deployed.
+
+13) Select the vnet called **Spoke_VNET**.
 
 14) In the left-hand side menu, under the **Settings** section, select **Subnets**.
 
@@ -438,11 +438,11 @@ Peering should be established and the high level design should now look like thi
 
 <img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/hubandspokewithpeering.jpg" width="400">
 
-Validate your deployment in the Azure portal.
 
-4) Navigate to the Azure portal at [https://portal.azure.com](https://portal.azure.com) and enter your login credentials.
 
-5) Once logged in, locate and select the resource group called **rg-spoke** where the spoke vnet is deployed.
+4) Navigate to the Azure portal at [https://portal.azure.com](https://portal.azure.com)
+
+5) Locate and select the resource group called **rg-spoke** where the spoke vnet is deployed.
 
 6) Select the vnet called **Spoke_VNET**.
 
@@ -507,19 +507,17 @@ az network bastion create \
     --location $LOCATION
 ````
 
-5) Connect to VM using the portal:
 
-Upon successful installation of the Jumpbox Virtual Machine (VM), the next step is to validate the connectivity between the Bastion and Jumpbox host. Here are the steps to follow:
 
-6) Navigate to the Azure portal at [https://portal.azure.com](https://portal.azure.com) and enter your login credentials.
+5) Upon successful installation of the Jumpbox Virtual Machine (VM). Navigate to the Azure portal at [https://portal.azure.com](https://portal.azure.com)
 
-7) Once logged in, locate and select your **rg-hub** where the Jumpbox has been deployed.
+6) Locate and select your **rg-hub** where the Jumpbox has been deployed.
 
-8) Within your resource group, find and click on the **Jumpbox VM**.
+7) Within your resource group, find and click on the **Jumpbox VM**.
 
-9) In the left-hand side menu, under the **Connect** section, select ‘Bastion’.
+8) In the left-hand side menu, under the **Connect** section, select ‘Bastion’.
 
-10) Enter the **credentials** for the Jumpbox VM and verify that you can log in successfully. 
+9) Enter the **credentials** for the Jumpbox VM and verify that you can log in successfully. 
 
 For additional information on accessing VMs through Bastion, please refer to this [Microsoft Azure Bastion tutorial](https://learn.microsoft.com/en-us/azure/bastion/create-host-cli#steps)
 
@@ -657,11 +655,11 @@ You have successfully configured the firewall in the hub VNet, set up network an
 
 <img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/OutboundTraffic.jpg" width="600">
 
-Validate your deployment in the Azure portal.
 
-10) Navigate to the Azure portal at [https://portal.azure.com](https://portal.azure.com) and enter your login credentials.
 
-11) Once logged in, locate and select your resource group called **rg-hub** where the hub vnet is deployed.
+10) To validate your deployment, navigate to the Azure portal at [https://portal.azure.com](https://portal.azure.com)
+
+11) Locate and select your resource group called **rg-hub** where the hub vnet is deployed.
 
 12) Select your firewall called **azure-firewall**.
 
@@ -673,11 +671,13 @@ Validate your deployment in the Azure portal.
 
 <img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/azfwnr.jpg" width="1000">
 
+
 16) Click on **Application rule collection**.
 
 17) Verify that you have an application rule collection called **aksfwar** which should contain 1 rule. Inspect the rule.
 
 <img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/azfwar.jpg" width="1000">
+
 
 18) Lets validate the routing between AKS subnet and Azure Firewall, in the Azure portal, in the top menu select **Resource Groups**. 
 
@@ -820,15 +820,16 @@ az network private-dns link vnet create --name "hubnetdnsconfig" --registration-
 
 Validate your deployment in the Azure portal.
 
-11) Navigate to the Azure portal at [https://portal.azure.com](https://portal.azure.com) and enter your login credentials.
+11) Navigate to the Azure portal at [https://portal.azure.com](https://portal.azure.com).
 
-12) Once logged in, click on **Resource groups** to view all of your resource groups in your subscription. You should have 3 RGs which you have created,**MC_rg-spoke_private-aks-xxxx_eastus**, **rg-hub** and **rg-spoke** 
+12) Click on **Resource groups** to view all of your resource groups in your subscription. You should have 3 RGs which you have created,**MC_rg-spoke_private-aks-xxxx_eastus**, **rg-hub** and **rg-spoke** 
 
 > [!Note]
 > MC_rg-spoke_private-aks-xxxx_eastus is a resource group automatically created when deploying an AKS cluster. It is used by Azure to manage resources for the cluster, this particular resource group is also known as Node group.
 
 
 <img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/resourcegroups.jpg" width="1000">
+
 
 
 13) Verify that a virtual network link exists between the Hub and spoke to enable the jumpbox to resolve the AKS domain name and access the cluster. Select the node group called **MC_rg-spoke_private-aks-xxxxx_eastus**.
@@ -841,12 +842,14 @@ Validate your deployment in the Azure portal.
 
 <img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/virtualnetworklinks.jpg" width="1000">
 
+
 17) On the top menu click **Resource groups** and choose **rg-spoke** from the resource group list.
 
 18) Click on the AKS resource called private-aks-<YOUR STUDENT NAME>. Verify that the Private cluster is set to Enabled. 
 
 
 <img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/aksoverviewprivatecluster.jpg" width="1000">
+
 
 19) Verify AKS control plane connectivity.
 
@@ -1096,6 +1099,7 @@ Validate your deployment in the Azure portal.
 12) log in and select the **rg-spoke** resource group. Verify that you have a **container registry** and a private endpoint named **ACRPrivateEndpoint** deployed in your resource group, as well as a network card named **ACRPrivateEndpoint.nic.xxxxx**.
 
 <img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/acrresourcegroup.jpg" width="1000">
+
 
 13) Select the private DNS zone named **privatelink.azurecr.io**. Ensure that you have two ‘A’ records, one for control and one for data, and that the correct IP addresses are configured.
 
@@ -1558,12 +1562,14 @@ Validate your deployment in the Azure portal.
 
 <img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/appgwoverview.jpg" width="1000">
 
+
 9) In the left-hand side menu, under the **Settings** section, select **Backend pools** and choose from the list  **appGatewayBackendPool**.
 
 10) Ensure the target type is set to **IP address or FQDN** and target is set to the IP address of your **internal load balancer**.
 
 
 <img src="https://raw.githubusercontent.com/pelithne/AKS_secure_baseline_the_hard_way/main/images/appGatewayBackendPool.jpg" width="1000">
+
 
 11) On the top menu click on **AppGateway | Backend pools**.
 
